@@ -1069,6 +1069,26 @@ nav{top:var(--mx-sitebar-height)!important;}
 .btn-outline-dark:hover{border-color:var(--sand);color:var(--sand-dark);transform:translateY(-2px)}
 @media(max-width:900px){.pv-conversion-grid{grid-template-columns:1fr}.pv-experience-band{padding:3rem 1.2rem}.pv-sticky-wa{left:16px;right:16px;bottom:16px;width:auto}.pv-experience-actions a{width:100%}}
 
+
+
+/* ===== Conversion Max — Tarifs bateau & contact direct ===== */
+.boat-tariff-section{background:linear-gradient(180deg,#fff,#fffaf0);border:1px solid var(--border);border-radius:16px;padding:1.25rem;box-shadow:0 12px 34px rgba(47,100,31,.07)}
+.boat-intro{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:1.1rem}
+.boat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.boat-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1rem;box-shadow:0 10px 26px rgba(10,58,82,.05)}
+.boat-card.featured{background:linear-gradient(135deg,#fffaf0,#edf6e7);border-color:rgba(184,149,79,.35)}
+.boat-card-title{font-family:'Playfair Display',serif;font-size:1.08rem;color:var(--ocean);font-weight:700;margin-bottom:.35rem}
+.boat-card-sub{font-size:.78rem;color:var(--muted);line-height:1.55;margin-bottom:.75rem}
+.tariff-row{display:flex;justify-content:space-between;gap:.75rem;padding:.45rem 0;border-top:1px solid rgba(92,112,89,.16);font-size:.82rem;line-height:1.35}
+.tariff-row span:first-child{color:var(--muted)}
+.tariff-row strong{color:var(--text);text-align:right;white-space:nowrap}
+.boat-note{margin-top:1rem;background:#f7f1df;border:1px solid rgba(184,149,79,.28);border-radius:12px;padding:.9rem 1rem;font-size:.84rem;color:#6b551d;line-height:1.65}
+.pv-direct-contact{background:linear-gradient(135deg,var(--ocean),var(--ocean-dark));border-radius:16px;padding:1.35rem;color:#fff;box-shadow:0 18px 44px rgba(31,47,28,.18)}
+.pv-direct-contact strong{display:block;font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--sand);margin-bottom:.35rem}
+.pv-direct-contact p{font-size:.88rem;color:rgba(255,255,255,.78);line-height:1.65;margin-bottom:1rem}
+.btn-email-direct{display:block;text-align:center;background:var(--sand);color:var(--ocean-dark);border-radius:999px;padding:.85rem 1rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:900}
+@media(max-width:700px){.boat-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -1133,7 +1153,10 @@ nav{top:var(--mx-sitebar-height)!important;}
       </div>
       <div class="form-row three">
         <div class="fg"><label>Adultes</label><select id="adults" name="adults" required><option value="1">1 adulte</option><option value="2" selected>2 adultes</option><option value="3">3 adultes</option><option value="4">4 adultes</option></select></div>
-        <div class="fg"><label>Enfants</label><select id="children" name="children"><option value="0" selected>0 enfant</option><option value="1">1 enfant</option><option value="2">2 enfants</option><option value="3">3 enfants</option></select></div>
+        <div class="fg"><label>Enfants -5 ans</label><select id="children-small" name="children_under_5"><option value="0" selected>0 enfant</option><option value="1">1 enfant</option><option value="2">2 enfants</option><option value="3">3 enfants</option></select></div>
+        <div class="fg"><label>Enfants 5 ans et +</label><select id="children-big" name="children_5_plus"><option value="0" selected>0 enfant</option><option value="1">1 enfant</option><option value="2">2 enfants</option><option value="3">3 enfants</option></select></div>
+      </div>
+      <div class="form-row full">
         <div class="fg"><label>Nuits</label><input type="text" id="nights-display" value="— nuits" readonly style="background:#f5f8fa;color:var(--muted);cursor:default"/></div>
       </div>
     </div>
@@ -1193,10 +1216,10 @@ nav{top:var(--mx-sitebar-height)!important;}
     <div class="form-sec">
       <div class="form-sec-title"><span class="step">4</span> Transferts optionnels</div>
       <p class="form-note" style="text-align:left;margin-bottom:1rem">
-        Nous pouvons organiser vos transferts pour faciliter votre arrivée jusqu’au lodge. Ces frais sont indiqués en Ariary et confirmés séparément après vérification de disponibilité.
+        Nous pouvons organiser certains transferts et excursions complémentaires sur demande. Les tarifs bateau varient selon le nombre de personnes et sont confirmés séparément.
       </p>
       <div class="transfer-box">
-        <div class="transfer-title">Services disponibles</div>
+        <div class="transfer-title">Transfert disponible</div>
 
         <label class="transfer-option">
           <input type="checkbox" id="transfer-airport" name="Transfert Aéroport - Manga Beach" value="Oui">
@@ -1205,14 +1228,59 @@ nav{top:var(--mx-sitebar-height)!important;}
             <span class="transfer-desc">80.000 Ar — transfert aller-retour sur Maroantsetra.</span>
           </span>
         </label>
+      </div>
+    </div>
 
-        <label class="transfer-option">
-          <input type="checkbox" id="transfer-boat" name="Vedette Manga Beach - Paradise Valley" value="Oui">
-          <span>
-            <span class="transfer-name">Hôtel Manga Beach ↔ Paradise Valley</span>
-            <span class="transfer-desc">1.000.000 Ar — vedette rapide aller-retour vers Ambanizana.</span>
-          </span>
-        </label>
+
+    <div class="form-sec">
+      <div class="form-sec-title"><span class="step">5</span> Plans bateau & excursions</div>
+      <div class="boat-tariff-section">
+        <p class="boat-intro">Ajoutez facilement un transfert bateau ou une excursion à votre séjour. Les montants ci-dessous sont indicatifs et confirmés selon la disponibilité, la météo et le nombre de personnes.</p>
+        <div class="boat-grid">
+          <div class="boat-card">
+            <div class="boat-card-title">Nosy Mangabe</div>
+            <div class="boat-card-sub">Départ Manga Beach Hotel</div>
+            <div class="tariff-row"><span>1 personne</span><strong>200 000 Ar</strong></div>
+            <div class="tariff-row"><span>2 personnes</span><strong>150 000 Ar / pers</strong></div>
+            <div class="tariff-row"><span>3 personnes</span><strong>120 000 Ar / pers</strong></div>
+            <div class="tariff-row"><span>4 pers. et +</span><strong>100 000 Ar / pers</strong></div>
+          </div>
+          <div class="boat-card">
+            <div class="boat-card-title">Ambodiforaha · Parc Masoala</div>
+            <div class="boat-card-sub">Départ Manga Beach Hotel</div>
+            <div class="tariff-row"><span>1 ou 2 personnes</span><strong>1 300 000 Ar</strong></div>
+            <div class="tariff-row"><span>3 personnes</span><strong>500 000 Ar / pers</strong></div>
+            <div class="tariff-row"><span>4 pers. et +</span><strong>400 000 Ar / pers</strong></div>
+          </div>
+          <div class="boat-card">
+            <div class="boat-card-title">Lodge Ambanizana · Paradise Valley</div>
+            <div class="boat-card-sub">Départ Manga Beach Hotel</div>
+            <div class="tariff-row"><span>1 ou 2 personnes</span><strong>1 000 000 Ar</strong></div>
+            <div class="tariff-row"><span>3 personnes</span><strong>450 000 Ar / pers</strong></div>
+            <div class="tariff-row"><span>4 pers. et +</span><strong>380 000 Ar / pers</strong></div>
+          </div>
+          <div class="boat-card">
+            <div class="boat-card-title">Paradise Valley → Ambodiforaha</div>
+            <div class="boat-card-sub">Transfert depuis le lodge</div>
+            <div class="tariff-row"><span>1 ou 2 personnes</span><strong>400 000 Ar</strong></div>
+            <div class="tariff-row"><span>3 à 4 personnes</span><strong>180 000 Ar / pers</strong></div>
+            <div class="tariff-row"><span>5 pers. et +</span><strong>150 000 Ar / pers</strong></div>
+          </div>
+          <div class="boat-card featured">
+            <div class="boat-card-title">Sortie baleine</div>
+            <div class="boat-card-sub">Observation environ 1h30</div>
+            <div class="tariff-row"><span>1 personne</span><strong>400 000 Ar</strong></div>
+            <div class="tariff-row"><span>2 personnes</span><strong>300 000 Ar / pers</strong></div>
+            <div class="tariff-row"><span>3 personnes</span><strong>250 000 Ar / pers</strong></div>
+            <div class="tariff-row"><span>4 à 12 personnes</span><strong>200 000 Ar / pers</strong></div>
+          </div>
+          <div class="boat-card featured">
+            <div class="boat-card-title">Pêche initiation ou sportive</div>
+            <div class="boat-card-sub">Sortie 4h</div>
+            <div class="tariff-row"><span>Forfait sortie</span><strong>1 000 000 Ar</strong></div>
+          </div>
+        </div>
+        <div class="boat-note"><strong>Transfert spécial :</strong> Manga Beach → Masoala Village ou Mananara : 3 500 000 Ar + attente 80 000 Ar / jour.</div>
       </div>
     </div>
 
@@ -1234,6 +1302,8 @@ nav{top:var(--mx-sitebar-height)!important;}
       <div class="sum-row"><span class="sum-row-label">Voyageurs</span><span class="sum-row-val" id="sum-guests">2 adultes</span></div>
       <div class="sum-divider"></div>
       <div class="sum-row"><span class="sum-row-label">Hébergement</span><span class="sum-row-val" id="sum-room-cost">—</span></div>
+      <div class="sum-row"><span class="sum-row-label">Pension complète</span><span class="sum-row-val" id="sum-pension">—</span></div>
+      <div class="sum-row"><span class="sum-row-label">Transferts</span><span class="sum-row-val" id="sum-transfers">—</span></div>
       <div class="sum-divider"></div>
       <div class="sum-total">
         <div class="sum-total-label">Total indicatif</div>
@@ -1248,7 +1318,9 @@ nav{top:var(--mx-sitebar-height)!important;}
         <p>
           Bungalow simple : <b>100 € / nuit</b><br>
           Bungalow familial : <b>120 € / nuit</b><br>
-          Pension complète : <b>+ 70 € / personne / jour</b><br>
+          Pension complète adulte : <b>70 € / personne / jour</b><br>
+          Enfant moins de 5 ans : <b>50 € / jour</b><br>
+          Enfant 5 ans et plus : <b>70 € / jour</b><br>
           <small>Boissons extras non incluses.</small>
         </p>
       </div>
@@ -1257,7 +1329,17 @@ nav{top:var(--mx-sitebar-height)!important;}
         <strong>Transferts</strong>
         <p>
           Aéroport ↔ Hôtel Manga Beach ↔ Aéroport : <b>80.000 Ar</b><br>
-          Hôtel Manga Beach ↔ Paradise Valley ↔ Hôtel Manga Beach en vedette rapide : <b>1.000.000 Ar</b>
+          Les autres transferts bateau sont confirmés sur demande selon l’itinéraire et le nombre de personnes.
+        </p>
+      </div>
+
+      <div class="final-info-box">
+        <strong>Excursions & bateau</strong>
+        <p>
+          Nosy Mangabe : <b>dès 100 000 Ar / pers</b><br>
+          Sortie baleine : <b>dès 200 000 Ar / pers</b><br>
+          Pêche initiation ou sportive : <b>1 000 000 Ar / sortie</b><br>
+          Ambodiforaha / Parc Masoala et autres transferts : tarifs selon nombre de personnes.
         </p>
       </div>
 
@@ -1278,6 +1360,13 @@ nav{top:var(--mx-sitebar-height)!important;}
         </p>
       </div>
     </div>
+
+
+      <div class="pv-direct-contact">
+        <strong>Besoin d’une réponse rapide ?</strong>
+        <p>Envoyez votre demande avec vos dates, le nombre de personnes et les excursions souhaitées. Nous confirmons la disponibilité et les tarifs exacts.</p>
+        <a class="btn-email-direct" href="mailto:lodge.paradisevalley@yahoo.com?subject=Demande%20de%20réservation%20Paradise%20Valley&body=Bonjour,%0AJe%20souhaite%20réserver%20un%20séjour%20à%20Paradise%20Valley.%0ADates%20souhaitées%20:%0ANombre%20de%20personnes%20:%0AExcursions%20ou%20transferts%20souhaités%20:%0AMerci.">Écrire directement</a>
+      </div>
 
     <div class="policy-card">
       <div class="policy-title">Politique de l'hôtel</div>
@@ -1305,63 +1394,6 @@ nav{top:var(--mx-sitebar-height)!important;}
   <div class="ft-copy">© 2025 Paradise Valley</div>
 </footer>
 
-<script>
-  // ── WhatsApp : numéro à renseigner quand disponible ──────────────────────
-  // Pour activer : remplacer '' par le numéro international ex: '261341234567'
-  const WA_NUMBER = '';
-  function updateWhatsAppLinks(){
-    const wa_direct = document.getElementById('wa-direct');
-    const wa_form  = document.getElementById('wa-form-link');
-    if(!wa_direct && !wa_form) return;
-    if(!WA_NUMBER){
-      // Pas encore de numéro : les liens pointent vers la page contact
-      if(wa_direct) wa_direct.setAttribute('href','contact.html');
-      if(wa_form)   wa_form.setAttribute('href','contact.html');
-      return;
-    }
-    const room     = document.querySelector('input[name="room"]:checked')?.value || 'bungalow';
-    const roomName = room === 'villa' ? 'Bungalow Familial' : 'Bungalow Simple';
-    const checkin  = document.getElementById('check-in')?.value  || '';
-    const checkout = document.getElementById('check-out')?.value || '';
-    const adults   = document.getElementById('adults')?.value    || '2';
-    const children = document.getElementById('children')?.value  || '0';
-    const nights   = (checkin && checkout)
-      ? Math.max(0, Math.round((new Date(checkout+'T00:00:00') - new Date(checkin+'T00:00:00')) / 86400000))
-      : 0;
-    let msg = 'Bonjour, je souhaite réserver au Paradise Valley.';
-    msg += '\nBungalow : ' + roomName;
-    if(checkin)  msg += '\nArrivée : ' + checkin;
-    if(checkout) msg += '\nDépart : '  + checkout;
-    if(nights)   msg += '\nDurée : '   + nights + ' nuit' + (nights > 1 ? 's' : '');
-    msg += '\nVoyageurs : ' + adults + ' adulte' + (parseInt(adults) > 1 ? 's' : '');
-    if(parseInt(children) > 0) msg += ' + ' + children + ' enfant' + (parseInt(children) > 1 ? 's' : '');
-    msg += '\nMerci de me confirmer la disponibilité.';
-    const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
-    if(wa_direct) wa_direct.setAttribute('href', url);
-    if(wa_form)   wa_form.setAttribute('href', url);
-  }
-</script>
-
-<script>
-(function(){
-  var btn=document.getElementById('hamburger');
-  var menu=document.getElementById('mobile-menu');
-  if(!btn||!menu)return;
-  btn.addEventListener('click',function(){
-    btn.classList.toggle('open');
-    menu.classList.toggle('open');
-    btn.setAttribute('aria-expanded', menu.classList.contains('open')?'true':'false');
-    document.body.style.overflow=menu.classList.contains('open')?'hidden':'';
-  });
-  menu.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click',function(){
-      btn.classList.remove('open');
-      menu.classList.remove('open');
-      document.body.style.overflow='';
-    });
-  });
-})();
-</script>
 
 
 
@@ -1373,709 +1405,186 @@ nav{top:var(--mx-sitebar-height)!important;}
 
 
 
-<script>
-(function(){
-  const ROOM_RATES = {
-    bungalow: 100, simple: 100, 'bungalow-simple': 100,
-    villa: 120, family: 120, familial: 120, 'bungalow-familial': 120
-  };
-  const ROOM_NAMES = {
-    bungalow: 'Bungalow simple', simple: 'Bungalow simple', 'bungalow-simple': 'Bungalow simple',
-    villa: 'Bungalow familial', family: 'Bungalow familial', familial: 'Bungalow familial', 'bungalow-familial': 'Bungalow familial'
-  };
-  const PENSION_PER_PERSON_PER_DAY = 70;
-
-  function $(id){ return document.getElementById(id); }
-  function firstNumber(value, fallback){
-    const m = String(value || '').match(/\d+/);
-    return m ? parseInt(m[0], 10) : fallback;
-  }
-  function formatEuro(n){
-    return new Intl.NumberFormat('fr-FR', { style:'currency', currency:'EUR', maximumFractionDigits:0 }).format(n);
-  }
-  function getRoomKey(){
-    const checked = document.querySelector('input[name="room"]:checked, input[name="type-bungalow"]:checked, input[type="radio"]:checked');
-    if(checked && checked.value) return checked.value.toLowerCase();
-    const selected = document.querySelector('.room-opt.selected');
-    if(selected){
-      const input = selected.querySelector('input');
-      if(input && input.value) return input.value.toLowerCase();
-      const txt = selected.textContent.toLowerCase();
-      if(txt.includes('familial')) return 'familial';
-    }
-    return 'bungalow';
-  }
-  function getNights(){
-    const a = $('check-in')?.value || '';
-    const b = $('check-out')?.value || '';
-    if(!a || !b) return 0;
-    const d1 = new Date(a + 'T00:00:00');
-    const d2 = new Date(b + 'T00:00:00');
-    const diff = Math.round((d2 - d1) / 86400000);
-    return diff > 0 ? diff : 0;
-  }
-  function setRowContains(labelNeedle, value){
-    document.querySelectorAll('.sum-row').forEach(row => {
-      const label = row.querySelector('.sum-row-label');
-      const val = row.querySelector('.sum-row-val');
-      if(label && val && label.textContent.toLowerCase().includes(labelNeedle.toLowerCase())){
-        val.textContent = value;
-      }
-    });
-  }
-  function setText(selectors, value){
-    selectors.forEach(sel => document.querySelectorAll(sel).forEach(el => el.textContent = value));
-  }
-  function getTransfersText(){
-    const list = [];
-    if($('transfer-airport')?.checked) list.push('Aéroport ↔ Manga Beach : 80.000 Ar');
-    if($('transfer-boat')?.checked) list.push('Vedette Manga Beach ↔ Paradise Valley : 1.000.000 Ar');
-    return list.length ? list.join(' + ') : '—';
-  }
-  function updateSummary(){
-    const checkin = $('check-in')?.value || '';
-    const checkout = $('check-out')?.value || '';
-    const nights = getNights();
-    const adults = firstNumber($('adults')?.value, 1);
-    const children = firstNumber($('children')?.value, 0);
-    const guests = adults + children;
-
-    const roomKey = getRoomKey();
-    const roomName = ROOM_NAMES[roomKey] || (roomKey.includes('famil') ? 'Bungalow familial' : 'Bungalow simple');
-    const roomRate = ROOM_RATES[roomKey] || (roomKey.includes('famil') ? 120 : 100);
-
-    const lodgingTotal = nights > 0 ? roomRate * nights : 0;
-    const pensionTotal = nights > 0 ? guests * PENSION_PER_PERSON_PER_DAY * nights : 0;
-    const grandTotal = lodgingTotal + pensionTotal;
-
-    const durationText = nights > 0 ? nights + ' nuit' + (nights > 1 ? 's' : '') : '—';
-    const adultsText = adults + ' adulte' + (adults > 1 ? 's' : '');
-    const childrenText = children > 0 ? ' + ' + children + ' enfant' + (children > 1 ? 's' : '') : '';
-    const travellersText = adultsText + childrenText;
-    const transfersText = getTransfersText();
-
-    const lodgingText = lodgingTotal > 0 ? formatEuro(lodgingTotal) : '—';
-    const pensionText = pensionTotal > 0 ? formatEuro(pensionTotal) : '—';
-    const totalText = grandTotal > 0 ? formatEuro(grandTotal) : '—';
-
-    const fmtDate = iso => iso ? new Date(iso + 'T00:00:00').toLocaleDateString('fr-FR') : '—';
-    setRowContains('Arrivée', fmtDate(checkin));
-    setRowContains('Départ', fmtDate(checkout));
-    setRowContains('Durée', durationText);
-    setRowContains('Adulte', adultsText);
-    setRowContains('Voyageur', travellersText);
-    setRowContains('Personne', travellersText);
-    setRowContains('Bungalow', roomName);
-    setRowContains('Hébergement', lodgingText);
-    setRowContains('Pension', pensionText);
-    setRowContains('Transferts', transfersText);
-    setRowContains('Total', totalText);
-    setRowContains('Indicatif', totalText);
-
-    setText(['#summary-duration','.summary-duration'], durationText);
-    setText(['#summary-adults','.summary-adults'], adultsText);
-    setText(['#summary-guests','.summary-guests'], travellersText);
-    setText(['#summary-lodging','.summary-lodging'], lodgingText);
-    setText(['#summary-pension','.summary-pension'], pensionText);
-    setText(['#summary-transfers','.summary-transfers'], transfersText);
-    setText(['#summary-total','.summary-total-val','.total-estime','.estimated-total'], totalText);
-
-    const totalVal = document.querySelector('.sum-total-val');
-    if(totalVal) totalVal.textContent = totalText;
-
-    const hiddenFields = {
-      'Durée': durationText,
-      'Adultes': String(adults),
-      'Enfants': String(children),
-      'Bungalow': roomName,
-      'Estimation hébergement': lodgingText,
-      'Estimation pension complète': pensionText,
-      'Transferts optionnels': transfersText,
-      'Total indicatif hors transferts': totalText
-    };
-    Object.keys(hiddenFields).forEach(name => {
-      let input = document.querySelector(`input[name="${name}"]`);
-      if(!input){
-        input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = name;
-        document.querySelector('form, .form-card')?.appendChild(input);
-      }
-      if(input) input.value = hiddenFields[name];
-    });
-  }
-  function applyQueryParams(){
-    const params = new URLSearchParams(window.location.search);
-    const checkin = params.get('checkin') || params.get('arrival') || params.get('arrivee');
-    const checkout = params.get('checkout') || params.get('departure') || params.get('depart');
-    const adultsParam = params.get('adults') || params.get('guests') || params.get('personnes');
-    if(checkin && $('check-in')) $('check-in').value = checkin;
-    if(checkout && $('check-out')) $('check-out').value = checkout;
-    if(adultsParam && $('adults')){
-      const n = firstNumber(adultsParam, 1);
-      const select = $('adults');
-      const matching = Array.from(select.options).find(o => firstNumber(o.value || o.textContent, -1) === n);
-      if(matching) select.value = matching.value;
-      else select.value = String(n);
-    }
-  }
-  document.addEventListener('DOMContentLoaded', function(){
-    applyQueryParams();
-    ['check-in','check-out','adults','children','transfer-airport','transfer-boat'].forEach(id => {
-      const el = $(id);
-      if(el){
-        el.addEventListener('change', updateSummary);
-        el.addEventListener('input', updateSummary);
-      }
-    });
-    document.querySelectorAll('.room-opt').forEach(opt => {
-      opt.addEventListener('click', function(){
-        document.querySelectorAll('.room-opt').forEach(o=>o.classList.remove('selected'));
-        opt.classList.add('selected');
-        const input = opt.querySelector('input[type="radio"]');
-        if(input) input.checked = true;
-        updateSummary();
-      });
-    });
-    document.querySelectorAll('input[type="radio"]').forEach(radio => radio.addEventListener('change', updateSummary));
-    updateSummary();
-  });
-})();
-</script>
 
 
-<script>
-(function(){
-  function updateTransferOptionState(input){
-    const card = input.closest('.transfer-option');
-    if(!card) return;
-    card.classList.toggle('active', input.checked);
-    if(input.checked){
-      card.classList.remove('just-checked');
-      void card.offsetWidth;
-      card.classList.add('just-checked');
-      setTimeout(()=>card.classList.remove('just-checked'), 500);
-    }
-  }
 
-  document.addEventListener('DOMContentLoaded', function(){
-    document.querySelectorAll('.transfer-option input[type="checkbox"]').forEach(function(input){
-      updateTransferOptionState(input);
-      input.addEventListener('change', function(){
-        updateTransferOptionState(input);
-      });
-    });
-  });
-})();
-</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <script>
 (function(){
   const FORMSPREE_ENDPOINT = 'https://formspree.io/f/maqvnqbj';
-  const PENSION_PER_PERSON_PER_DAY = 70;
-  const ROOM_RATES = { bungalow:100, villa:120, simple:100, familial:120 };
+  const ROOM_RATES = { bungalow:100, villa:120 };
+  const ROOM_NAMES = { bungalow:'Bungalow Simple', villa:'Bungalow Familial' };
+  const PENSION_ADULT = 70;
+  const PENSION_CHILD_UNDER_5 = 50;
+  const PENSION_CHILD_5_PLUS = 70;
 
   function $(id){ return document.getElementById(id); }
-
-  function firstNumber(value, fallback){
-    const m = String(value || '').match(/\d+/);
-    return m ? parseInt(m[0],10) : fallback;
-  }
-
-  function getRoomKey(){
-    const checked = document.querySelector('input[name="room"]:checked');
-    return checked ? checked.value : 'bungalow';
-  }
-
-  function getRoomName(){
-    const key = getRoomKey();
-    return key === 'villa' || key === 'familial' ? 'Bungalow familial' : 'Bungalow simple';
-  }
-
-  function getNights(){
-    const a = $('check-in')?.value || '';
-    const b = $('check-out')?.value || '';
+  function num(id, fallback=0){ return parseInt($(id)?.value || fallback, 10) || fallback; }
+  function moneyEUR(value){ return new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(value); }
+  function dateFR(value){ return value ? new Date(value + 'T00:00:00').toLocaleDateString('fr-FR') : '—'; }
+  function todayISO(){ const d=new Date(); d.setMinutes(d.getMinutes()-d.getTimezoneOffset()); return d.toISOString().slice(0,10); }
+  function addDaysISO(iso, days){ const d=new Date(iso+'T00:00:00'); d.setDate(d.getDate()+days); d.setMinutes(d.getMinutes()-d.getTimezoneOffset()); return d.toISOString().slice(0,10); }
+  function selectedRoom(){ return document.querySelector('input[name="room"]:checked')?.value || 'bungalow'; }
+  function nights(){
+    const a=$('check-in')?.value, b=$('check-out')?.value;
     if(!a || !b) return 0;
-    const d1 = new Date(a + 'T00:00:00');
-    const d2 = new Date(b + 'T00:00:00');
-    const diff = Math.round((d2 - d1) / 86400000);
+    const diff=Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/86400000);
     return diff > 0 ? diff : 0;
   }
-
-  function formatEuro(n){
-    return new Intl.NumberFormat('fr-FR', {style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+  function transfersText(){ return $('transfer-airport')?.checked ? 'Aéroport ↔ Manga Beach : 80.000 Ar' : '—'; }
+  function travellersText(){
+    const adults=num('adults',1), small=num('children-small',0), big=num('children-big',0);
+    const parts=[adults + ' adulte' + (adults>1?'s':'')];
+    if(small>0) parts.push(small + ' enfant' + (small>1?'s':'') + ' -5 ans');
+    if(big>0) parts.push(big + ' enfant' + (big>1?'s':'') + ' 5 ans et +');
+    return parts.join(' + ');
   }
-
-  function getTransfers(){
-    const list = [];
-    if($('transfer-airport')?.checked) list.push('Aéroport ↔ Hôtel Manga Beach : 80.000 Ar');
-    if($('transfer-boat')?.checked) list.push('Vedette Manga Beach ↔ Paradise Valley : 1.000.000 Ar');
-    return list.length ? list.join(' + ') : 'Aucun transfert demandé';
+  function totals(){
+    const n=nights();
+    const room=selectedRoom();
+    const adults=num('adults',1), small=num('children-small',0), big=num('children-big',0);
+    const lodging=n * (ROOM_RATES[room] || 100);
+    const pension=n * ((adults * PENSION_ADULT) + (small * PENSION_CHILD_UNDER_5) + (big * PENSION_CHILD_5_PLUS));
+    return { n, room, lodging, pension, total:lodging+pension };
   }
-
-  function getVal(id){
-    return ($(id)?.value || '').trim();
+  function set(id, text){ const el=$(id); if(el) el.textContent=text; }
+  function updateSummary(){
+    const t=totals();
+    set('nights-display', t.n ? t.n + ' nuit' + (t.n>1?'s':'') : '— nuits');
+    set('sum-room', ROOM_NAMES[t.room] || 'Bungalow Simple');
+    set('sum-checkin', dateFR($('check-in')?.value));
+    set('sum-checkout', dateFR($('check-out')?.value));
+    set('sum-nights', t.n ? t.n + ' nuit' + (t.n>1?'s':'') : '—');
+    set('sum-guests', travellersText());
+    set('sum-room-cost', t.n ? moneyEUR(t.lodging) : '—');
+    set('sum-pension', t.n ? moneyEUR(t.pension) : '—');
+    set('sum-transfers', transfersText());
+    set('sum-total', t.n ? moneyEUR(t.total) : '—');
   }
-
-  function showAlert(type, message){
-    const alertBox = $('reservation-alert');
-    if(!alertBox){
-      alert(message);
-      return;
-    }
-    alertBox.className = 'reservation-alert ' + type;
-    alertBox.innerHTML = message;
-    alertBox.scrollIntoView({behavior:'smooth', block:'center'});
+  function syncDateLimits(){
+    const ci=$('check-in'), co=$('check-out');
+    if(!ci || !co) return;
+    const today=todayISO();
+    ci.min=today;
+    co.min=ci.value ? addDaysISO(ci.value,1) : today;
   }
-
-  function clearErrors(){
-    document.querySelectorAll('.field-err').forEach(e => e.remove());
-    document.querySelectorAll('.fg input,.fg select,.fg textarea').forEach(e => e.style.borderColor = '');
+  function showDateError(id, msg, warn=false){
+    const el=$(id), box=$(id==='check-in'?'checkin-error':'checkout-error');
+    if(!el || !box) return;
+    if(!msg){ el.classList.remove('date-error','date-warn'); box.className='date-field-error'; box.textContent=''; return; }
+    el.classList.toggle('date-error', !warn);
+    el.classList.toggle('date-warn', warn);
+    box.className='date-field-error show ' + (warn?'error-order':'error-past');
+    box.textContent=msg;
   }
-
+  function validateDates(changed){
+    const ci=$('check-in'), co=$('check-out');
+    if(!ci || !co) return true;
+    showDateError('check-in',''); showDateError('check-out',''); syncDateLimits();
+    const today=todayISO();
+    if(ci.value && ci.value < today){ ci.value=''; co.value=''; showDateError('check-in','⛔ Cette date est déjà passée. Choisissez une date à partir d’aujourd’hui.'); updateSummary(); return false; }
+    if(ci.value && co.value && co.value <= ci.value){ co.value=''; showDateError('check-out','📅 La date de départ doit être après la date d’arrivée.', true); updateSummary(); return false; }
+    updateSummary(); return true;
+  }
+  function toggleTransferCards(){
+    document.querySelectorAll('.transfer-option input[type="checkbox"]').forEach(input=>{
+      const card=input.closest('.transfer-option');
+      if(card) card.classList.toggle('active', input.checked);
+    });
+  }
+  function clearFieldErrors(){
+    document.querySelectorAll('.field-err').forEach(el=>el.remove());
+    document.querySelectorAll('.fg input,.fg select,.fg textarea').forEach(el=>el.style.borderColor='');
+  }
   function fieldError(id, msg){
-    const el = $(id);
-    if(!el) return;
-    el.style.borderColor = '#e05252';
-    let err = el.parentNode.querySelector('.field-err');
-    if(!err){
-      err = document.createElement('span');
-      err.className = 'field-err';
-      err.style.cssText = 'color:#e05252;font-size:.78rem;margin-top:4px;display:block';
-      el.parentNode.appendChild(err);
-    }
-    err.textContent = msg;
+    const el=$(id); if(!el) return;
+    el.style.borderColor='#e05252';
+    const span=document.createElement('span'); span.className='field-err';
+    span.style.cssText='color:#e05252;font-size:.78rem;margin-top:4px;display:block';
+    span.textContent=msg; el.parentNode.appendChild(span);
   }
-
-  function validate(){
-    clearErrors();
-    let ok = true;
-    if(!getVal('check-in')){ fieldError('check-in', 'Date d’arrivée requise'); ok = false; }
-    if(!getVal('check-out')){ fieldError('check-out', 'Date de départ requise'); ok = false; }
-    if(getVal('check-in') && getVal('check-out') && getNights() <= 0){ fieldError('check-out', 'La date de départ doit être après la date d’arrivée'); ok = false; }
-    if(!getVal('first-name')){ fieldError('first-name', 'Prénom requis'); ok = false; }
-    if(!getVal('last-name')){ fieldError('last-name', 'Nom requis'); ok = false; }
-    const email = getVal('email');
-    if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ fieldError('email', 'Email valide requis'); ok = false; }
-    if(!getVal('phone')){ fieldError('phone', 'Téléphone requis'); ok = false; }
+  function validateForm(){
+    clearFieldErrors(); let ok=true;
+    if(!$('check-in')?.value){ fieldError('check-in','Date d’arrivée requise'); ok=false; }
+    if(!$('check-out')?.value){ fieldError('check-out','Date de départ requise'); ok=false; }
+    if(nights()<=0){ fieldError('check-out','La date de départ doit être après la date d’arrivée'); ok=false; }
+    if(!$('first-name')?.value.trim()){ fieldError('first-name','Prénom requis'); ok=false; }
+    if(!$('last-name')?.value.trim()){ fieldError('last-name','Nom requis'); ok=false; }
+    const email=$('email')?.value.trim() || '';
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ fieldError('email','Email valide requis'); ok=false; }
+    if(!$('phone')?.value.trim()){ fieldError('phone','Téléphone requis'); ok=false; }
     return ok;
   }
-
+  function showAlert(type, message){
+    const alertBox=$('reservation-alert');
+    if(!alertBox){ alert(message.replace(/<[^>]+>/g,'')); return; }
+    alertBox.className='reservation-alert ' + type;
+    alertBox.innerHTML=message;
+    alertBox.scrollIntoView({behavior:'smooth', block:'center'});
+  }
   async function sendReservation(){
-    const btn = $('submit-btn');
-    if(!btn) return;
-
-    if(!validate()){
-      showAlert('error', 'Merci de vérifier les champs indiqués en rouge.');
-      return;
-    }
-
-    const nights = getNights();
-    const adults = firstNumber($('adults')?.value, 1);
-    const children = firstNumber($('children')?.value, 0);
-    const guests = adults + children;
-    const roomKey = getRoomKey();
-    const roomRate = ROOM_RATES[roomKey] || (roomKey === 'villa' ? 120 : 100);
-    const lodgingTotal = roomRate * nights;
-    const pensionTotal = guests * PENSION_PER_PERSON_PER_DAY * nights;
-    const total = lodgingTotal + pensionTotal;
-
-    const data = {
-      '_subject': 'Nouvelle réservation Paradise Valley',
-      'Prénom': getVal('first-name'),
-      'Nom': getVal('last-name'),
-      'Email': getVal('email'),
-      'Téléphone': getVal('phone'),
-      'Nationalité': getVal('nationality') || 'Non précisée',
-      'Date d’arrivée': getVal('check-in'),
-      'Date de départ': getVal('check-out'),
-      'Durée': nights + ' nuit' + (nights > 1 ? 's' : ''),
-      'Adultes': String(adults),
-      'Enfants': String(children),
-      'Bungalow': getRoomName(),
-      'Estimation hébergement': formatEuro(lodgingTotal),
-      'Estimation pension complète': formatEuro(pensionTotal),
-      'Total indicatif hors transferts': formatEuro(total),
-      'Transferts optionnels': getTransfers(),
-      'Mode de paiement souhaité': $('payment')?.value || 'Non précisé',
-      'Demandes spéciales': getVal('special-requests') || 'Aucune',
-      'Note paiement': 'Paiement uniquement après confirmation de disponibilité. Les numéros Mobile Money ne sont pas envoyés automatiquement.'
+    if(!validateForm()){ showAlert('error','Merci de vérifier les champs indiqués en rouge.'); return; }
+    const btn=$('submit-btn'), t=totals();
+    const data={
+      '_subject':'Nouvelle réservation Paradise Valley',
+      'Prénom':$('first-name')?.value.trim(),
+      'Nom':$('last-name')?.value.trim(),
+      'Email':$('email')?.value.trim(),
+      'Téléphone':$('phone')?.value.trim(),
+      'Nationalité':$('nationality')?.value.trim() || 'Non précisée',
+      'Date d’arrivée':$('check-in')?.value,
+      'Date de départ':$('check-out')?.value,
+      'Durée':t.n + ' nuit' + (t.n>1?'s':''),
+      'Adultes':String(num('adults',1)),
+      'Enfants moins de 5 ans':String(num('children-small',0)),
+      'Enfants 5 ans et plus':String(num('children-big',0)),
+      'Voyageurs':travellersText(),
+      'Bungalow':ROOM_NAMES[t.room] || 'Bungalow Simple',
+      'Estimation hébergement':moneyEUR(t.lodging),
+      'Estimation pension complète':moneyEUR(t.pension),
+      'Total indicatif hors transferts':moneyEUR(t.total),
+      'Transferts optionnels':transfersText(),
+      'Mode de paiement souhaité':$('payment')?.value || 'Non précisé',
+      'Demandes spéciales':$('special-requests')?.value.trim() || 'Aucune',
+      'Note':'Pension enfant -5 ans : 50 €/jour. Pension enfant 5 ans et + : 70 €/jour. Tarifs bateau affichés sur la page : Nosy Mangabe, Ambodiforaha, Paradise Valley, sortie baleine et pêche sportive. Confirmation finale selon disponibilité, météo et nombre de personnes.'
     };
-
-    btn.disabled = true;
-    btn.textContent = 'Envoi en cours…';
-    btn.style.opacity = '.7';
-    showAlert('success', 'Envoi de votre demande en cours…');
-
+    if(btn){ btn.disabled=true; btn.textContent='Envoi en cours…'; btn.style.opacity='.7'; }
+    showAlert('success','Envoi de votre demande en cours…');
     try{
-      const resp = await fetch(FORMSPREE_ENDPOINT, {
-        method:'POST',
-        headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body:JSON.stringify(data)
-      });
-
-      if(resp.ok){
-        const overlay = $('success-overlay');
-        if(overlay) overlay.classList.add('visible');
-        showAlert('success', '✅ Votre demande de réservation a bien été envoyée. Nous vous répondrons sous 24h.');
-        btn.textContent = 'Demande envoyée';
-      }else{
-        let msg = 'Le message n’a pas pu être envoyé.';
-        try{
-          const j = await resp.json();
-          if(j && (j.error || j.message)) msg += ' ' + (j.error || j.message);
-        }catch(e){}
-        showAlert('error', '❌ ' + msg + '<br>Vous pouvez aussi écrire directement à <b>lodge.paradisevalley@yahoo.com</b>.');
-        btn.disabled = false;
-        btn.textContent = 'Confirmer ma réservation';
-        btn.style.opacity = '1';
-      }
+      const resp=await fetch(FORMSPREE_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)});
+      if(resp.ok){ $('success-overlay')?.classList.add('visible'); showAlert('success','✅ Votre demande de réservation a bien été envoyée. Nous vous répondrons sous 24h.'); if(btn) btn.textContent='Demande envoyée'; }
+      else throw new Error('Formspree error');
     }catch(e){
-      showAlert('error', '❌ Connexion impossible. Vérifiez internet ou écrivez directement à <b>lodge.paradisevalley@yahoo.com</b>.');
-      btn.disabled = false;
-      btn.textContent = 'Confirmer ma réservation';
-      btn.style.opacity = '1';
+      showAlert('error','❌ Le message n’a pas pu être envoyé. Vous pouvez aussi écrire directement à <b>lodge.paradisevalley@yahoo.com</b>.');
+      if(btn){ btn.disabled=false; btn.textContent='Confirmer ma réservation'; btn.style.opacity='1'; }
     }
   }
-
-  document.addEventListener('DOMContentLoaded', function(){
-    const btn = $('submit-btn');
-    if(btn){
-      btn.addEventListener('click', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        sendReservation();
-      });
-    }
-    const overlay = $('success-overlay');
-    if(overlay){
-      overlay.addEventListener('click', function(e){
-        if(e.target === overlay) overlay.classList.remove('visible');
-      });
-    }
-  });
-})();
-</script>
-
-
-
-
-
-
-
-
-
-
-
-<script>
-/* ===== Reset intelligent + dates invalides ===== */
-(function(){
-  const ROOM_RATES = { bungalow:100, simple:100, villa:120, family:120, familial:120 };
-  const PENSION_PER_PERSON_PER_DAY = 70;
-
-  function $(id){ return document.getElementById(id); }
-
-  function todayISO(){
-    const d = new Date();
-    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
-    return d.toISOString().split('T')[0];
-  }
-
-  function addDaysISO(dateISO, days){
-    const d = new Date(dateISO + 'T00:00:00');
-    d.setDate(d.getDate() + days);
-    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
-    return d.toISOString().split('T')[0];
-  }
-
-  function firstNumber(value, fallback){
-    const m = String(value || '').match(/\d+/);
-    return m ? parseInt(m[0], 10) : fallback;
-  }
-
-  function formatEuro(n){
-    return new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-  }
-
-  function setRowContains(labelNeedle, value){
-    document.querySelectorAll('.sum-row').forEach(row=>{
-      const label = row.querySelector('.sum-row-label');
-      const val = row.querySelector('.sum-row-val');
-      if(label && val && label.textContent.toLowerCase().includes(labelNeedle.toLowerCase())){
-        val.textContent = value;
-      }
-    });
-  }
-
-  function setText(selectors, value){
-    selectors.forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.textContent=value));
-  }
-
-  function getRoomKey(){
-    const checked = document.querySelector('input[name="room"]:checked, input[name="type-bungalow"]:checked, input[type="radio"]:checked');
-    if(checked && checked.value) return checked.value.toLowerCase();
-    return 'bungalow';
-  }
-
-  function getRoomName(key){
-    return (key.includes('villa') || key.includes('famil')) ? 'Bungalow familial' : 'Bungalow simple';
-  }
-
-  function getNights(){
-    const a = $('check-in')?.value || '';
-    const b = $('check-out')?.value || '';
-    if(!a || !b) return 0;
-    const diff = Math.round((new Date(b+'T00:00:00') - new Date(a+'T00:00:00')) / 86400000);
-    return diff > 0 ? diff : 0;
-  }
-
-  function getTransfersText(){
-    const list = [];
-    if($('transfer-airport')?.checked) list.push('Aéroport ↔ Manga Beach : 80.000 Ar');
-    if($('transfer-boat')?.checked) list.push('Vedette Manga Beach ↔ Paradise Valley : 1.000.000 Ar');
-    return list.length ? list.join(' + ') : '—';
-  }
-
-  function showDateError(field, type, msg){
-    // field = 'checkin' | 'checkout'
-    // type  = 'error-past' | 'error-order' | '' (clear)
-    const inputId  = field === 'checkin' ? 'check-in'      : 'check-out';
-    const errorId  = field === 'checkin' ? 'checkin-error'  : 'checkout-error';
-    const inputEl  = $(inputId);
-    const errorEl  = $(errorId);
-    if(!inputEl || !errorEl) return;
-
-    if(!type){
-      // Clear
-      inputEl.classList.remove('date-error','date-warn');
-      errorEl.className = 'date-field-error';
-      errorEl.textContent = '';
-      return;
-    }
-    inputEl.classList.remove('date-error','date-warn');
-    inputEl.classList.add(type === 'error-past' ? 'date-error' : 'date-warn');
-    errorEl.className = 'date-field-error show ' + type;
-    errorEl.textContent = msg;
-  }
-
-  function clearDateErrors(){
-    showDateError('checkin',  '', '');
-    showDateError('checkout', '', '');
-  }
-
-  function clearSummary(){
-    document.querySelectorAll('.sum-row-val').forEach(el=>el.textContent='—');
-    ['#summary-duration','#summary-adults','#summary-guests','#summary-lodging','#summary-pension','#summary-transfers','#summary-total'].forEach(sel=>{
-      document.querySelectorAll(sel).forEach(el=>el.textContent='—');
-    });
-    const total = document.querySelector('.sum-total-val');
-    if(total) total.textContent = '—';
-    document.querySelector('.summary-card')?.classList.add('is-empty');
-  }
-
-  function normalizeDates(changedField){
-    const checkin  = $('check-in');
-    const checkout = $('check-out');
-    if(!checkin || !checkout) return;
-
+  function init(){
+    const hamburger=$('hamburger'), menu=$('mobile-menu');
+    if(hamburger && menu){ hamburger.addEventListener('click',()=>{ hamburger.classList.toggle('open'); menu.classList.toggle('open'); hamburger.setAttribute('aria-expanded',menu.classList.contains('open')?'true':'false'); document.body.style.overflow=menu.classList.contains('open')?'hidden':''; }); menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ hamburger.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow=''; })); }
     syncDateLimits();
-    clearDateErrors();
-
-    const today = todayISO();
-
-    // Arrivée dans le passé
-    if(checkin.value && checkin.value < today){
-      checkin.value  = '';
-      checkout.value = '';
-      showDateError('checkin', 'error-past', '⛔ Cette date est déjà passée. Choisissez une date à partir d\'aujourd\'hui.');
-      clearSummary();
-      syncDateLimits();
-      return;
-    }
-
-    // Départ ≤ Arrivée (quand on change l'arrivée)
-    if(changedField === 'checkin' && checkin.value && checkout.value && checkout.value <= checkin.value){
-      checkout.value = '';
-      showDateError('checkout', 'error-order', '📅 Choisissez une date de départ après le ' + new Date(checkin.value + 'T00:00:00').toLocaleDateString('fr-FR') + '.');
-      clearSummary();
-      syncDateLimits();
-      return;
-    }
-
-    // Départ ≤ Arrivée (quand on change le départ)
-    if(changedField === 'checkout' && checkin.value && checkout.value && checkout.value <= checkin.value){
-      checkout.value = '';
-      showDateError('checkout', 'error-order', '📅 La date de départ doit être après l\'arrivée (' + new Date(checkin.value + 'T00:00:00').toLocaleDateString('fr-FR') + ').');
-      clearSummary();
-      syncDateLimits();
-      return;
-    }
-
-    updateSummaryDirect();
+    ['check-in','check-out'].forEach(id=>$(id)?.addEventListener('change',()=>validateDates(id)));
+    ['adults','children-small','children-big','transfer-airport'].forEach(id=>$(id)?.addEventListener('change',()=>{ toggleTransferCards(); updateSummary(); }));
+    document.querySelectorAll('.room-opt').forEach(opt=>opt.addEventListener('click',()=>{ document.querySelectorAll('.room-opt').forEach(o=>o.classList.remove('selected')); opt.classList.add('selected'); const input=opt.querySelector('input[type="radio"]'); if(input) input.checked=true; updateSummary(); }));
+    $('submit-btn')?.addEventListener('click',e=>{ e.preventDefault(); sendReservation(); });
+    $('success-overlay')?.addEventListener('click',e=>{ if(e.target===$('success-overlay')) $('success-overlay').classList.remove('visible'); });
+    toggleTransferCards(); updateSummary();
   }
-    document.querySelectorAll('.sum-row-val').forEach(el=>el.textContent='—');
-    setText(['#summary-duration','#summary-adults','#summary-guests','#summary-lodging','#summary-pension','#summary-transfers','#summary-total'], '—');
-    const total = document.querySelector('.sum-total-val');
-    if(total) total.textContent = '—';
-    document.querySelector('.summary-card')?.classList.add('is-empty');
-  }
-
-  function updateSummaryDirect(){
-    const nights = getNights();
-    if(nights <= 0){
-      clearSummary();
-      return;
-    }
-
-    const checkin = $('check-in')?.value || '';
-    const checkout = $('check-out')?.value || '';
-    const adults = firstNumber($('adults')?.value, 1);
-    const children = firstNumber($('children')?.value, 0);
-    const guests = adults + children;
-    const roomKey = getRoomKey();
-    const roomName = getRoomName(roomKey);
-    const roomRate = (roomName === 'Bungalow familial') ? 120 : 100;
-
-    const lodging = roomRate * nights;
-    const pension = guests * PENSION_PER_PERSON_PER_DAY * nights;
-    const total = lodging + pension;
-
-    const durationText = nights + ' nuit' + (nights > 1 ? 's' : '');
-    const adultsText = adults + ' adulte' + (adults > 1 ? 's' : '');
-    const travellersText = adultsText + (children > 0 ? ' + ' + children + ' enfant' + (children > 1 ? 's' : '') : '');
-
-    document.querySelector('.summary-card')?.classList.remove('is-empty');
-
-    const fmtDate = iso => iso ? new Date(iso + 'T00:00:00').toLocaleDateString('fr-FR') : '—';
-
-    setRowContains('Arrivée', fmtDate(checkin));
-    setRowContains('Départ', fmtDate(checkout));
-    setRowContains('Durée', durationText);
-    setRowContains('Adulte', adultsText);
-    setRowContains('Voyageur', travellersText);
-    setRowContains('Personne', travellersText);
-    setRowContains('Bungalow', roomName);
-    setRowContains('Hébergement', formatEuro(lodging));
-    setRowContains('Pension', formatEuro(pension));
-    setRowContains('Transferts', getTransfersText());
-    setRowContains('Total', formatEuro(total));
-    setRowContains('Indicatif', formatEuro(total));
-
-    setText(['#summary-duration'], durationText);
-    setText(['#summary-adults'], adultsText);
-    setText(['#summary-guests'], travellersText);
-    setText(['#summary-lodging'], formatEuro(lodging));
-    setText(['#summary-pension'], formatEuro(pension));
-    setText(['#summary-transfers'], getTransfersText());
-    setText(['#summary-total','.summary-total-val'], formatEuro(total));
-  }
-
-  function syncDateLimits(){
-    const checkin = $('check-in');
-    const checkout = $('check-out');
-    if(!checkin || !checkout) return;
-
-    const today = todayISO();
-    checkin.min = today;
-    checkout.min = checkin.value ? addDaysISO(checkin.value, 1) : today;
-
-    checkin.disabled = false;
-    checkout.disabled = false;
-  }
-
-  function resetDirectAccess(){
-    const hasParams = window.location.search.length > 0;
-    if(hasParams) return false;
-
-    const form = document.querySelector('form, .form-card');
-    if(form) form.reset();
-
-    const checkin = $('check-in');
-    const checkout = $('check-out');
-    if(checkin) checkin.value = '';
-    if(checkout) checkout.value = '';
-
-    document.querySelectorAll('.transfer-option input[type="checkbox"]').forEach(cb=>{
-      cb.checked = false;
-      cb.closest('.transfer-option')?.classList.remove('active','just-checked');
-    });
-
-    document.querySelectorAll('.room-opt').forEach(opt=>opt.classList.remove('selected'));
-    const firstRoom = document.querySelector('.room-opt input[type="radio"]');
-    if(firstRoom){
-      firstRoom.checked = true;
-      firstRoom.closest('.room-opt')?.classList.add('selected');
-    }
-
-    syncDateLimits();
-    clearSummary();
-    return true;
-  }
-
-  function applyParams(){
-    const params = new URLSearchParams(window.location.search);
-    if(!params.toString()) return false;
-
-    if(params.get('checkin') && $('check-in')) $('check-in').value = params.get('checkin');
-    if(params.get('checkout') && $('check-out')) $('check-out').value = params.get('checkout');
-
-    const adults = params.get('adults') || params.get('guests') || params.get('personnes');
-    if(adults && $('adults')){
-      const n = firstNumber(adults, 1);
-      const opt = Array.from($('adults').options).find(o=>firstNumber(o.value || o.textContent,-1) === n);
-      if(opt) $('adults').value = opt.value;
-    }
-
-    syncDateLimits();
-    normalizeDates('params');
-    return true;
-  }
-
-  function installListeners(){
-    $('check-in')?.addEventListener('change', ()=>normalizeDates('checkin'));
-    $('check-out')?.addEventListener('focus', syncDateLimits);
-    $('check-out')?.addEventListener('click', syncDateLimits);
-    $('check-out')?.addEventListener('change', ()=>normalizeDates('checkout'));
-
-    ['adults','children','transfer-airport','transfer-boat'].forEach(id=>{
-      $(id)?.addEventListener('change', updateSummaryDirect);
-    });
-
-    document.querySelectorAll('.room-opt').forEach(opt=>{
-      opt.addEventListener('click', function(){
-        document.querySelectorAll('.room-opt').forEach(o=>o.classList.remove('selected'));
-        opt.classList.add('selected');
-        const input = opt.querySelector('input[type="radio"]');
-        if(input) input.checked = true;
-        updateSummaryDirect();
-      });
-    });
-
-    document.querySelectorAll('.transfer-option input[type="checkbox"]').forEach(input=>{
-      input.addEventListener('change', function(){
-        const card = input.closest('.transfer-option');
-        if(card){
-          card.classList.toggle('active', input.checked);
-          if(input.checked){
-            card.classList.remove('just-checked');
-            void card.offsetWidth;
-            card.classList.add('just-checked');
-            setTimeout(()=>card.classList.remove('just-checked'), 500);
-          }
-        }
-        updateSummaryDirect();
-      });
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', function(){
-    // prevent browser autofill from leaving old reservation values visible on direct access
-    const didReset = resetDirectAccess();
-    if(!didReset) applyParams();
-    installListeners();
-    setTimeout(syncDateLimits, 100);
-  });
+  document.addEventListener('DOMContentLoaded', init);
 })();
 </script>
 
