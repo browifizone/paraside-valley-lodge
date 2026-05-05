@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Réservation — Paradise Valley</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --ocean:#4b8f2f;
+      --ocean-mid:#6fb13f;
+      --ocean-light:#e6f1dc;
+      --ocean-dark:#2f641f;
+      --sand:#d9b86c;
+      --sand-light:#f6f1e4;
+      --sand-dark:#b78935;
+      --white:#fff;
+      --text:#1f2f1c;
+      --muted:#5f7059;
+      --border:#dce8d2;
+      --light:#edf6e7;
+      --gold-soft:#f0dfb2;
+      --leaf:#73a843;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Nunito',sans-serif;background:var(--sand-light);color:var(--text);overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:var(--ocean);border-bottom:1px solid rgba(200,232,240,.1)}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ocean-light)}
+    .nav-logo span{font-style:italic;color:var(--sand)}
+    .nav-links{display:flex;gap:2.5rem;font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+    .nav-links a{color:#8ac8dc;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--sand)}
+    .nav-cta{background:var(--sand);color:var(--ocean);padding:.6rem 1.6rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;border-radius:2px;cursor:pointer;border:none}
+    .page-header{background:var(--ocean);padding:5rem 4rem 4rem;text-align:center;position:relative;overflow:hidden}
+    .ph-bg{position:absolute;inset:0;opacity:.15}
+    .ph-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin-bottom:1rem;position:relative;z-index:1;font-weight:600}
+    .ph-title{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:400;color:#f5f0e8;line-height:1.1;position:relative;z-index:1}
+    .ph-title em{font-style:italic;color:var(--sand)}
+    .ph-sub{font-size:.88rem;color:var(--ocean-light);font-weight:300;letter-spacing:.1em;margin-top:1rem;opacity:.85;position:relative;z-index:1}
+    .res-layout{display:grid;grid-template-columns:1fr 380px;gap:2.5rem;max-width:1200px;margin:0 auto;padding:4rem;align-items:start}
+    .form-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:2.5rem}
+    .form-sec-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;color:var(--ocean);margin-bottom:1.5rem;padding-bottom:.8rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.8rem}
+    .step{width:28px;height:28px;background:var(--ocean);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-family:'Nunito',sans-serif;font-weight:700;flex-shrink:0}
+    .form-sec{margin-bottom:2.5rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+    .form-row.full{grid-template-columns:1fr}
+    .form-row.three{grid-template-columns:1fr 1fr 1fr}
+    .fg{display:flex;flex-direction:column;gap:.4rem}
+    .fg label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600}
+    .fg input,.fg select,.fg textarea{border:1px solid var(--border);border-radius:4px;padding:.65rem .9rem;font-family:'Nunito',sans-serif;font-size:.88rem;color:var(--text);background:#fff;outline:none;transition:border-color .2s;width:100%}
+    .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--ocean-mid)}
+    .fg textarea{resize:vertical;min-height:100px}
+    .room-options{display:flex;flex-direction:column;gap:1rem}
+    .room-opt{border:1.5px solid var(--border);border-radius:6px;padding:1rem 1.2rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:1rem;position:relative}
+    .room-opt:hover{border-color:var(--ocean-mid)}
+    .room-opt.selected{border-color:var(--ocean);background:var(--light)}
+    .room-opt input[type=radio]{display:none}
+    .room-opt-icon{width:48px;height:48px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .ri-simple{background:linear-gradient(135deg,#0e4d6e,#0a3a52)}
+    .ri-family{background:linear-gradient(135deg,#1a7fa0,#0e4d6e)}
+    .room-opt-info{flex:1}
+    .room-opt-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ocean);margin-bottom:.2rem}
+    .room-opt-details{font-size:.75rem;color:var(--muted)}
+    .room-opt-price{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ocean);text-align:right;flex-shrink:0}
+    .room-opt-price span{display:block;font-size:.65rem;font-family:'Nunito',sans-serif;color:var(--muted)}
+    .room-check{position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .room-opt.selected .room-check{background:var(--ocean);border-color:var(--ocean)}
+    .room-check-dot{width:8px;height:8px;border-radius:50%;background:#fff;opacity:0;transition:opacity .2s}
+    .room-opt.selected .room-check-dot{opacity:1}
+    .extras-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+    .extra-opt{border:1px solid var(--border);border-radius:4px;padding:.8rem 1rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.7rem}
+    .extra-opt:hover{border-color:var(--ocean-mid)}
+    .extra-opt.checked{border-color:var(--ocean);background:var(--light)}
+    .extra-opt input[type=checkbox]{display:none}
+    .extra-box{width:18px;height:18px;border:1.5px solid var(--border);border-radius:2px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .extra-opt.checked .extra-box{background:var(--ocean);border-color:var(--ocean)}
+    .extra-tick{display:none;color:#fff;font-size:11px;font-weight:700}
+    .extra-opt.checked .extra-tick{display:block}
+    .extra-label{font-size:.8rem;color:var(--text);font-weight:600}
+    .extra-price{font-size:.72rem;color:var(--muted);margin-top:1px}
+    .form-submit{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+    .btn-submit{width:100%;background:var(--ocean);color:#fff;border:none;padding:1rem;font-family:'Nunito',sans-serif;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;border-radius:4px;cursor:pointer;transition:background .2s}
+    .btn-submit:hover{background:var(--ocean-mid)}
+    .form-note{text-align:center;font-size:.72rem;color:var(--muted);margin-top:.8rem;line-height:1.6}
+    .sidebar{display:flex;flex-direction:column;gap:1.5rem}
+    .summary-card{background:var(--ocean);border-radius:8px;padding:1.8rem;color:#f5f0e8;position:sticky;top:100px}
+    .sum-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:300;color:var(--ocean-light);margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(200,232,240,.15)}
+    .sum-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.9rem;font-size:.83rem}
+    .sum-row-label{color:#8ac8dc;font-weight:300}
+    .sum-row-val{color:#f5f0e8;font-weight:600}
+    .sum-divider{height:1px;background:rgba(200,232,240,.15);margin:1.2rem 0}
+    .sum-total{display:flex;justify-content:space-between;align-items:baseline}
+    .sum-total-label{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ocean-light);font-weight:600}
+    .sum-total-val{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--sand)}
+    .sum-total-val span{font-size:.7rem;font-family:'Nunito',sans-serif;color:var(--muted)}
+    .sum-note{font-size:.7rem;color:#5a8a9f;margin-top:1rem;line-height:1.6;text-align:center}
+    .info-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.5rem}
+    .info-card-title{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sand-dark);margin-bottom:1rem;font-weight:700}
+    .info-item{display:flex;gap:.8rem;margin-bottom:1rem;align-items:flex-start}
+    .info-item-text{font-size:.8rem;color:var(--muted);line-height:1.6}
+    .info-item-text strong{display:block;color:var(--ocean);font-weight:700;font-size:.82rem;margin-bottom:.1rem}
+    .policy-card{background:var(--light);border:1px solid var(--border);border-radius:8px;padding:1.5rem}
+    .policy-title{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ocean-mid);margin-bottom:1rem;font-weight:700}
+    .policy-item{font-size:.78rem;color:var(--muted);margin-bottom:.6rem;line-height:1.5;padding-left:1rem;position:relative}
+    .policy-item::before{content:'✦';position:absolute;left:0;font-size:8px;color:var(--sand-dark);top:3px}
+    .success-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(10,22,32,.88);align-items:center;justify-content:center}
+    .success-overlay.visible{display:flex}
+    .success-box{background:#fff;border-radius:10px;padding:3rem;text-align:center;max-width:440px;width:90%}
+    .success-icon{width:64px;height:64px;background:var(--light);border-radius:50%;margin:0 auto 1.5rem;display:flex;align-items:center;justify-content:center}
+    .success-title{font-family:'Playfair Display',serif;font-size:2rem;color:var(--ocean);margin-bottom:.8rem}
+    .success-sub{font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:2rem}
+    .btn-gold{background:var(--sand);color:var(--ocean);border:none;padding:.8rem 2rem;font-family:'Nunito',sans-serif;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;border-radius:2px;cursor:pointer}
+    footer{background:var(--ocean-dark);color:#f5f0e8;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(200,232,240,.08)}
+    .ft-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ocean-light)}
+    .ft-logo span{font-style:italic;color:var(--sand)}
+    .ft-links{display:flex;gap:2rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+    .ft-links a{color:#5a8a9f;transition:color .2s}
+    .ft-links a:hover{color:var(--ocean-light)}
+    .ft-copy{font-size:.72rem;color:#3a6a7a}
+    @media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.res-layout{grid-template-columns:1fr;padding:2rem 1.5rem}.sidebar{position:static}.form-row{grid-template-columns:1fr}.form-row.three{grid-template-columns:1fr 1fr}.extras-grid{grid-template-columns:1fr}}
+  
+    /* ═══════════════ RESPONSIVE MOBILE ═══════════════ */
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:200}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--ocean-light);border-radius:2px;transition:all .3s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mobile-menu{display:none;position:fixed;inset:0;background:var(--ocean-dark);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-family:'Playfair Display',serif;font-size:1.8rem;color:#f5f0e8;font-weight:400}
+    .mobile-menu a:hover{color:var(--sand)}
+    .mobile-menu .mob-cta{margin-top:1rem;background:var(--sand);color:var(--ocean);padding:.8rem 2.5rem;font-family:'Nunito',sans-serif;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;border-radius:2px;border:none;cursor:pointer}
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem}
+      .nav-links,.nav-cta{display:none}
+      .hamburger{display:flex}
+      /* sections */
+      .section{padding:3rem 1.2rem}
+      .gallery-preview{padding:3rem 1.2rem}
+      /* hero */
+      .hero-title{font-size:clamp(2rem,9vw,3.5rem)}
+      .hero-badge{font-size:.6rem;letter-spacing:.18em}
+      .hero-actions{flex-direction:column;align-items:center;gap:.8rem}
+      /* booking bar */
+      .booking-bar{flex-direction:column;padding:1.5rem 1.2rem;gap:1rem}
+      .bk-group input,.bk-group select{width:100%}
+      .bk-group{width:100%}
+      .btn-search{width:100%;padding:.75rem}
+      /* nature strip */
+      .nature-strip{padding:1.5rem 1.2rem;gap:1.5rem;justify-content:center}
+      /* rooms */
+      .rooms-grid{grid-template-columns:1fr}
+      /* highlights */
+      .highlights{grid-template-columns:1fr;padding:3rem 1.2rem;gap:2.5rem}
+      .hl-grid{grid-template-columns:1fr 1fr}
+      /* gallery preview */
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+      .gi:first-child{grid-row:auto;grid-column:1/3;height:180px}
+      .gi{height:160px}
+      /* testimonials */
+      .testi-grid{grid-template-columns:1fr}
+      /* cta strip */
+      .cta-strip{padding:2.5rem 1.2rem;flex-direction:column;text-align:center}
+      .cta-title{font-size:1.6rem}
+      /* footer */
+      .ft-top{grid-template-columns:1fr;gap:2rem;padding-bottom:2rem}
+      .ft-bottom{flex-direction:column;text-align:center;gap:.5rem}
+      /* chambres */
+      .intro{grid-template-columns:1fr;padding:3rem 1.2rem;gap:2rem}
+      .stats{grid-template-columns:1fr 1fr}
+      .bungalows-grid{grid-template-columns:1fr}
+      .familial-card{grid-template-columns:1fr}
+      .fam-img{min-height:220px}
+      .fam-body{padding:2rem 1.5rem}
+      .tarif-bar{padding:1.5rem 1.2rem;gap:2rem}
+      .inclus-section{padding:1.5rem 1.2rem}
+      .tarif-table-section{padding:3rem 1.2rem}
+      .tarif-table{font-size:.78rem}
+      .tarif-table th,.tarif-table td{padding:.6rem .5rem}
+      /* reservation */
+      .res-layout{grid-template-columns:1fr;padding:2rem 1.2rem;gap:1.5rem}
+      .form-row{grid-template-columns:1fr}
+      .form-row.three{grid-template-columns:1fr 1fr}
+      .summary-card{position:static}
+      .extras-grid{grid-template-columns:1fr}
+      /* contact */
+      .contact-layout{grid-template-columns:1fr}
+      .contact-info{padding:3rem 1.5rem}
+      .contact-form-side{padding:3rem 1.5rem}
+      .map-section{grid-template-columns:1fr}
+      .practical-info{padding:2.5rem 1.5rem}
+      .map-placeholder{min-height:280px}
+      .faq-grid{grid-template-columns:1fr}
+      /* galerie */
+      .filter-bar{padding:1.2rem 1rem;gap:.4rem}
+      .fbtn{padding:.4rem 1rem;font-size:.68rem}
+      .gallery-section{padding:2.5rem 1rem 1.5rem}
+      .grid-hero{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+      .grid-hero .gi:first-child{grid-column:1/3;grid-row:auto;height:220px}
+      .grid-3{grid-template-columns:1fr}
+      .grid-3 .gi{height:180px}
+      .grid-4{grid-template-columns:1fr 1fr}
+      .grid-4 .gi{height:160px}
+      .grid-mixed{grid-template-columns:1fr}
+      .grid-mixed .gi:nth-child(2){grid-column:auto}
+      .alt-bg{padding:2rem 1rem}
+      /* page headers */
+      .page-header{padding:3rem 1.5rem 2.5rem}
+      .ph-title{font-size:2.2rem}
+    }
+    @media(max-width:480px){
+      .hl-grid{grid-template-columns:1fr}
+      .grid-hero{grid-template-columns:1fr}
+      .grid-hero .gi:first-child{grid-column:auto}
+      .grid-4{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr}
+      .form-row.three{grid-template-columns:1fr}
+      .social-row{justify-content:center}
+      .subject-options{grid-template-columns:1fr}
+    }
+
+  
+
+    /* ═══════════════ POLISH PREMIUM V2 — Paradise Valley ═══════════════ */
+    :root{--shadow-soft:0 18px 60px rgba(10,58,82,.12);--shadow-card:0 12px 36px rgba(10,58,82,.10);--radius-xl:18px;--radius-lg:12px;--cream:#fffaf0;--leaf:#2f6f5e;--coral:#d88c5a}
+    ::selection{background:var(--sand);color:var(--ocean-dark)}
+    body{background:linear-gradient(180deg,var(--sand-light),#fffdf7 45%,var(--sand-light));}
+    nav{backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(6,40,64,.18);padding:1rem 4rem;background:linear-gradient(90deg,rgba(10,58,82,.98),rgba(14,77,110,.98));}
+    .nav-logo{display:flex;align-items:center;gap:.35rem;letter-spacing:.02em;position:relative}
+    .nav-logo::before{content:'✦';display:grid;place-items:center;width:32px;height:32px;border:1px solid rgba(232,213,163,.45);border-radius:50%;font-size:.75rem;color:var(--sand);background:rgba(255,255,255,.04)}
+    .nav-links a{position:relative;padding:.5rem 0;color:rgba(200,232,240,.78)}
+    .nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:.1rem;height:1px;background:var(--sand);transform:scaleX(0);transform-origin:center;transition:transform .25s ease}
+    .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+    .nav-cta,.btn-primary,.btn-search,.btn-submit,.btn-gold,.room-btn,.btn-reserve{border-radius:999px!important;box-shadow:0 10px 24px rgba(0,0,0,.12);transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease,background .2s ease}
+    .nav-cta:hover,.btn-primary:hover,.btn-search:hover,.btn-submit:hover,.btn-gold:hover,.room-btn:hover,.btn-reserve:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.18)}
+    .btn-outline,.btn-outline-light{border-radius:999px!important;transition:all .2s ease}
+    .hero,.page-header{background:radial-gradient(circle at 20% 15%,rgba(232,213,163,.16),transparent 30%),linear-gradient(135deg,var(--ocean-dark),var(--ocean) 55%,#116986)}
+    .hero::after,.page-header::after{content:'';position:absolute;inset:auto 0 0;height:42%;background:linear-gradient(180deg,transparent,rgba(10,58,82,.22));pointer-events:none}
+    .hero-badge,.ph-label{border-radius:999px;background:rgba(232,213,163,.09);border:1px solid rgba(232,213,163,.30);padding:.45rem 1.1rem;display:inline-block}
+    .hero-title,.ph-title,.section-title,.ci-title,.cf-title,.faq-title,.fam-name,.cta-title{letter-spacing:-.02em}
+    .hero-sub,.ph-sub{max-width:780px;margin-left:auto;margin-right:auto;line-height:1.8}
+    .booking-bar,.tarif-bar,.cta-strip{box-shadow:inset 0 1px 0 rgba(255,255,255,.08);background:linear-gradient(135deg,var(--ocean-mid),#0d6883)}
+    .bk-group input,.bk-group select{border-radius:999px;background:rgba(255,255,255,.14)}
+    .nature-strip,.inclus-section,.gallery-preview,.faq-section,.alt-bg{background:linear-gradient(180deg,#f4fbfd,#fffaf0)}
+    .room-card,.b-card,.testi-card,.stat,.form-card,.summary-card,.info-card,.policy-card,.faq-item,.cc-card,.familial-card{border-radius:var(--radius-lg)!important;box-shadow:var(--shadow-card);border-color:rgba(26,127,160,.16)!important}
+    .room-card:hover,.b-card:hover,.testi-card:hover,.faq-item:hover{transform:translateY(-6px);box-shadow:var(--shadow-soft)}
+    .room-img,.b-img,.fam-img,.gi-inner,.lb-img{background-size:cover!important;background-position:center!important;position:relative}
+    .room-img::after,.b-img::after,.fam-img::after,.gi-inner::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(232,213,163,.18),transparent 28%),linear-gradient(180deg,rgba(255,255,255,.02),rgba(10,58,82,.18));pointer-events:none}
+    .ri-1,.bi1,.c1,.gc1{background:linear-gradient(135deg,#083447,#0f6e84 55%,#d4b36d)!important}
+    .ri-2,.bi2,.c2,.gc2{background:linear-gradient(135deg,#0d5d77,#1ba0b8 55%,#f0d99b)!important}
+    .ri-3,.bi3,.c3,.gc3{background:linear-gradient(135deg,#062840,#116986 58%,#2f6f5e)!important}
+    .bi4,.c4,.gc4{background:linear-gradient(135deg,#178aaa,#72c7d8 52%,#e8d5a3)!important}
+    .bi5,.c5,.gc5{background:linear-gradient(135deg,#0e4d6e,#2f6f5e 55%,#d88c5a)!important}
+    .bi6,.c6{background:linear-gradient(135deg,#1a7fa0,#0e4d6e 55%,#c4a96b)!important}
+    .room-tag,.b-badge,.fam-tag{border-radius:999px;box-shadow:0 8px 18px rgba(0,0,0,.14)}
+    .feat,.fam-feat{border-radius:999px;background:rgba(26,127,160,.08)}
+    .sand-line{height:3px;border-radius:999px;background:linear-gradient(90deg,var(--sand-dark),var(--sand),transparent)}
+    .gallery-grid,.grid-hero,.grid-3,.grid-4,.grid-mixed{gap:14px}
+    .gi{border-radius:16px;box-shadow:var(--shadow-card)}
+    .gi-overlay{background:linear-gradient(180deg,transparent,rgba(6,40,64,.58))!important}
+    .contact-info,.practical-info,.familial-section,.highlights,.summary-card{background:radial-gradient(circle at 25% 15%,rgba(232,213,163,.12),transparent 28%),linear-gradient(135deg,var(--ocean-dark),var(--ocean))!important}
+    input,select,textarea{transition:border-color .2s ease,box-shadow .2s ease}
+    input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(26,127,160,.12)}
+    footer{background:linear-gradient(135deg,#062840,var(--ocean-dark));}
+    .mobile-menu{background:radial-gradient(circle at 30% 20%,rgba(232,213,163,.12),transparent 32%),linear-gradient(135deg,#062840,var(--ocean-dark))}
+    @media(max-width:900px){nav{padding:1rem 1.2rem}.nav-logo::before{width:28px;height:28px}.mobile-menu a{font-size:1.55rem}.hero{min-height:86vh}.page-header{padding-top:3.5rem}.room-opt{align-items:flex-start}.room-opt-price{text-align:left}.hero-actions a,.hero-actions button,.cta-strip a,.cta-strip button{width:100%}.hero-actions,.cta-strip>div:last-child{width:100%}.hero-actions button,.cta-strip button{justify-content:center}}
+
+    /* ═══════════════ ULTRA PREMIUM VISUAL LAYER — Paradise Valley ═══════════════ */
+    :root{--gold:#e8d5a3;--gold-deep:#b8954f;--ink:#082b3d;--glass:rgba(255,255,255,.08);--shadow-soft:0 24px 70px rgba(8,43,61,.14);--shadow-deep:0 28px 90px rgba(8,43,61,.28)}
+    body{background:radial-gradient(circle at 8% 0%,rgba(232,213,163,.22),transparent 28%),linear-gradient(180deg,#fbf6ea 0%,#eef7fb 45%,#faf5e9 100%)}
+    nav{backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:linear-gradient(135deg,rgba(8,43,61,.94),rgba(14,77,110,.9));box-shadow:0 10px 34px rgba(8,43,61,.18)}
+    .nav-logo{letter-spacing:.02em;text-shadow:0 2px 14px rgba(232,213,163,.18)}
+    .nav-links a{position:relative;padding:.4rem 0}.nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-.25rem;height:1px;background:var(--sand);transform:scaleX(0);transform-origin:center;transition:transform .25s ease}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+    .nav-cta,.btn-primary,.btn-search,.btn-submit,.btn-gold,.room-btn,.btn-reserve{background:linear-gradient(135deg,var(--sand),#f3dfad 45%,var(--sand-dark));box-shadow:0 12px 28px rgba(184,149,79,.24);border:0;color:var(--ocean-dark);transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}
+    .nav-cta:hover,.btn-primary:hover,.btn-search:hover,.btn-submit:hover,.btn-gold:hover,.room-btn:hover,.btn-reserve:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(184,149,79,.33);filter:saturate(1.05)}
+    .page-header,.hero{background:radial-gradient(circle at 50% 0%,rgba(232,213,163,.12),transparent 35%),linear-gradient(145deg,#082b3d 0%,#0e4d6e 55%,#1a7fa0 100%)}
+    .ph-label,.section-label,.faq-label,.ci-label,.sec-cat-label{letter-spacing:.34em}.ph-title,.hero-title,.section-title,.ci-title,.cf-title,.faq-title{letter-spacing:-.025em}.ph-sub,.hero-sub{opacity:.92}
+    .booking-bar,.tarif-bar,.cta-strip{background:linear-gradient(135deg,#0e4d6e,#1a7fa0);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+    .form-card,.summary-card,.info-card,.policy-card,.room-card,.b-card,.stat,.faq-item,.contact-form-side,.success-box{box-shadow:var(--shadow-soft);border-color:rgba(208,232,239,.85)}
+    .form-card,.room-card,.b-card,.faq-item,.info-card,.policy-card,.stat{border-radius:16px}.summary-card{border-radius:18px;background:linear-gradient(160deg,#082b3d,#0e4d6e 70%,#135f7d);box-shadow:var(--shadow-deep);border:1px solid rgba(200,232,240,.16)}
+    .room-opt{border-radius:14px;background:linear-gradient(180deg,#fff,#fbfdfe)}.room-opt.selected{background:linear-gradient(135deg,#eef7fb,#fff8e5);box-shadow:0 14px 42px rgba(14,77,110,.1)}
+    .fg input,.fg select,.fg textarea,.bk-group input,.bk-group select{border-radius:10px;transition:border-color .2s,box-shadow .2s,background .2s}.fg input:focus,.fg select:focus,.fg textarea:focus{box-shadow:0 0 0 4px rgba(26,127,160,.12)}
+    .room-img,.b-img,.gi-inner,.fam-img{position:relative}.room-img::after,.b-img::after,.gi-inner::after,.fam-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 35%,rgba(232,213,163,.10));pointer-events:none}
+    .sand-line{height:3px;background:linear-gradient(90deg,var(--sand-dark),var(--sand),transparent);width:72px}.step{background:linear-gradient(135deg,var(--ocean),var(--ocean-mid));box-shadow:0 8px 18px rgba(14,77,110,.22)}
+    .policy-item::before{color:var(--gold-deep)}.sum-total-val{font-size:2rem;text-shadow:0 6px 26px rgba(232,213,163,.18)}
+    footer{background:linear-gradient(145deg,#062840,#0a3a52);box-shadow:0 -20px 60px rgba(8,43,61,.12)}
+    @media(max-width:900px){.page-header{padding-top:3.4rem}.form-card{padding:1.5rem}.room-opt{align-items:flex-start}.room-opt-price{text-align:left}.summary-card{top:auto}.mobile-menu{background:linear-gradient(145deg,#062840,#0e4d6e)}}
+
+  
+    /* Conversion optimisation */
+    .conversion-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:.9rem;max-width:1200px;margin:-2rem auto 0;padding:0 4rem;position:relative;z-index:2}
+    .conv-item{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;box-shadow:0 12px 34px rgba(14,77,110,.08)}
+    .conv-icon{font-size:1.2rem;margin-bottom:.35rem}
+    .conv-title{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ocean);font-weight:800}
+    .conv-sub{font-size:.76rem;color:var(--muted);margin-top:.25rem;line-height:1.45}
+    .wa-card{background:#103f59;border-radius:10px;padding:1.5rem;color:#f5f0e8;border:1px solid rgba(200,232,240,.16)}
+    .wa-title{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--sand);margin-bottom:.5rem}
+    .wa-text{font-size:.82rem;color:#a8d8e8;line-height:1.6;margin-bottom:1rem}
+    .btn-whatsapp{display:block;width:100%;background:#25D366;color:#07351a;text-align:center;border:none;padding:.9rem 1rem;font-family:'Nunito',sans-serif;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:900;border-radius:4px;cursor:pointer;transition:transform .18s,filter .18s}
+    .btn-whatsapp:hover{transform:translateY(-1px);filter:brightness(.96)}
+    .trust-line{margin-top:1rem;font-size:.72rem;color:#5a8a9f;text-align:center;line-height:1.5}
+    .urgency-note{background:#fff7e2;border:1px solid #ead39a;color:#7d5a13;border-radius:8px;padding:.85rem 1rem;font-size:.8rem;line-height:1.55;margin-bottom:1.2rem}
+    .quick-contact{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem}
+    .quick-contact a{flex:1;min-width:150px;text-align:center;padding:.75rem;border-radius:4px;font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .quick-contact .qc-wa{background:#25D366;color:#07351a}
+    .quick-contact .qc-mail{background:var(--light);color:var(--ocean);border:1px solid var(--border)}
+    @media(max-width:900px){
+      .conversion-strip{grid-template-columns:1fr 1fr;margin:0;padding:1.2rem}
+    }
+    @media(max-width:520px){
+      .conversion-strip{grid-template-columns:1fr}
+    }
+
+  
+    .final-info-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+    .final-info-box{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.2rem;box-shadow:0 8px 24px rgba(14,77,110,.05)}
+    .final-info-box strong{display:block;color:var(--ocean);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.55rem}
+    .final-info-box p{font-size:.82rem;color:var(--muted);line-height:1.7;margin:0}
+    .final-info-box b{color:var(--text)}
+    /* =========================================================
+       CLEAN FINAL CSS — Paradise Valley
+       Stable desktop + mobile, sans changer le design validé
+    ========================================================= */
+
+    html{
+      font-size:16px;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-size:1rem;
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    img{
+      max-width:100%;
+      height:auto;
+    }
+
+    /* Lisibilité générale */
+    p,
+    .intro-p,
+    .room-desc,
+    .b-desc,
+    .fam-desc,
+    .hl-p,
+    .hl-desc,
+    .ci-p,
+    .cf-sub,
+    .faq-a,
+    .pi-val,
+    .info-item-text,
+    .policy-item,
+    .form-note,
+    .sum-note,
+    .ft-desc,
+    .conv-sub,
+    .transfer-desc{
+      font-size:.96rem;
+      line-height:1.75;
+    }
+
+    .section-label,
+    .intro-label,
+    .faq-label,
+    .room-type,
+    .b-type,
+    .fam-type,
+    .cc-label,
+    .pi-label,
+    .form-sec-title,
+    .transfer-title{
+      opacity:1;
+    }
+
+    /* Résumé réservation : bloc opaque, lisible, sans transparence */
+    .summary-card{
+      background:#ffffff !important;
+      color:var(--text) !important;
+      border:1px solid var(--border) !important;
+      box-shadow:0 14px 38px rgba(10,58,82,.10) !important;
+      position:sticky;
+      top:100px;
+      z-index:3;
+      opacity:1 !important;
+      backdrop-filter:none !important;
+      -webkit-backdrop-filter:none !important;
+    }
+
+    .summary-card::before,
+    .summary-card::after{
+      display:none !important;
+      content:none !important;
+    }
+
+    .summary-card *{
+      text-shadow:none !important;
+    }
+
+    .sum-title{
+      color:var(--ocean) !important;
+      border-bottom:1px solid var(--border) !important;
+    }
+
+    .sum-row-label,
+    .sum-total-label{
+      color:var(--muted) !important;
+    }
+
+    .sum-row-val{
+      color:var(--text) !important;
+      font-weight:700;
+      text-align:right;
+    }
+
+    .sum-divider{
+      background:var(--border) !important;
+    }
+
+    .sum-total-val{
+      color:var(--ocean) !important;
+      font-weight:800;
+    }
+
+    .sum-note{
+      color:var(--muted) !important;
+    }
+
+    /* Options transferts : fond opaque */
+    .transfer-box,
+    .transfer-option{
+      background:#ffffff;
+    }
+
+    .transfer-box{
+      border:1px solid var(--border);
+      box-shadow:0 8px 24px rgba(10,58,82,.04);
+    }
+
+    .transfer-name{
+      color:var(--text);
+    }
+
+    .transfer-desc{
+      color:var(--muted);
+    }
+
+    /* Sections sombres : texte lisible */
+    .contact-info .ci-p,
+    .practical-info .pi-val,
+    .highlights .hl-p,
+    .highlights .hl-desc,
+    .familial-section .fam-desc,
+    .cta-strip .cta-sub{
+      color:#d6edf4;
+    }
+
+    .cc-val,
+    .cc-val a{
+      color:#e4f4f7;
+    }
+
+    footer .ft-desc,
+    footer .ft-col a,
+    footer .ft-bottom,
+    .ft-copy{
+      color:#b8d4dc;
+    }
+
+    /* Formulaires */
+    input,
+    select,
+    textarea,
+    .fg input,
+    .fg select,
+    .fg textarea,
+    .bk-group input,
+    .bk-group select{
+      font-size:.96rem;
+      min-height:44px;
+    }
+
+    button,
+    .btn-primary,
+    .btn-outline,
+    .btn-outline-light,
+    .btn-search,
+    .btn-submit,
+    .btn-reserve,
+    .btn-gold,
+    .nav-cta,
+    .btn-whatsapp,
+    .btn-res-mini,
+    .btn-wa-mini{
+      min-height:44px;
+    }
+
+    /* Galerie : texte sur photos toujours lisible */
+    .gi-overlay{
+      background:linear-gradient(180deg,transparent,rgba(6,40,64,.62)) !important;
+    }
+
+    .gi-label,
+    .gi-cap-title,
+    .gi-cap-sub,
+    .gi-caption{
+      color:#fff !important;
+      text-shadow:0 2px 12px rgba(0,0,0,.55);
+    }
+
+    /* Responsive global */
+    @media(max-width:1024px){
+      nav{
+        padding:1rem 1.5rem;
+      }
+
+      .section,
+      .gallery-preview,
+      .gallery-section,
+      .alt-bg,
+      .faq-section,
+      .tarif-table-section{
+        padding-left:1.5rem;
+        padding-right:1.5rem;
+      }
+
+      .res-layout{
+        grid-template-columns:1fr;
+        padding:2rem 1.5rem;
+      }
+
+      .summary-card{
+        position:relative !important;
+        top:auto !important;
+        width:100%;
+      }
+    }
+
+    @media(max-width:900px){
+      html{
+        font-size:17px;
+      }
+
+      body{
+        line-height:1.7;
+      }
+
+      .nav-links,
+      .nav-cta{
+        display:none;
+      }
+
+      .hamburger{
+        display:flex;
+      }
+
+      .hero{
+        min-height:86vh;
+      }
+
+      .hero-title{
+        font-size:clamp(2.35rem,10vw,3.8rem) !important;
+      }
+
+      .ph-title{
+        font-size:2.35rem !important;
+      }
+
+      .section-title,
+      .intro-title,
+      .hl-title,
+      .ci-title,
+      .faq-title{
+        font-size:clamp(1.85rem,7vw,2.35rem) !important;
+      }
+
+      .booking-bar{
+        flex-direction:column;
+        align-items:stretch;
+        padding:1.4rem 1.2rem;
+      }
+
+      .bk-group,
+      .bk-group input,
+      .bk-group select,
+      .btn-search{
+        width:100%;
+      }
+
+      .rooms-grid,
+      .bungalows-grid,
+      .testi-grid,
+      .faq-grid,
+      .contact-layout,
+      .map-section{
+        grid-template-columns:1fr !important;
+      }
+
+      .intro,
+      .highlights,
+      .familial-card{
+        grid-template-columns:1fr !important;
+      }
+
+      .stats{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .form-row,
+      .form-row.three{
+        grid-template-columns:1fr !important;
+      }
+
+      .subject-options{
+        grid-template-columns:1fr !important;
+      }
+
+      .gallery-grid,
+      .grid-hero,
+      .grid-3,
+      .grid-4,
+      .grid-mixed,
+      .premium-photo-grid,
+      .restaurant-grid{
+        grid-template-columns:1fr 1fr !important;
+      }
+
+      .gallery-grid .gi:first-child,
+      .grid-hero .gi:first-child,
+      .premium-photo-grid .gi.featured,
+      .restaurant-grid .gi.featured{
+        grid-column:1/3 !important;
+      }
+
+      .gi{
+        min-height:170px;
+      }
+
+      .contact-info,
+      .contact-form-side,
+      .practical-info,
+      .familial-section,
+      .highlights{
+        padding:3rem 1.5rem !important;
+      }
+
+      .cta-strip{
+        flex-direction:column;
+        align-items:flex-start;
+        text-align:left;
+        padding:2.5rem 1.5rem !important;
+      }
+
+      .cta-strip > div,
+      .cta-strip a,
+      .cta-strip button{
+        width:100%;
+      }
+
+      footer,
+      .ft-top,
+      .ft-bottom{
+        text-align:left;
+      }
+
+      .ft-top{
+        grid-template-columns:1fr !important;
+      }
+    }
+
+    @media(max-width:560px){
+      html{
+        font-size:17px;
+      }
+
+      nav{
+        padding:.95rem 1rem !important;
+      }
+
+      .nav-logo{
+        font-size:1.35rem !important;
+      }
+
+      .page-header{
+        padding:3rem 1rem 2.4rem !important;
+      }
+
+      .hero-content{
+        padding:2.4rem 1rem;
+      }
+
+      .hero-title{
+        font-size:2.35rem !important;
+      }
+
+      .hero-sub,
+      .ph-sub{
+        font-size:.95rem !important;
+        line-height:1.65;
+        letter-spacing:.06em;
+      }
+
+      .hero-actions,
+      .quick-contact,
+      .conversion-room-cta,
+      .fam-footer,
+      .b-footer,
+      .room-footer{
+        flex-direction:column;
+        align-items:stretch !important;
+      }
+
+      .btn-primary,
+      .btn-outline,
+      .btn-outline-light,
+      .btn-search,
+      .btn-submit,
+      .btn-reserve,
+      .btn-gold,
+      .btn-whatsapp,
+      .btn-res-mini,
+      .btn-wa-mini,
+      .room-btn{
+        width:100% !important;
+        text-align:center;
+      }
+
+      .section,
+      .gallery-preview,
+      .gallery-section,
+      .alt-bg,
+      .faq-section,
+      .tarif-table-section,
+      .res-layout{
+        padding-left:1rem !important;
+        padding-right:1rem !important;
+      }
+
+      .gallery-grid,
+      .grid-hero,
+      .grid-3,
+      .grid-4,
+      .grid-mixed,
+      .premium-photo-grid,
+      .restaurant-grid{
+        grid-template-columns:1fr !important;
+      }
+
+      .gallery-grid .gi:first-child,
+      .grid-hero .gi:first-child,
+      .premium-photo-grid .gi.featured,
+      .restaurant-grid .gi.featured{
+        grid-column:auto !important;
+      }
+
+      .gi,
+      .grid-3 .gi,
+      .grid-4 .gi,
+      .grid-mixed .gi,
+      .premium-photo-grid .gi,
+      .restaurant-grid .gi,
+      .premium-photo-grid .gi.featured,
+      .restaurant-grid .gi.featured{
+        height:220px !important;
+      }
+
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .room-opt{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .room-opt-price{
+        text-align:left;
+      }
+
+      .sum-row{
+        gap:1rem;
+        align-items:flex-start;
+      }
+
+      .sum-row-val{
+        max-width:55%;
+      }
+
+      .tarif-table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+      }
+
+      footer{
+        padding:2rem 1rem;
+      }
+
+      .ft-links{
+        flex-direction:column;
+        gap:.8rem;
+      }
+    }
+
+  
+    /* ===== Transferts : alignement + animation sélection ===== */
+    .transfer-box{
+      display:flex;
+      flex-direction:column;
+      gap:.75rem;
+      background:var(--light);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:1rem;
+    }
+
+    .transfer-option{
+      display:flex;
+      align-items:center;
+      gap:.9rem;
+      width:100%;
+      padding:1rem;
+      border-radius:12px;
+      background:#fff;
+      border:1.5px solid var(--border);
+      cursor:pointer;
+      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .transfer-option::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(232,213,163,.22),rgba(26,127,160,.08));
+      opacity:0;
+      transition:opacity .22s ease;
+      pointer-events:none;
+    }
+
+    .transfer-option:hover{
+      transform:translateY(-1px);
+      border-color:var(--ocean-mid);
+      box-shadow:0 10px 24px rgba(10,58,82,.08);
+    }
+
+    .transfer-option input{
+      flex-shrink:0;
+      width:20px;
+      height:20px;
+      margin:0;
+      accent-color:var(--ocean);
+      position:relative;
+      z-index:2;
+    }
+
+    .transfer-option span{
+      display:flex;
+      flex-direction:column;
+      position:relative;
+      z-index:2;
+    }
+
+    .transfer-name{
+      font-size:.96rem;
+      font-weight:800;
+      color:var(--text);
+      line-height:1.35;
+    }
+
+    .transfer-desc{
+      font-size:.84rem;
+      color:var(--muted);
+      line-height:1.55;
+      margin-top:.15rem;
+    }
+
+    .transfer-option.active{
+      border-color:var(--ocean);
+      background:#fffdf7;
+      box-shadow:0 12px 30px rgba(14,77,110,.12);
+      transform:translateY(-2px);
+    }
+
+    .transfer-option.active::after{
+      opacity:1;
+    }
+
+    .transfer-option.active .transfer-name{
+      color:var(--ocean);
+    }
+
+    .transfer-option.active .transfer-desc{
+      color:#4f6f7a;
+    }
+
+    @keyframes transferPulse{
+      0%{box-shadow:0 0 0 0 rgba(14,77,110,.22)}
+      70%{box-shadow:0 0 0 8px rgba(14,77,110,0)}
+      100%{box-shadow:0 0 0 0 rgba(14,77,110,0)}
+    }
+
+    .transfer-option.just-checked{
+      animation:transferPulse .45s ease;
+    }
+
+    @media(max-width:560px){
+      .transfer-option{
+        align-items:flex-start;
+        padding:.95rem;
+      }
+
+      .transfer-option input{
+        margin-top:.15rem;
+      }
+    }
+
+  
+    /* ===== Notification formulaire réservation ===== */
+    .reservation-alert{
+      display:none;
+      margin-top:1rem;
+      padding:1rem 1.1rem;
+      border-radius:10px;
+      font-size:.92rem;
+      line-height:1.55;
+      font-weight:700;
+    }
+    .reservation-alert.success{
+      display:block;
+      background:#e9f7ed;
+      color:#1f6b36;
+      border:1px solid #bfe4c9;
+    }
+    .reservation-alert.error{
+      display:block;
+      background:#fff0ee;
+      color:#9b2c1f;
+      border:1px solid #f1b6ad;
+    }
+
+  
+    /* Résumé vide au chargement direct */
+    .summary-card.is-empty .sum-row-val,
+    .summary-card.is-empty .sum-total-val{
+      color:var(--muted)!important;
+      font-weight:600!important;
+    }
+
+  
+    .date-field-error{
+      display:none;
+      margin-top:.4rem;
+      padding:.45rem .65rem;
+      border-radius:6px;
+      font-size:.78rem;
+      line-height:1.45;
+      align-items:center;
+      gap:.4rem;
+    }
+    .date-field-error.show{display:flex}
+    .date-field-error.error-past{
+      color:#c0392b;
+      background:#fdf2f2;
+      border:1px solid #f5c6c6;
+    }
+    .date-field-error.error-order{
+      color:#b0671c;
+      background:#fff7e9;
+      border:1px solid #f1d2a8;
+    }
+    .date-field-error::before{
+      content:'';
+      display:inline-block;
+      width:14px;
+      height:14px;
+      background-size:contain;
+      background-repeat:no-repeat;
+      flex-shrink:0;
+    }
+    .date-field-error.error-past::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' stroke='%23c0392b' stroke-width='1.5' fill='none'/%3E%3Cline x1='8' y1='4.5' x2='8' y2='8.5' stroke='%23c0392b' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='11' r='1' fill='%23c0392b'/%3E%3C/svg%3E")}
+    .date-field-error.error-order::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='7' stroke='%23b0671c' stroke-width='1.5' fill='none'/%3E%3Cline x1='8' y1='4.5' x2='8' y2='8.5' stroke='%23b0671c' stroke-width='1.5' stroke-linecap='round'/%3E%3Ccircle cx='8' cy='11' r='1' fill='%23b0671c'/%3E%3C/svg%3E")}
+    .fg input.date-error{border-color:#c0392b!important;background:#fdf2f2!important;}
+    .fg input.date-warn{border-color:#d4891a!important;background:#fff9f0!important;}
+
+  
+
+/* ═══════════════ MASOALA EXPERIENCES — BARRE INTER-SITES ═══════════════ */
+.mx-sitebar{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  background:linear-gradient(90deg,#1f2f1c,#8f513a 48%,#0f5d75);
+  color:#fff;border-bottom:1px solid rgba(255,255,255,.14);
+  font-family:inherit;box-shadow:0 8px 24px rgba(0,0,0,.16);
+}
+.mx-sitebar-inner{height:38px;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 4rem;max-width:1440px;margin:0 auto}
+.mx-sitebar-brand{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:#f5e3bd;white-space:nowrap}
+.mx-sitebar-links{display:flex;align-items:center;gap:.35rem;overflow-x:auto;scrollbar-width:none}.mx-sitebar-links::-webkit-scrollbar{display:none}
+.mx-sitebar-links a{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);padding:.35rem .7rem;border:1px solid rgba(255,255,255,.12);border-radius:999px;white-space:nowrap;transition:background .2s,color .2s,transform .2s}
+.mx-sitebar-links a:hover{background:rgba(255,255,255,.14);color:#fff;transform:translateY(-1px)}
+body{padding-top:38px!important}
+nav{top:38px!important}
+.mobile-menu{top:38px!important;height:calc(100vh - 38px)!important}
+@media(max-width:900px){.mx-sitebar-inner{padding:0 .9rem}.mx-sitebar-brand{font-size:.56rem;letter-spacing:.16em}.mx-sitebar-links a{font-size:.6rem;padding:.3rem .55rem}.mx-sitebar-links{gap:.25rem}}
+@media(max-width:560px){.mx-sitebar-inner{justify-content:flex-start;gap:.65rem}.mx-sitebar-brand{display:none}.mx-sitebar-links{width:100%}.mx-sitebar-links a{font-size:.58rem;letter-spacing:.08em}}
+
+
+/* === Masoala Experiences inter-sites bar — premium clean v2 === */
+:root{--mx-sitebar-height:34px;}
+html{scroll-padding-top:calc(var(--mx-sitebar-height) + 84px);}
+body{padding-top:var(--mx-sitebar-height);}
+.mx-sitebar{
+  position:fixed;top:0;left:0;right:0;z-index:10000;
+  height:var(--mx-sitebar-height);
+  background:linear-gradient(90deg,rgba(8,20,18,.94),rgba(34,74,50,.94),rgba(13,52,70,.94));
+  border-bottom:1px solid rgba(232,213,163,.18);
+  box-shadow:0 8px 26px rgba(0,0,0,.18);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  font-family:inherit;
+}
+.mx-sitebar-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 3.5rem;max-width:1440px;margin:0 auto;}
+.mx-sitebar-brand{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:#f1d89a;white-space:nowrap;opacity:.98;}
+.mx-sitebar-links{display:flex;align-items:center;gap:.25rem;overflow-x:auto;scrollbar-width:none}.mx-sitebar-links::-webkit-scrollbar{display:none}
+.mx-sitebar-links a{font-size:.61rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.84);padding:.28rem .62rem;border:1px solid rgba(255,255,255,.13);border-radius:999px;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,transform .2s;line-height:1;}
+.mx-sitebar-links a:hover{background:rgba(232,213,163,.14);border-color:rgba(232,213,163,.42);color:#fff;transform:translateY(-1px)}
+nav{top:var(--mx-sitebar-height)!important;}
+.mobile-menu{top:var(--mx-sitebar-height)!important;height:calc(100vh - var(--mx-sitebar-height))!important;}
+@media(max-width:900px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{padding:0 .85rem}.mx-sitebar-brand{font-size:.52rem;letter-spacing:.16em}.mx-sitebar-links a{font-size:.56rem;padding:.26rem .5rem;letter-spacing:.08em}.mx-sitebar-links{gap:.22rem}}
+@media(max-width:560px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{justify-content:flex-start;gap:.55rem}.mx-sitebar-brand{display:none}.mx-sitebar-links{width:100%;justify-content:flex-start}.mx-sitebar-links a{font-size:.54rem;padding:.25rem .48rem}}
+
+
+
+/* === Paradise Valley conversion layer — WhatsApp + sections premium === */
+.pv-sticky-wa{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:999;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.55rem;
+  background:linear-gradient(135deg,var(--ocean),var(--ocean-dark));
+  color:#fff;
+  padding:.9rem 1.35rem;
+  border-radius:999px;
+  font-size:.68rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:800;
+  box-shadow:0 14px 34px rgba(31,47,28,.24);
+  border:1px solid rgba(255,255,255,.18);
+  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+}
+.pv-sticky-wa:hover{transform:translateY(-2px);filter:saturate(1.08);box-shadow:0 18px 42px rgba(31,47,28,.30)}
+.pv-conversion{background:linear-gradient(180deg,#fffaf0,#edf6e7);}
+.pv-conversion-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.pv-conversion-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.8rem;box-shadow:0 18px 52px rgba(47,100,31,.08);transition:transform .22s ease,box-shadow .22s ease}
+.pv-conversion-card:hover{transform:translateY(-5px);box-shadow:0 24px 64px rgba(47,100,31,.12)}
+.pv-conversion-icon{font-size:1.7rem;margin-bottom:.85rem}
+.pv-conversion-card h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--ocean);font-weight:400;margin-bottom:.65rem}
+.pv-conversion-card p{font-size:.9rem;color:var(--muted);line-height:1.75;font-weight:300}
+.pv-experience-band{background:linear-gradient(135deg,var(--light),#fffaf0);padding:4.6rem 4rem;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.pv-experience-actions{margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-outline-dark{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--ocean);padding:.85rem 2.2rem;font-family:'Nunito',sans-serif;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;border:1px solid rgba(75,143,47,.32);border-radius:999px;cursor:pointer;transition:all .2s ease}
+.btn-outline-dark:hover{border-color:var(--sand);color:var(--sand-dark);transform:translateY(-2px)}
+@media(max-width:900px){.pv-conversion-grid{grid-template-columns:1fr}.pv-experience-band{padding:3rem 1.2rem}.pv-sticky-wa{left:16px;right:16px;bottom:16px;width:auto}.pv-experience-actions a{width:100%}}
+
+</style>
+</head>
+<body>
+<!-- MASOALA EXPERIENCES SITEBAR -->
+<div class="mx-sitebar" aria-label="Navigation Masoala Experiences">
+  <div class="mx-sitebar-inner">
+    <a class="mx-sitebar-brand" href="https://masoala-experiences.netlify.app/" target="_blank" rel="noopener">Masoala Experiences</a>
+    <div class="mx-sitebar-links">
+      <a href="https://manga-beach-hotel.netlify.app/" target="_blank" rel="noopener">🏨 Manga Beach</a>
+      <a href="https://paradise-valley-ambanizana.netlify.app/" target="_blank" rel="noopener">🌿 Paradise Valley</a>
+      <a href="https://peche-sportive-masoala.netlify.app/" target="_blank" rel="noopener">🎣 Pêche Masoala</a>
+      <a href="https://masoala-experiences.netlify.app/" target="_blank" rel="noopener">◉ Hub</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- MASOALA EXPERIENCES — BARRE INTER-SITES -->
+
+
+<nav>
+  <a class="nav-logo" href="index.html" aria-label="Paradise Valley accueil">Paradise <span>Valley</span></a>
+  <div class="nav-links" aria-label="Navigation principale">
+    <a href="index.html">Accueil</a>
+    <a href="chambres.html">Bungalows</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="reservation.html" class="active">Réservation</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="reservation.html" class="nav-cta">Réserver</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Accueil</a>
+  <a href="chambres.html">Bungalows</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="reservation.html">Réservation</a>
+  <a href="contact.html">Contact</a>
+  <a href="reservation.html"><button class="mob-cta">Réserver</button></a>
+</div>
+
+<div class="page-header">
+  <svg class="ph-bg" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,200 Q360,100 720,180 Q1080,260 1440,140 L1440,300 L0,300Z" fill="#1a7fa0"/>
+    <path d="M0,250 Q360,170 720,230 Q1080,290 1440,200 L1440,300 L0,300Z" fill="#e8d5a3"/>
+  </svg>
+  <div class="ph-label">Paradise Valley</div>
+  <h1 class="ph-title">Votre <em>réservation</em></h1>
+  <p class="ph-sub">Réservez votre séjour en quelques étapes simples</p>
+</div>
+
+<div class="res-layout">
+  <div class="form-card">
+    <div class="urgency-note">⚠️ Places limitées selon les dates. Envoyez votre demande maintenant : nous vous confirmons la disponibilité sous 24h.</div>
+
+    <!-- ÉTAPE 1 -->
+    <div class="form-sec">
+      <div class="form-sec-title"><div class="step">1</div>Dates &amp; séjour</div>
+      <div class="form-row">
+        <div class="fg"><label>Date d'arrivée</label><input type="date" id="check-in" name="check_in" required/><div id="checkin-error" class="date-field-error"></div></div>
+        <div class="fg"><label>Date de départ</label><input type="date" id="check-out" name="check_out" required/><div id="checkout-error" class="date-field-error"></div></div>
+      </div>
+      <div class="form-row three">
+        <div class="fg"><label>Adultes</label><select id="adults" name="adults" required><option value="1">1 adulte</option><option value="2" selected>2 adultes</option><option value="3">3 adultes</option><option value="4">4 adultes</option></select></div>
+        <div class="fg"><label>Enfants</label><select id="children" name="children"><option value="0" selected>0 enfant</option><option value="1">1 enfant</option><option value="2">2 enfants</option><option value="3">3 enfants</option></select></div>
+        <div class="fg"><label>Nuits</label><input type="text" id="nights-display" value="— nuits" readonly style="background:#f5f8fa;color:var(--muted);cursor:default"/></div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 2 -->
+    <div class="form-sec">
+      <div class="form-sec-title"><div class="step">2</div>Choisissez votre bungalow</div>
+      <div class="room-options">
+        <label class="room-opt selected" id="opt-bungalow">
+          <input type="radio" name="room" value="bungalow" checked/>
+          <div class="room-opt-icon ri-simple">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="14" width="20" height="12" rx="1" stroke="rgba(200,232,240,.5)" stroke-width="1"/><polygon points="2,15 14,6 26,15" stroke="rgba(200,232,240,.5)" stroke-width="1" fill="none"/></svg>
+          </div>
+          <div class="room-opt-info">
+            <div class="room-opt-name">Bungalow Simple</div>
+            <div class="room-opt-details">1-2 pers. · Ventilateur · Vue panoramique sur la plage · 6 disponibles</div>
+          </div>
+          <div class="room-opt-price">à partir de 170 €<span>/ nuit · 1 pers. pension incluse</span></div>
+          <div class="room-check"><div class="room-check-dot"></div></div>
+        </label>
+        <label class="room-opt" id="opt-villa">
+          <input type="radio" name="room" value="villa"/>
+          <div class="room-opt-icon ri-family">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="11" width="24" height="15" rx="1" stroke="rgba(200,232,240,.5)" stroke-width="1"/><polygon points="0,12 14,3 28,12" stroke="rgba(200,232,240,.5)" stroke-width="1" fill="none"/><rect x="8" y="17" width="5" height="5" fill="rgba(232,213,163,.15)"/><rect x="15" y="17" width="5" height="5" fill="rgba(232,213,163,.15)"/></svg>
+          </div>
+          <div class="room-opt-info">
+            <div class="room-opt-name">Bungalow Familial</div>
+            <div class="room-opt-details">1-4 pers. · 2 lits · Vue panoramique vers la mer</div>
+          </div>
+          <div class="room-opt-price">à partir de 190 €<span>/ nuit · 1 pers. pension incluse</span></div>
+          <div class="room-check"><div class="room-check-dot"></div></div>
+        </label>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 3 -->
+    <div class="form-sec">
+      <div class="form-sec-title"><div class="step">3</div>Vos informations</div>
+      <div class="form-row">
+        <div class="fg"><label>Prénom</label><input type="text" id="first-name" name="first_name" placeholder="Jean" autocomplete="given-name" required/></div>
+        <div class="fg"><label>Nom</label><input type="text" id="last-name" name="last_name" placeholder="Dupont" autocomplete="family-name" required/></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Email</label><input type="email" id="email" name="email" placeholder="jean@exemple.com" autocomplete="email" required/></div>
+        <div class="fg"><label>Téléphone</label><input type="tel" id="phone" name="phone" placeholder="+261 XX XX XXX XX" autocomplete="tel" required/></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Nationalité</label><input type="text" id="nationality" name="nationality" placeholder="Française" autocomplete="country-name"/></div>
+        <div class="fg"><label>Mode de paiement</label><select id="payment" name="payment"><option>Mobile Money (MVola)</option><option>Mobile Money (Orange Money)</option><option>Paiement sur place</option></select></div>
+      </div>
+      <div class="form-row full">
+        <div class="fg"><label>Demandes spéciales (optionnel)</label><textarea id="special-requests" name="special_requests" placeholder="Anniversaire, allergie alimentaire, heure d'arrivée approximative…"></textarea></div>
+      </div>
+    </div>
+
+    
+    <div class="form-sec">
+      <div class="form-sec-title"><span class="step">4</span> Transferts optionnels</div>
+      <p class="form-note" style="text-align:left;margin-bottom:1rem">
+        Nous pouvons organiser vos transferts pour faciliter votre arrivée jusqu’au lodge. Ces frais sont indiqués en Ariary et confirmés séparément après vérification de disponibilité.
+      </p>
+      <div class="transfer-box">
+        <div class="transfer-title">Services disponibles</div>
+
+        <label class="transfer-option">
+          <input type="checkbox" id="transfer-airport" name="Transfert Aéroport - Manga Beach" value="Oui">
+          <span>
+            <span class="transfer-name">Aéroport ↔ Hôtel Manga Beach</span>
+            <span class="transfer-desc">80.000 Ar — transfert aller-retour sur Maroantsetra.</span>
+          </span>
+        </label>
+
+        <label class="transfer-option">
+          <input type="checkbox" id="transfer-boat" name="Vedette Manga Beach - Paradise Valley" value="Oui">
+          <span>
+            <span class="transfer-name">Hôtel Manga Beach ↔ Paradise Valley</span>
+            <span class="transfer-desc">1.000.000 Ar — vedette rapide aller-retour vers Ambanizana.</span>
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-submit">
+      <button class="btn-submit" id="submit-btn" type="button">Confirmer ma réservation</button>
+      <div id="reservation-alert" class="reservation-alert"></div>
+      <p class="form-note">En confirmant, vous acceptez nos conditions générales.<br>Aucun prépaiement requis — confirmation sous 24h.</p>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="summary-card">
+      <div class="sum-title">Résumé de votre séjour</div>
+      <div class="sum-row"><span class="sum-row-label">Bungalow</span><span class="sum-row-val" id="sum-room">Bungalow Simple</span></div>
+      <div class="sum-row"><span class="sum-row-label">Arrivée</span><span class="sum-row-val" id="sum-checkin">—</span></div>
+      <div class="sum-row"><span class="sum-row-label">Départ</span><span class="sum-row-val" id="sum-checkout">—</span></div>
+      <div class="sum-row"><span class="sum-row-label">Durée</span><span class="sum-row-val" id="sum-nights">—</span></div>
+      <div class="sum-row"><span class="sum-row-label">Voyageurs</span><span class="sum-row-val" id="sum-guests">2 adultes</span></div>
+      <div class="sum-divider"></div>
+      <div class="sum-row"><span class="sum-row-label">Hébergement</span><span class="sum-row-val" id="sum-room-cost">—</span></div>
+      <div class="sum-divider"></div>
+      <div class="sum-total">
+        <div class="sum-total-label">Total indicatif</div>
+        <div class="sum-total-val" id="sum-total">—</div>
+      </div>
+      <p class="sum-note">Prix indicatif. Confirmation par email sous 24h.</p>
+    </div>
+
+    <div class="final-info-grid">
+      <div class="final-info-box">
+        <strong>Tarifs</strong>
+        <p>
+          Bungalow simple : <b>100 € / nuit</b><br>
+          Bungalow familial : <b>120 € / nuit</b><br>
+          Pension complète : <b>+ 70 € / personne / jour</b><br>
+          <small>Boissons extras non incluses.</small>
+        </p>
+      </div>
+
+      <div class="final-info-box">
+        <strong>Transferts</strong>
+        <p>
+          Aéroport ↔ Hôtel Manga Beach ↔ Aéroport : <b>80.000 Ar</b><br>
+          Hôtel Manga Beach ↔ Paradise Valley ↔ Hôtel Manga Beach en vedette rapide : <b>1.000.000 Ar</b>
+        </p>
+      </div>
+
+      <div class="final-info-box">
+        <strong>Paiement</strong>
+        <p>
+          Le paiement s’effectue après confirmation de disponibilité.<br><br>
+          Modes acceptés : <b>MVola</b>, <b>Orange Money</b> ou <b>paiement sur place</b>.<br><br>
+          Les numéros de paiement sont envoyés uniquement après validation de votre demande.
+        </p>
+      </div>
+
+      <div class="final-info-box">
+        <strong>Contact</strong>
+        <p>
+          Email : <b>lodge.paradisevalley@yahoo.com</b><br>
+          Réponse sous 24h après votre demande de réservation.
+        </p>
+      </div>
+    </div>
+
+    <div class="policy-card">
+      <div class="policy-title">Politique de l'hôtel</div>
+      <div class="policy-item">Petit-déjeuner servi selon votre demande</div>
+      <div class="policy-item">Wi‑Fi haut débit Starlink</div>
+      <div class="policy-item">Enfants de tous âges bienvenus</div>
+    </div>
+    </div><!-- /policy-card -->
+  </div><!-- /sidebar -->
+</div><!-- /res-layout -->
+
+<!-- SUCCESS -->
+<div class="success-overlay" id="success-overlay">
+  <div class="success-box">
+    <div class="success-icon"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="14" stroke="#1a7fa0" stroke-width="1.5"/><path d="M9 16.5 L13.5 21 L23 12" stroke="#1a7fa0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <h2 class="success-title">Demande envoyée !</h2>
+    <p class="success-sub">Merci pour votre réservation au Paradise Valley. Vous recevrez une confirmation par email dans les 24 heures avec tous les détails de votre séjour.</p>
+    <a href="index.html"><button class="btn-gold">Retour à l'accueil</button></a>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-logo">Paradise <span>Valley</span></div>
+  <div class="ft-links"><a href="index.html">Accueil</a><a href="chambres.html">Bungalows</a><a href="galerie.html">Galerie</a><a href="contact.html">Contact</a></div>
+  <div class="ft-copy">© 2025 Paradise Valley</div>
+</footer>
+
+<script>
+  // ── WhatsApp : numéro à renseigner quand disponible ──────────────────────
+  // Pour activer : remplacer '' par le numéro international ex: '261341234567'
+  const WA_NUMBER = '';
+  function updateWhatsAppLinks(){
+    const wa_direct = document.getElementById('wa-direct');
+    const wa_form  = document.getElementById('wa-form-link');
+    if(!wa_direct && !wa_form) return;
+    if(!WA_NUMBER){
+      // Pas encore de numéro : les liens pointent vers la page contact
+      if(wa_direct) wa_direct.setAttribute('href','contact.html');
+      if(wa_form)   wa_form.setAttribute('href','contact.html');
+      return;
+    }
+    const room     = document.querySelector('input[name="room"]:checked')?.value || 'bungalow';
+    const roomName = room === 'villa' ? 'Bungalow Familial' : 'Bungalow Simple';
+    const checkin  = document.getElementById('check-in')?.value  || '';
+    const checkout = document.getElementById('check-out')?.value || '';
+    const adults   = document.getElementById('adults')?.value    || '2';
+    const children = document.getElementById('children')?.value  || '0';
+    const nights   = (checkin && checkout)
+      ? Math.max(0, Math.round((new Date(checkout+'T00:00:00') - new Date(checkin+'T00:00:00')) / 86400000))
+      : 0;
+    let msg = 'Bonjour, je souhaite réserver au Paradise Valley.';
+    msg += '\nBungalow : ' + roomName;
+    if(checkin)  msg += '\nArrivée : ' + checkin;
+    if(checkout) msg += '\nDépart : '  + checkout;
+    if(nights)   msg += '\nDurée : '   + nights + ' nuit' + (nights > 1 ? 's' : '');
+    msg += '\nVoyageurs : ' + adults + ' adulte' + (parseInt(adults) > 1 ? 's' : '');
+    if(parseInt(children) > 0) msg += ' + ' + children + ' enfant' + (parseInt(children) > 1 ? 's' : '');
+    msg += '\nMerci de me confirmer la disponibilité.';
+    const url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
+    if(wa_direct) wa_direct.setAttribute('href', url);
+    if(wa_form)   wa_form.setAttribute('href', url);
+  }
+</script>
+
+<script>
+(function(){
+  var btn=document.getElementById('hamburger');
+  var menu=document.getElementById('mobile-menu');
+  if(!btn||!menu)return;
+  btn.addEventListener('click',function(){
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', menu.classList.contains('open')?'true':'false');
+    document.body.style.overflow=menu.classList.contains('open')?'hidden':'';
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+(function(){
+  const ROOM_RATES = {
+    bungalow: 100, simple: 100, 'bungalow-simple': 100,
+    villa: 120, family: 120, familial: 120, 'bungalow-familial': 120
+  };
+  const ROOM_NAMES = {
+    bungalow: 'Bungalow simple', simple: 'Bungalow simple', 'bungalow-simple': 'Bungalow simple',
+    villa: 'Bungalow familial', family: 'Bungalow familial', familial: 'Bungalow familial', 'bungalow-familial': 'Bungalow familial'
+  };
+  const PENSION_PER_PERSON_PER_DAY = 70;
+
+  function $(id){ return document.getElementById(id); }
+  function firstNumber(value, fallback){
+    const m = String(value || '').match(/\d+/);
+    return m ? parseInt(m[0], 10) : fallback;
+  }
+  function formatEuro(n){
+    return new Intl.NumberFormat('fr-FR', { style:'currency', currency:'EUR', maximumFractionDigits:0 }).format(n);
+  }
+  function getRoomKey(){
+    const checked = document.querySelector('input[name="room"]:checked, input[name="type-bungalow"]:checked, input[type="radio"]:checked');
+    if(checked && checked.value) return checked.value.toLowerCase();
+    const selected = document.querySelector('.room-opt.selected');
+    if(selected){
+      const input = selected.querySelector('input');
+      if(input && input.value) return input.value.toLowerCase();
+      const txt = selected.textContent.toLowerCase();
+      if(txt.includes('familial')) return 'familial';
+    }
+    return 'bungalow';
+  }
+  function getNights(){
+    const a = $('check-in')?.value || '';
+    const b = $('check-out')?.value || '';
+    if(!a || !b) return 0;
+    const d1 = new Date(a + 'T00:00:00');
+    const d2 = new Date(b + 'T00:00:00');
+    const diff = Math.round((d2 - d1) / 86400000);
+    return diff > 0 ? diff : 0;
+  }
+  function setRowContains(labelNeedle, value){
+    document.querySelectorAll('.sum-row').forEach(row => {
+      const label = row.querySelector('.sum-row-label');
+      const val = row.querySelector('.sum-row-val');
+      if(label && val && label.textContent.toLowerCase().includes(labelNeedle.toLowerCase())){
+        val.textContent = value;
+      }
+    });
+  }
+  function setText(selectors, value){
+    selectors.forEach(sel => document.querySelectorAll(sel).forEach(el => el.textContent = value));
+  }
+  function getTransfersText(){
+    const list = [];
+    if($('transfer-airport')?.checked) list.push('Aéroport ↔ Manga Beach : 80.000 Ar');
+    if($('transfer-boat')?.checked) list.push('Vedette Manga Beach ↔ Paradise Valley : 1.000.000 Ar');
+    return list.length ? list.join(' + ') : '—';
+  }
+  function updateSummary(){
+    const checkin = $('check-in')?.value || '';
+    const checkout = $('check-out')?.value || '';
+    const nights = getNights();
+    const adults = firstNumber($('adults')?.value, 1);
+    const children = firstNumber($('children')?.value, 0);
+    const guests = adults + children;
+
+    const roomKey = getRoomKey();
+    const roomName = ROOM_NAMES[roomKey] || (roomKey.includes('famil') ? 'Bungalow familial' : 'Bungalow simple');
+    const roomRate = ROOM_RATES[roomKey] || (roomKey.includes('famil') ? 120 : 100);
+
+    const lodgingTotal = nights > 0 ? roomRate * nights : 0;
+    const pensionTotal = nights > 0 ? guests * PENSION_PER_PERSON_PER_DAY * nights : 0;
+    const grandTotal = lodgingTotal + pensionTotal;
+
+    const durationText = nights > 0 ? nights + ' nuit' + (nights > 1 ? 's' : '') : '—';
+    const adultsText = adults + ' adulte' + (adults > 1 ? 's' : '');
+    const childrenText = children > 0 ? ' + ' + children + ' enfant' + (children > 1 ? 's' : '') : '';
+    const travellersText = adultsText + childrenText;
+    const transfersText = getTransfersText();
+
+    const lodgingText = lodgingTotal > 0 ? formatEuro(lodgingTotal) : '—';
+    const pensionText = pensionTotal > 0 ? formatEuro(pensionTotal) : '—';
+    const totalText = grandTotal > 0 ? formatEuro(grandTotal) : '—';
+
+    const fmtDate = iso => iso ? new Date(iso + 'T00:00:00').toLocaleDateString('fr-FR') : '—';
+    setRowContains('Arrivée', fmtDate(checkin));
+    setRowContains('Départ', fmtDate(checkout));
+    setRowContains('Durée', durationText);
+    setRowContains('Adulte', adultsText);
+    setRowContains('Voyageur', travellersText);
+    setRowContains('Personne', travellersText);
+    setRowContains('Bungalow', roomName);
+    setRowContains('Hébergement', lodgingText);
+    setRowContains('Pension', pensionText);
+    setRowContains('Transferts', transfersText);
+    setRowContains('Total', totalText);
+    setRowContains('Indicatif', totalText);
+
+    setText(['#summary-duration','.summary-duration'], durationText);
+    setText(['#summary-adults','.summary-adults'], adultsText);
+    setText(['#summary-guests','.summary-guests'], travellersText);
+    setText(['#summary-lodging','.summary-lodging'], lodgingText);
+    setText(['#summary-pension','.summary-pension'], pensionText);
+    setText(['#summary-transfers','.summary-transfers'], transfersText);
+    setText(['#summary-total','.summary-total-val','.total-estime','.estimated-total'], totalText);
+
+    const totalVal = document.querySelector('.sum-total-val');
+    if(totalVal) totalVal.textContent = totalText;
+
+    const hiddenFields = {
+      'Durée': durationText,
+      'Adultes': String(adults),
+      'Enfants': String(children),
+      'Bungalow': roomName,
+      'Estimation hébergement': lodgingText,
+      'Estimation pension complète': pensionText,
+      'Transferts optionnels': transfersText,
+      'Total indicatif hors transferts': totalText
+    };
+    Object.keys(hiddenFields).forEach(name => {
+      let input = document.querySelector(`input[name="${name}"]`);
+      if(!input){
+        input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        document.querySelector('form, .form-card')?.appendChild(input);
+      }
+      if(input) input.value = hiddenFields[name];
+    });
+  }
+  function applyQueryParams(){
+    const params = new URLSearchParams(window.location.search);
+    const checkin = params.get('checkin') || params.get('arrival') || params.get('arrivee');
+    const checkout = params.get('checkout') || params.get('departure') || params.get('depart');
+    const adultsParam = params.get('adults') || params.get('guests') || params.get('personnes');
+    if(checkin && $('check-in')) $('check-in').value = checkin;
+    if(checkout && $('check-out')) $('check-out').value = checkout;
+    if(adultsParam && $('adults')){
+      const n = firstNumber(adultsParam, 1);
+      const select = $('adults');
+      const matching = Array.from(select.options).find(o => firstNumber(o.value || o.textContent, -1) === n);
+      if(matching) select.value = matching.value;
+      else select.value = String(n);
+    }
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    applyQueryParams();
+    ['check-in','check-out','adults','children','transfer-airport','transfer-boat'].forEach(id => {
+      const el = $(id);
+      if(el){
+        el.addEventListener('change', updateSummary);
+        el.addEventListener('input', updateSummary);
+      }
+    });
+    document.querySelectorAll('.room-opt').forEach(opt => {
+      opt.addEventListener('click', function(){
+        document.querySelectorAll('.room-opt').forEach(o=>o.classList.remove('selected'));
+        opt.classList.add('selected');
+        const input = opt.querySelector('input[type="radio"]');
+        if(input) input.checked = true;
+        updateSummary();
+      });
+    });
+    document.querySelectorAll('input[type="radio"]').forEach(radio => radio.addEventListener('change', updateSummary));
+    updateSummary();
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  function updateTransferOptionState(input){
+    const card = input.closest('.transfer-option');
+    if(!card) return;
+    card.classList.toggle('active', input.checked);
+    if(input.checked){
+      card.classList.remove('just-checked');
+      void card.offsetWidth;
+      card.classList.add('just-checked');
+      setTimeout(()=>card.classList.remove('just-checked'), 500);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.transfer-option input[type="checkbox"]').forEach(function(input){
+      updateTransferOptionState(input);
+      input.addEventListener('change', function(){
+        updateTransferOptionState(input);
+      });
+    });
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/maqvnqbj';
+  const PENSION_PER_PERSON_PER_DAY = 70;
+  const ROOM_RATES = { bungalow:100, villa:120, simple:100, familial:120 };
+
+  function $(id){ return document.getElementById(id); }
+
+  function firstNumber(value, fallback){
+    const m = String(value || '').match(/\d+/);
+    return m ? parseInt(m[0],10) : fallback;
+  }
+
+  function getRoomKey(){
+    const checked = document.querySelector('input[name="room"]:checked');
+    return checked ? checked.value : 'bungalow';
+  }
+
+  function getRoomName(){
+    const key = getRoomKey();
+    return key === 'villa' || key === 'familial' ? 'Bungalow familial' : 'Bungalow simple';
+  }
+
+  function getNights(){
+    const a = $('check-in')?.value || '';
+    const b = $('check-out')?.value || '';
+    if(!a || !b) return 0;
+    const d1 = new Date(a + 'T00:00:00');
+    const d2 = new Date(b + 'T00:00:00');
+    const diff = Math.round((d2 - d1) / 86400000);
+    return diff > 0 ? diff : 0;
+  }
+
+  function formatEuro(n){
+    return new Intl.NumberFormat('fr-FR', {style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+  }
+
+  function getTransfers(){
+    const list = [];
+    if($('transfer-airport')?.checked) list.push('Aéroport ↔ Hôtel Manga Beach : 80.000 Ar');
+    if($('transfer-boat')?.checked) list.push('Vedette Manga Beach ↔ Paradise Valley : 1.000.000 Ar');
+    return list.length ? list.join(' + ') : 'Aucun transfert demandé';
+  }
+
+  function getVal(id){
+    return ($(id)?.value || '').trim();
+  }
+
+  function showAlert(type, message){
+    const alertBox = $('reservation-alert');
+    if(!alertBox){
+      alert(message);
+      return;
+    }
+    alertBox.className = 'reservation-alert ' + type;
+    alertBox.innerHTML = message;
+    alertBox.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  function clearErrors(){
+    document.querySelectorAll('.field-err').forEach(e => e.remove());
+    document.querySelectorAll('.fg input,.fg select,.fg textarea').forEach(e => e.style.borderColor = '');
+  }
+
+  function fieldError(id, msg){
+    const el = $(id);
+    if(!el) return;
+    el.style.borderColor = '#e05252';
+    let err = el.parentNode.querySelector('.field-err');
+    if(!err){
+      err = document.createElement('span');
+      err.className = 'field-err';
+      err.style.cssText = 'color:#e05252;font-size:.78rem;margin-top:4px;display:block';
+      el.parentNode.appendChild(err);
+    }
+    err.textContent = msg;
+  }
+
+  function validate(){
+    clearErrors();
+    let ok = true;
+    if(!getVal('check-in')){ fieldError('check-in', 'Date d’arrivée requise'); ok = false; }
+    if(!getVal('check-out')){ fieldError('check-out', 'Date de départ requise'); ok = false; }
+    if(getVal('check-in') && getVal('check-out') && getNights() <= 0){ fieldError('check-out', 'La date de départ doit être après la date d’arrivée'); ok = false; }
+    if(!getVal('first-name')){ fieldError('first-name', 'Prénom requis'); ok = false; }
+    if(!getVal('last-name')){ fieldError('last-name', 'Nom requis'); ok = false; }
+    const email = getVal('email');
+    if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ fieldError('email', 'Email valide requis'); ok = false; }
+    if(!getVal('phone')){ fieldError('phone', 'Téléphone requis'); ok = false; }
+    return ok;
+  }
+
+  async function sendReservation(){
+    const btn = $('submit-btn');
+    if(!btn) return;
+
+    if(!validate()){
+      showAlert('error', 'Merci de vérifier les champs indiqués en rouge.');
+      return;
+    }
+
+    const nights = getNights();
+    const adults = firstNumber($('adults')?.value, 1);
+    const children = firstNumber($('children')?.value, 0);
+    const guests = adults + children;
+    const roomKey = getRoomKey();
+    const roomRate = ROOM_RATES[roomKey] || (roomKey === 'villa' ? 120 : 100);
+    const lodgingTotal = roomRate * nights;
+    const pensionTotal = guests * PENSION_PER_PERSON_PER_DAY * nights;
+    const total = lodgingTotal + pensionTotal;
+
+    const data = {
+      '_subject': 'Nouvelle réservation Paradise Valley',
+      'Prénom': getVal('first-name'),
+      'Nom': getVal('last-name'),
+      'Email': getVal('email'),
+      'Téléphone': getVal('phone'),
+      'Nationalité': getVal('nationality') || 'Non précisée',
+      'Date d’arrivée': getVal('check-in'),
+      'Date de départ': getVal('check-out'),
+      'Durée': nights + ' nuit' + (nights > 1 ? 's' : ''),
+      'Adultes': String(adults),
+      'Enfants': String(children),
+      'Bungalow': getRoomName(),
+      'Estimation hébergement': formatEuro(lodgingTotal),
+      'Estimation pension complète': formatEuro(pensionTotal),
+      'Total indicatif hors transferts': formatEuro(total),
+      'Transferts optionnels': getTransfers(),
+      'Mode de paiement souhaité': $('payment')?.value || 'Non précisé',
+      'Demandes spéciales': getVal('special-requests') || 'Aucune',
+      'Note paiement': 'Paiement uniquement après confirmation de disponibilité. Les numéros Mobile Money ne sont pas envoyés automatiquement.'
+    };
+
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours…';
+    btn.style.opacity = '.7';
+    showAlert('success', 'Envoi de votre demande en cours…');
+
+    try{
+      const resp = await fetch(FORMSPREE_ENDPOINT, {
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify(data)
+      });
+
+      if(resp.ok){
+        const overlay = $('success-overlay');
+        if(overlay) overlay.classList.add('visible');
+        showAlert('success', '✅ Votre demande de réservation a bien été envoyée. Nous vous répondrons sous 24h.');
+        btn.textContent = 'Demande envoyée';
+      }else{
+        let msg = 'Le message n’a pas pu être envoyé.';
+        try{
+          const j = await resp.json();
+          if(j && (j.error || j.message)) msg += ' ' + (j.error || j.message);
+        }catch(e){}
+        showAlert('error', '❌ ' + msg + '<br>Vous pouvez aussi écrire directement à <b>lodge.paradisevalley@yahoo.com</b>.');
+        btn.disabled = false;
+        btn.textContent = 'Confirmer ma réservation';
+        btn.style.opacity = '1';
+      }
+    }catch(e){
+      showAlert('error', '❌ Connexion impossible. Vérifiez internet ou écrivez directement à <b>lodge.paradisevalley@yahoo.com</b>.');
+      btn.disabled = false;
+      btn.textContent = 'Confirmer ma réservation';
+      btn.style.opacity = '1';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    const btn = $('submit-btn');
+    if(btn){
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        sendReservation();
+      });
+    }
+    const overlay = $('success-overlay');
+    if(overlay){
+      overlay.addEventListener('click', function(e){
+        if(e.target === overlay) overlay.classList.remove('visible');
+      });
+    }
+  });
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+/* ===== Reset intelligent + dates invalides ===== */
+(function(){
+  const ROOM_RATES = { bungalow:100, simple:100, villa:120, family:120, familial:120 };
+  const PENSION_PER_PERSON_PER_DAY = 70;
+
+  function $(id){ return document.getElementById(id); }
+
+  function todayISO(){
+    const d = new Date();
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+    return d.toISOString().split('T')[0];
+  }
+
+  function addDaysISO(dateISO, days){
+    const d = new Date(dateISO + 'T00:00:00');
+    d.setDate(d.getDate() + days);
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+    return d.toISOString().split('T')[0];
+  }
+
+  function firstNumber(value, fallback){
+    const m = String(value || '').match(/\d+/);
+    return m ? parseInt(m[0], 10) : fallback;
+  }
+
+  function formatEuro(n){
+    return new Intl.NumberFormat('fr-FR',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+  }
+
+  function setRowContains(labelNeedle, value){
+    document.querySelectorAll('.sum-row').forEach(row=>{
+      const label = row.querySelector('.sum-row-label');
+      const val = row.querySelector('.sum-row-val');
+      if(label && val && label.textContent.toLowerCase().includes(labelNeedle.toLowerCase())){
+        val.textContent = value;
+      }
+    });
+  }
+
+  function setText(selectors, value){
+    selectors.forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.textContent=value));
+  }
+
+  function getRoomKey(){
+    const checked = document.querySelector('input[name="room"]:checked, input[name="type-bungalow"]:checked, input[type="radio"]:checked');
+    if(checked && checked.value) return checked.value.toLowerCase();
+    return 'bungalow';
+  }
+
+  function getRoomName(key){
+    return (key.includes('villa') || key.includes('famil')) ? 'Bungalow familial' : 'Bungalow simple';
+  }
+
+  function getNights(){
+    const a = $('check-in')?.value || '';
+    const b = $('check-out')?.value || '';
+    if(!a || !b) return 0;
+    const diff = Math.round((new Date(b+'T00:00:00') - new Date(a+'T00:00:00')) / 86400000);
+    return diff > 0 ? diff : 0;
+  }
+
+  function getTransfersText(){
+    const list = [];
+    if($('transfer-airport')?.checked) list.push('Aéroport ↔ Manga Beach : 80.000 Ar');
+    if($('transfer-boat')?.checked) list.push('Vedette Manga Beach ↔ Paradise Valley : 1.000.000 Ar');
+    return list.length ? list.join(' + ') : '—';
+  }
+
+  function showDateError(field, type, msg){
+    // field = 'checkin' | 'checkout'
+    // type  = 'error-past' | 'error-order' | '' (clear)
+    const inputId  = field === 'checkin' ? 'check-in'      : 'check-out';
+    const errorId  = field === 'checkin' ? 'checkin-error'  : 'checkout-error';
+    const inputEl  = $(inputId);
+    const errorEl  = $(errorId);
+    if(!inputEl || !errorEl) return;
+
+    if(!type){
+      // Clear
+      inputEl.classList.remove('date-error','date-warn');
+      errorEl.className = 'date-field-error';
+      errorEl.textContent = '';
+      return;
+    }
+    inputEl.classList.remove('date-error','date-warn');
+    inputEl.classList.add(type === 'error-past' ? 'date-error' : 'date-warn');
+    errorEl.className = 'date-field-error show ' + type;
+    errorEl.textContent = msg;
+  }
+
+  function clearDateErrors(){
+    showDateError('checkin',  '', '');
+    showDateError('checkout', '', '');
+  }
+
+  function clearSummary(){
+    document.querySelectorAll('.sum-row-val').forEach(el=>el.textContent='—');
+    ['#summary-duration','#summary-adults','#summary-guests','#summary-lodging','#summary-pension','#summary-transfers','#summary-total'].forEach(sel=>{
+      document.querySelectorAll(sel).forEach(el=>el.textContent='—');
+    });
+    const total = document.querySelector('.sum-total-val');
+    if(total) total.textContent = '—';
+    document.querySelector('.summary-card')?.classList.add('is-empty');
+  }
+
+  function normalizeDates(changedField){
+    const checkin  = $('check-in');
+    const checkout = $('check-out');
+    if(!checkin || !checkout) return;
+
+    syncDateLimits();
+    clearDateErrors();
+
+    const today = todayISO();
+
+    // Arrivée dans le passé
+    if(checkin.value && checkin.value < today){
+      checkin.value  = '';
+      checkout.value = '';
+      showDateError('checkin', 'error-past', '⛔ Cette date est déjà passée. Choisissez une date à partir d\'aujourd\'hui.');
+      clearSummary();
+      syncDateLimits();
+      return;
+    }
+
+    // Départ ≤ Arrivée (quand on change l'arrivée)
+    if(changedField === 'checkin' && checkin.value && checkout.value && checkout.value <= checkin.value){
+      checkout.value = '';
+      showDateError('checkout', 'error-order', '📅 Choisissez une date de départ après le ' + new Date(checkin.value + 'T00:00:00').toLocaleDateString('fr-FR') + '.');
+      clearSummary();
+      syncDateLimits();
+      return;
+    }
+
+    // Départ ≤ Arrivée (quand on change le départ)
+    if(changedField === 'checkout' && checkin.value && checkout.value && checkout.value <= checkin.value){
+      checkout.value = '';
+      showDateError('checkout', 'error-order', '📅 La date de départ doit être après l\'arrivée (' + new Date(checkin.value + 'T00:00:00').toLocaleDateString('fr-FR') + ').');
+      clearSummary();
+      syncDateLimits();
+      return;
+    }
+
+    updateSummaryDirect();
+  }
+    document.querySelectorAll('.sum-row-val').forEach(el=>el.textContent='—');
+    setText(['#summary-duration','#summary-adults','#summary-guests','#summary-lodging','#summary-pension','#summary-transfers','#summary-total'], '—');
+    const total = document.querySelector('.sum-total-val');
+    if(total) total.textContent = '—';
+    document.querySelector('.summary-card')?.classList.add('is-empty');
+  }
+
+  function updateSummaryDirect(){
+    const nights = getNights();
+    if(nights <= 0){
+      clearSummary();
+      return;
+    }
+
+    const checkin = $('check-in')?.value || '';
+    const checkout = $('check-out')?.value || '';
+    const adults = firstNumber($('adults')?.value, 1);
+    const children = firstNumber($('children')?.value, 0);
+    const guests = adults + children;
+    const roomKey = getRoomKey();
+    const roomName = getRoomName(roomKey);
+    const roomRate = (roomName === 'Bungalow familial') ? 120 : 100;
+
+    const lodging = roomRate * nights;
+    const pension = guests * PENSION_PER_PERSON_PER_DAY * nights;
+    const total = lodging + pension;
+
+    const durationText = nights + ' nuit' + (nights > 1 ? 's' : '');
+    const adultsText = adults + ' adulte' + (adults > 1 ? 's' : '');
+    const travellersText = adultsText + (children > 0 ? ' + ' + children + ' enfant' + (children > 1 ? 's' : '') : '');
+
+    document.querySelector('.summary-card')?.classList.remove('is-empty');
+
+    const fmtDate = iso => iso ? new Date(iso + 'T00:00:00').toLocaleDateString('fr-FR') : '—';
+
+    setRowContains('Arrivée', fmtDate(checkin));
+    setRowContains('Départ', fmtDate(checkout));
+    setRowContains('Durée', durationText);
+    setRowContains('Adulte', adultsText);
+    setRowContains('Voyageur', travellersText);
+    setRowContains('Personne', travellersText);
+    setRowContains('Bungalow', roomName);
+    setRowContains('Hébergement', formatEuro(lodging));
+    setRowContains('Pension', formatEuro(pension));
+    setRowContains('Transferts', getTransfersText());
+    setRowContains('Total', formatEuro(total));
+    setRowContains('Indicatif', formatEuro(total));
+
+    setText(['#summary-duration'], durationText);
+    setText(['#summary-adults'], adultsText);
+    setText(['#summary-guests'], travellersText);
+    setText(['#summary-lodging'], formatEuro(lodging));
+    setText(['#summary-pension'], formatEuro(pension));
+    setText(['#summary-transfers'], getTransfersText());
+    setText(['#summary-total','.summary-total-val'], formatEuro(total));
+  }
+
+  function syncDateLimits(){
+    const checkin = $('check-in');
+    const checkout = $('check-out');
+    if(!checkin || !checkout) return;
+
+    const today = todayISO();
+    checkin.min = today;
+    checkout.min = checkin.value ? addDaysISO(checkin.value, 1) : today;
+
+    checkin.disabled = false;
+    checkout.disabled = false;
+  }
+
+  function resetDirectAccess(){
+    const hasParams = window.location.search.length > 0;
+    if(hasParams) return false;
+
+    const form = document.querySelector('form, .form-card');
+    if(form) form.reset();
+
+    const checkin = $('check-in');
+    const checkout = $('check-out');
+    if(checkin) checkin.value = '';
+    if(checkout) checkout.value = '';
+
+    document.querySelectorAll('.transfer-option input[type="checkbox"]').forEach(cb=>{
+      cb.checked = false;
+      cb.closest('.transfer-option')?.classList.remove('active','just-checked');
+    });
+
+    document.querySelectorAll('.room-opt').forEach(opt=>opt.classList.remove('selected'));
+    const firstRoom = document.querySelector('.room-opt input[type="radio"]');
+    if(firstRoom){
+      firstRoom.checked = true;
+      firstRoom.closest('.room-opt')?.classList.add('selected');
+    }
+
+    syncDateLimits();
+    clearSummary();
+    return true;
+  }
+
+  function applyParams(){
+    const params = new URLSearchParams(window.location.search);
+    if(!params.toString()) return false;
+
+    if(params.get('checkin') && $('check-in')) $('check-in').value = params.get('checkin');
+    if(params.get('checkout') && $('check-out')) $('check-out').value = params.get('checkout');
+
+    const adults = params.get('adults') || params.get('guests') || params.get('personnes');
+    if(adults && $('adults')){
+      const n = firstNumber(adults, 1);
+      const opt = Array.from($('adults').options).find(o=>firstNumber(o.value || o.textContent,-1) === n);
+      if(opt) $('adults').value = opt.value;
+    }
+
+    syncDateLimits();
+    normalizeDates('params');
+    return true;
+  }
+
+  function installListeners(){
+    $('check-in')?.addEventListener('change', ()=>normalizeDates('checkin'));
+    $('check-out')?.addEventListener('focus', syncDateLimits);
+    $('check-out')?.addEventListener('click', syncDateLimits);
+    $('check-out')?.addEventListener('change', ()=>normalizeDates('checkout'));
+
+    ['adults','children','transfer-airport','transfer-boat'].forEach(id=>{
+      $(id)?.addEventListener('change', updateSummaryDirect);
+    });
+
+    document.querySelectorAll('.room-opt').forEach(opt=>{
+      opt.addEventListener('click', function(){
+        document.querySelectorAll('.room-opt').forEach(o=>o.classList.remove('selected'));
+        opt.classList.add('selected');
+        const input = opt.querySelector('input[type="radio"]');
+        if(input) input.checked = true;
+        updateSummaryDirect();
+      });
+    });
+
+    document.querySelectorAll('.transfer-option input[type="checkbox"]').forEach(input=>{
+      input.addEventListener('change', function(){
+        const card = input.closest('.transfer-option');
+        if(card){
+          card.classList.toggle('active', input.checked);
+          if(input.checked){
+            card.classList.remove('just-checked');
+            void card.offsetWidth;
+            card.classList.add('just-checked');
+            setTimeout(()=>card.classList.remove('just-checked'), 500);
+          }
+        }
+        updateSummaryDirect();
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    // prevent browser autofill from leaving old reservation values visible on direct access
+    const didReset = resetDirectAccess();
+    if(!didReset) applyParams();
+    installListeners();
+    setTimeout(syncDateLimits, 100);
+  });
+})();
+</script>
+
+</body>
+</html>

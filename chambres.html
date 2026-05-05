@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bungalows — Paradise Valley</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --ocean:#4b8f2f;
+      --ocean-mid:#6fb13f;
+      --ocean-light:#e6f1dc;
+      --ocean-dark:#2f641f;
+      --sand:#d9b86c;
+      --sand-light:#f6f1e4;
+      --sand-dark:#b78935;
+      --white:#fff;
+      --text:#1f2f1c;
+      --muted:#5f7059;
+      --border:#dce8d2;
+      --light:#edf6e7;
+      --gold-soft:#f0dfb2;
+      --leaf:#73a843;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Nunito',sans-serif;background:var(--sand-light);color:var(--text);overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:var(--ocean);border-bottom:1px solid rgba(200,232,240,.1)}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ocean-light)}
+    .nav-logo span{font-style:italic;color:var(--sand)}
+    .nav-links{display:flex;gap:2.5rem;font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+    .nav-links a{color:#8ac8dc;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--sand)}
+    .nav-cta{background:var(--sand);color:var(--ocean);padding:.6rem 1.6rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;border-radius:2px;cursor:pointer;border:none}
+    .page-header{background:var(--ocean);padding:5rem 4rem 4rem;text-align:center;position:relative;overflow:hidden}
+    .ph-bg{position:absolute;inset:0;opacity:.15}
+    .ph-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sand);margin-bottom:1rem;position:relative;z-index:1;font-weight:600}
+    .ph-title{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:400;color:#f5f0e8;line-height:1.1;position:relative;z-index:1}
+    .ph-title em{font-style:italic;color:var(--sand)}
+    .ph-sub{font-size:.88rem;color:var(--ocean-light);font-weight:300;letter-spacing:.1em;margin-top:1rem;opacity:.85;position:relative;z-index:1}
+    .tarif-bar{background:var(--ocean-mid);padding:1.8rem 4rem;display:flex;justify-content:center;gap:4rem;flex-wrap:wrap}
+    .ti{text-align:center;color:#f5f0e8}
+    .ti-name{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ocean-light);margin-bottom:.5rem;font-weight:600}
+    .ti-price{font-family:'Playfair Display',serif;font-size:2rem;color:var(--sand)}
+    .ti-price span{font-size:.72rem;font-family:'Nunito',sans-serif;color:#a8d8e8}
+    .ti-detail{font-size:.7rem;color:#a8d8e8;margin-top:.3rem}
+    .ti-sep{width:1px;background:rgba(200,232,240,.2)}
+    .inclus-section{background:var(--light);padding:2rem 4rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .inclus-title{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;text-align:center;font-weight:600}
+    .inclus-grid{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+    .inclus-item{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--text);font-weight:600}
+    .inclus-dot{width:8px;height:8px;background:var(--sand-dark);border-radius:50%;flex-shrink:0}
+    .intro{display:grid;grid-template-columns:1fr 1fr;gap:4rem;padding:5rem 4rem;align-items:center}
+    .intro-label{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem;font-weight:600}
+    .intro-title{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:400;line-height:1.2;margin-bottom:1rem}
+    .intro-title em{font-style:italic;color:var(--ocean-mid)}
+    .sand-line{width:50px;height:2px;background:var(--sand-dark);margin-bottom:2rem;border-radius:1px}
+    .intro-p{font-size:.9rem;color:var(--muted);line-height:1.9;font-weight:300;margin-bottom:1rem}
+    .stats{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+    .stat{text-align:center;background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.5rem}
+    .stat-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:400;color:var(--ocean)}
+    .stat-label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:.3rem;font-weight:600}
+    .section{padding:5rem 4rem}
+    .section-label{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:.8rem;font-weight:600}
+    .section-title{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:400;line-height:1.2;margin-bottom:1rem}
+    .section-title em{font-style:italic;color:var(--ocean-mid)}
+    .bungalows-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+    .b-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+    .b-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(14,77,110,.1)}
+    .b-img{height:180px;display:flex;align-items:center;justify-content:center;position:relative}
+    .bi1{background:linear-gradient(135deg,#0e4d6e,#0a3a52)}
+    .bi2{background:linear-gradient(135deg,#1a7fa0,#0e4d6e)}
+    .bi3{background:linear-gradient(135deg,#0a3a52,#1a7fa0)}
+    .bi4{background:linear-gradient(135deg,#2a9fc8,#1a7fa0)}
+    .bi5{background:linear-gradient(135deg,#0e4d6e,#2a9fc8)}
+    .bi6{background:linear-gradient(135deg,#1a7fa0,#0a3a52)}
+    .b-num{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.25);color:var(--ocean-light);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;padding:3px 8px;border-radius:1px;font-weight:600}
+    .b-badge{position:absolute;top:10px;right:10px;background:var(--sand);color:var(--ocean);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:1px;font-weight:700}
+    .b-body{padding:1.3rem}
+    .b-type{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem;font-weight:600}
+    .b-name{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ocean);margin-bottom:.5rem}
+    .b-desc{font-size:.8rem;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:.9rem}
+    .b-feats{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+    .feat{font-size:.68rem;background:var(--light);color:var(--ocean-mid);padding:3px 9px;border-radius:20px;border:1px solid var(--border);font-weight:600}
+    .b-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:.9rem}
+    .b-price{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--ocean)}
+    .b-price span{font-size:.65rem;font-family:'Nunito',sans-serif;color:var(--muted);display:block}
+    .btn-reserve{background:var(--ocean);color:#fff;border:none;padding:.45rem 1.1rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;border-radius:2px;cursor:pointer;font-family:'Nunito',sans-serif;font-weight:600}
+    .btn-reserve:hover{background:var(--ocean-mid)}
+    .familial-section{background:var(--ocean);padding:5rem 4rem}
+    .familial-card{background:rgba(255,255,255,.06);border:1px solid rgba(200,232,240,.15);border-radius:8px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;margin-top:2.5rem}
+    .fam-img{background:linear-gradient(135deg,#1a7fa0,#0a3a52);min-height:380px;display:flex;align-items:center;justify-content:center;position:relative}
+    .fam-tag{position:absolute;top:16px;left:16px;background:var(--sand);color:var(--ocean);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;padding:5px 12px;border-radius:1px;font-weight:700}
+    .fam-body{padding:3rem;display:flex;flex-direction:column;justify-content:center}
+    .fam-type{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ocean-light);margin-bottom:.6rem;font-weight:600}
+    .fam-name{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:#f5f0e8;margin-bottom:1rem;line-height:1.2}
+    .fam-name em{font-style:italic;color:var(--sand)}
+    .fam-desc{font-size:.88rem;color:#a8d8e8;line-height:1.9;font-weight:300;margin-bottom:1.5rem}
+    .fam-feats{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}
+    .fam-feat{font-size:.7rem;border:1px solid rgba(200,232,240,.2);color:var(--ocean-light);padding:4px 12px;border-radius:20px;font-weight:600}
+    .fam-footer{border-top:1px solid rgba(200,232,240,.15);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center}
+    .fam-price{font-family:'Playfair Display',serif;font-size:2rem;color:var(--sand)}
+    .fam-price span{font-size:.7rem;font-family:'Nunito',sans-serif;color:#8ac8dc;display:block}
+    .btn-gold{background:var(--sand);color:var(--ocean);border:none;padding:.75rem 1.8rem;font-family:'Nunito',sans-serif;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;border-radius:2px;cursor:pointer}
+    .tarif-table-section{padding:4rem;background:var(--light)}
+    .tarif-table{width:100%;border-collapse:collapse;margin-top:2rem;background:#fff;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+    .tarif-table th{background:var(--ocean);color:#f5f0e8;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;padding:1rem 1.2rem;text-align:left;font-weight:600}
+    .tarif-table td{padding:1rem 1.2rem;font-size:.85rem;border-bottom:1px solid var(--border)}
+    .tarif-table tr:last-child td{border-bottom:none}
+    .tarif-table tr:hover td{background:#f0f8fc}
+    .td-name{font-family:'Playfair Display',serif;font-size:1rem;color:var(--ocean)}
+    .td-price{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ocean)}
+    .td-gold{color:var(--sand-dark);font-weight:700}
+    .td-muted{color:var(--muted);font-size:.78rem}
+    .cta-strip{background:var(--ocean-mid);padding:3.5rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem}
+    .cta-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:#f5f0e8}
+    .cta-title em{font-style:italic;color:var(--sand)}
+    .cta-sub{font-size:.85rem;color:#a8d8e8;margin-top:.4rem;font-weight:300}
+    .btn-primary{background:var(--sand);color:var(--ocean);padding:.85rem 2.4rem;font-family:'Nunito',sans-serif;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;border:none;border-radius:2px;cursor:pointer}
+    .btn-outline-light{background:transparent;color:#f5f0e8;padding:.85rem 2.4rem;font-family:'Nunito',sans-serif;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;border:1px solid rgba(200,232,240,.3);border-radius:2px;cursor:pointer}
+    footer{background:var(--ocean-dark);color:#f5f0e8;padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(200,232,240,.08)}
+    .ft-logo{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ocean-light)}
+    .ft-logo span{font-style:italic;color:var(--sand)}
+    .ft-links{display:flex;gap:2rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+    .ft-links a{color:#5a8a9f;transition:color .2s}
+    .ft-links a:hover{color:var(--ocean-light)}
+    .ft-copy{font-size:.72rem;color:#3a6a7a}
+    @media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}.page-header{padding:3rem 1.5rem 2.5rem}.ph-title{font-size:2.2rem}.intro{grid-template-columns:1fr;padding:3rem 1.5rem;gap:2rem}.section{padding:3rem 1.5rem}.bungalows-grid{grid-template-columns:1fr 1fr}.familial-section{padding:3rem 1.5rem}.familial-card{grid-template-columns:1fr}.fam-img{min-height:220px}.fam-body{padding:2rem 1.5rem}.tarif-table-section{padding:3rem 1.5rem}.tarif-bar{gap:2rem;padding:1.5rem}.cta-strip{padding:2.5rem 1.5rem}}
+    @media(max-width:600px){.bungalows-grid{grid-template-columns:1fr}}
+  
+    /* ═══════════════ RESPONSIVE MOBILE ═══════════════ */
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;z-index:200}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--ocean-light);border-radius:2px;transition:all .3s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mobile-menu{display:none;position:fixed;inset:0;background:var(--ocean-dark);z-index:150;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-family:'Playfair Display',serif;font-size:1.8rem;color:#f5f0e8;font-weight:400}
+    .mobile-menu a:hover{color:var(--sand)}
+    .mobile-menu .mob-cta{margin-top:1rem;background:var(--sand);color:var(--ocean);padding:.8rem 2.5rem;font-family:'Nunito',sans-serif;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;border-radius:2px;border:none;cursor:pointer}
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem}
+      .nav-links,.nav-cta{display:none}
+      .hamburger{display:flex}
+      /* sections */
+      .section{padding:3rem 1.2rem}
+      .gallery-preview{padding:3rem 1.2rem}
+      /* hero */
+      .hero-title{font-size:clamp(2rem,9vw,3.5rem)}
+      .hero-badge{font-size:.6rem;letter-spacing:.18em}
+      .hero-actions{flex-direction:column;align-items:center;gap:.8rem}
+      /* booking bar */
+      .booking-bar{flex-direction:column;padding:1.5rem 1.2rem;gap:1rem}
+      .bk-group input,.bk-group select{width:100%}
+      .bk-group{width:100%}
+      .btn-search{width:100%;padding:.75rem}
+      /* nature strip */
+      .nature-strip{padding:1.5rem 1.2rem;gap:1.5rem;justify-content:center}
+      /* rooms */
+      .rooms-grid{grid-template-columns:1fr}
+      /* highlights */
+      .highlights{grid-template-columns:1fr;padding:3rem 1.2rem;gap:2.5rem}
+      .hl-grid{grid-template-columns:1fr 1fr}
+      /* gallery preview */
+      .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+      .gi:first-child{grid-row:auto;grid-column:1/3;height:180px}
+      .gi{height:160px}
+      /* testimonials */
+      .testi-grid{grid-template-columns:1fr}
+      /* cta strip */
+      .cta-strip{padding:2.5rem 1.2rem;flex-direction:column;text-align:center}
+      .cta-title{font-size:1.6rem}
+      /* footer */
+      .ft-top{grid-template-columns:1fr;gap:2rem;padding-bottom:2rem}
+      .ft-bottom{flex-direction:column;text-align:center;gap:.5rem}
+      /* chambres */
+      .intro{grid-template-columns:1fr;padding:3rem 1.2rem;gap:2rem}
+      .stats{grid-template-columns:1fr 1fr}
+      .bungalows-grid{grid-template-columns:1fr}
+      .familial-card{grid-template-columns:1fr}
+      .fam-img{min-height:220px}
+      .fam-body{padding:2rem 1.5rem}
+      .tarif-bar{padding:1.5rem 1.2rem;gap:2rem}
+      .inclus-section{padding:1.5rem 1.2rem}
+      .tarif-table-section{padding:3rem 1.2rem}
+      .tarif-table{font-size:.78rem}
+      .tarif-table th,.tarif-table td{padding:.6rem .5rem}
+      /* reservation */
+      .res-layout{grid-template-columns:1fr;padding:2rem 1.2rem;gap:1.5rem}
+      .form-row{grid-template-columns:1fr}
+      .form-row.three{grid-template-columns:1fr 1fr}
+      .summary-card{position:static}
+      .extras-grid{grid-template-columns:1fr}
+      /* contact */
+      .contact-layout{grid-template-columns:1fr}
+      .contact-info{padding:3rem 1.5rem}
+      .contact-form-side{padding:3rem 1.5rem}
+      .map-section{grid-template-columns:1fr}
+      .practical-info{padding:2.5rem 1.5rem}
+      .map-placeholder{min-height:280px}
+      .faq-grid{grid-template-columns:1fr}
+      /* galerie */
+      .filter-bar{padding:1.2rem 1rem;gap:.4rem}
+      .fbtn{padding:.4rem 1rem;font-size:.68rem}
+      .gallery-section{padding:2.5rem 1rem 1.5rem}
+      .grid-hero{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+      .grid-hero .gi:first-child{grid-column:1/3;grid-row:auto;height:220px}
+      .grid-3{grid-template-columns:1fr}
+      .grid-3 .gi{height:180px}
+      .grid-4{grid-template-columns:1fr 1fr}
+      .grid-4 .gi{height:160px}
+      .grid-mixed{grid-template-columns:1fr}
+      .grid-mixed .gi:nth-child(2){grid-column:auto}
+      .alt-bg{padding:2rem 1rem}
+      /* page headers */
+      .page-header{padding:3rem 1.5rem 2.5rem}
+      .ph-title{font-size:2.2rem}
+    }
+    @media(max-width:480px){
+      .hl-grid{grid-template-columns:1fr}
+      .grid-hero{grid-template-columns:1fr}
+      .grid-hero .gi:first-child{grid-column:auto}
+      .grid-4{grid-template-columns:1fr}
+      .stats{grid-template-columns:1fr}
+      .form-row.three{grid-template-columns:1fr}
+      .social-row{justify-content:center}
+      .subject-options{grid-template-columns:1fr}
+    }
+
+  
+
+    /* ═══════════════ POLISH PREMIUM V2 — Paradise Valley ═══════════════ */
+    :root{--shadow-soft:0 18px 60px rgba(10,58,82,.12);--shadow-card:0 12px 36px rgba(10,58,82,.10);--radius-xl:18px;--radius-lg:12px;--cream:#fffaf0;--leaf:#2f6f5e;--coral:#d88c5a}
+    ::selection{background:var(--sand);color:var(--ocean-dark)}
+    body{background:linear-gradient(180deg,var(--sand-light),#fffdf7 45%,var(--sand-light));}
+    nav{backdrop-filter:blur(14px);box-shadow:0 8px 28px rgba(6,40,64,.18);padding:1rem 4rem;background:linear-gradient(90deg,rgba(10,58,82,.98),rgba(14,77,110,.98));}
+    .nav-logo{display:flex;align-items:center;gap:.35rem;letter-spacing:.02em;position:relative}
+    .nav-logo::before{content:'✦';display:grid;place-items:center;width:32px;height:32px;border:1px solid rgba(232,213,163,.45);border-radius:50%;font-size:.75rem;color:var(--sand);background:rgba(255,255,255,.04)}
+    .nav-links a{position:relative;padding:.5rem 0;color:rgba(200,232,240,.78)}
+    .nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:.1rem;height:1px;background:var(--sand);transform:scaleX(0);transform-origin:center;transition:transform .25s ease}
+    .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+    .nav-cta,.btn-primary,.btn-search,.btn-submit,.btn-gold,.room-btn,.btn-reserve{border-radius:999px!important;box-shadow:0 10px 24px rgba(0,0,0,.12);transition:transform .2s ease,box-shadow .2s ease,opacity .2s ease,background .2s ease}
+    .nav-cta:hover,.btn-primary:hover,.btn-search:hover,.btn-submit:hover,.btn-gold:hover,.room-btn:hover,.btn-reserve:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.18)}
+    .btn-outline,.btn-outline-light{border-radius:999px!important;transition:all .2s ease}
+    .hero,.page-header{background:radial-gradient(circle at 20% 15%,rgba(232,213,163,.16),transparent 30%),linear-gradient(135deg,var(--ocean-dark),var(--ocean) 55%,#116986)}
+    .hero::after,.page-header::after{content:'';position:absolute;inset:auto 0 0;height:42%;background:linear-gradient(180deg,transparent,rgba(10,58,82,.22));pointer-events:none}
+    .hero-badge,.ph-label{border-radius:999px;background:rgba(232,213,163,.09);border:1px solid rgba(232,213,163,.30);padding:.45rem 1.1rem;display:inline-block}
+    .hero-title,.ph-title,.section-title,.ci-title,.cf-title,.faq-title,.fam-name,.cta-title{letter-spacing:-.02em}
+    .hero-sub,.ph-sub{max-width:780px;margin-left:auto;margin-right:auto;line-height:1.8}
+    .booking-bar,.tarif-bar,.cta-strip{box-shadow:inset 0 1px 0 rgba(255,255,255,.08);background:linear-gradient(135deg,var(--ocean-mid),#0d6883)}
+    .bk-group input,.bk-group select{border-radius:999px;background:rgba(255,255,255,.14)}
+    .nature-strip,.inclus-section,.gallery-preview,.faq-section,.alt-bg{background:linear-gradient(180deg,#f4fbfd,#fffaf0)}
+    .room-card,.b-card,.testi-card,.stat,.form-card,.summary-card,.info-card,.policy-card,.faq-item,.cc-card,.familial-card{border-radius:var(--radius-lg)!important;box-shadow:var(--shadow-card);border-color:rgba(26,127,160,.16)!important}
+    .room-card:hover,.b-card:hover,.testi-card:hover,.faq-item:hover{transform:translateY(-6px);box-shadow:var(--shadow-soft)}
+    .room-img,.b-img,.fam-img,.gi-inner,.lb-img{background-size:cover!important;background-position:center!important;position:relative}
+    .room-img::after,.b-img::after,.fam-img::after,.gi-inner::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(232,213,163,.18),transparent 28%),linear-gradient(180deg,rgba(255,255,255,.02),rgba(10,58,82,.18));pointer-events:none}
+    .ri-1,.bi1,.c1,.gc1{background:linear-gradient(135deg,#083447,#0f6e84 55%,#d4b36d)!important}
+    .ri-2,.bi2,.c2,.gc2{background:linear-gradient(135deg,#0d5d77,#1ba0b8 55%,#f0d99b)!important}
+    .ri-3,.bi3,.c3,.gc3{background:linear-gradient(135deg,#062840,#116986 58%,#2f6f5e)!important}
+    .bi4,.c4,.gc4{background:linear-gradient(135deg,#178aaa,#72c7d8 52%,#e8d5a3)!important}
+    .bi5,.c5,.gc5{background:linear-gradient(135deg,#0e4d6e,#2f6f5e 55%,#d88c5a)!important}
+    .bi6,.c6{background:linear-gradient(135deg,#1a7fa0,#0e4d6e 55%,#c4a96b)!important}
+    .room-tag,.b-badge,.fam-tag{border-radius:999px;box-shadow:0 8px 18px rgba(0,0,0,.14)}
+    .feat,.fam-feat{border-radius:999px;background:rgba(26,127,160,.08)}
+    .sand-line{height:3px;border-radius:999px;background:linear-gradient(90deg,var(--sand-dark),var(--sand),transparent)}
+    .gallery-grid,.grid-hero,.grid-3,.grid-4,.grid-mixed{gap:14px}
+    .gi{border-radius:16px;box-shadow:var(--shadow-card)}
+    .gi-overlay{background:linear-gradient(180deg,transparent,rgba(6,40,64,.58))!important}
+    .contact-info,.practical-info,.familial-section,.highlights,.summary-card{background:radial-gradient(circle at 25% 15%,rgba(232,213,163,.12),transparent 28%),linear-gradient(135deg,var(--ocean-dark),var(--ocean))!important}
+    input,select,textarea{transition:border-color .2s ease,box-shadow .2s ease}
+    input:focus,select:focus,textarea:focus{box-shadow:0 0 0 4px rgba(26,127,160,.12)}
+    footer{background:linear-gradient(135deg,#062840,var(--ocean-dark));}
+    .mobile-menu{background:radial-gradient(circle at 30% 20%,rgba(232,213,163,.12),transparent 32%),linear-gradient(135deg,#062840,var(--ocean-dark))}
+    @media(max-width:900px){nav{padding:1rem 1.2rem}.nav-logo::before{width:28px;height:28px}.mobile-menu a{font-size:1.55rem}.hero{min-height:86vh}.page-header{padding-top:3.5rem}.room-opt{align-items:flex-start}.room-opt-price{text-align:left}.hero-actions a,.hero-actions button,.cta-strip a,.cta-strip button{width:100%}.hero-actions,.cta-strip>div:last-child{width:100%}.hero-actions button,.cta-strip button{justify-content:center}}
+
+    /* ═══════════════ ULTRA PREMIUM VISUAL LAYER — Paradise Valley ═══════════════ */
+    :root{--gold:#e8d5a3;--gold-deep:#b8954f;--ink:#082b3d;--glass:rgba(255,255,255,.08);--shadow-soft:0 24px 70px rgba(8,43,61,.14);--shadow-deep:0 28px 90px rgba(8,43,61,.28)}
+    body{background:radial-gradient(circle at 8% 0%,rgba(232,213,163,.22),transparent 28%),linear-gradient(180deg,#fbf6ea 0%,#eef7fb 45%,#faf5e9 100%)}
+    nav{backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:linear-gradient(135deg,rgba(8,43,61,.94),rgba(14,77,110,.9));box-shadow:0 10px 34px rgba(8,43,61,.18)}
+    .nav-logo{letter-spacing:.02em;text-shadow:0 2px 14px rgba(232,213,163,.18)}
+    .nav-links a{position:relative;padding:.4rem 0}.nav-links a::after{content:'';position:absolute;left:0;right:0;bottom:-.25rem;height:1px;background:var(--sand);transform:scaleX(0);transform-origin:center;transition:transform .25s ease}.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+    .nav-cta,.btn-primary,.btn-search,.btn-submit,.btn-gold,.room-btn,.btn-reserve{background:linear-gradient(135deg,var(--sand),#f3dfad 45%,var(--sand-dark));box-shadow:0 12px 28px rgba(184,149,79,.24);border:0;color:var(--ocean-dark);transition:transform .2s ease,box-shadow .2s ease,filter .2s ease}
+    .nav-cta:hover,.btn-primary:hover,.btn-search:hover,.btn-submit:hover,.btn-gold:hover,.room-btn:hover,.btn-reserve:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(184,149,79,.33);filter:saturate(1.05)}
+    .page-header,.hero{background:radial-gradient(circle at 50% 0%,rgba(232,213,163,.12),transparent 35%),linear-gradient(145deg,#082b3d 0%,#0e4d6e 55%,#1a7fa0 100%)}
+    .ph-label,.section-label,.faq-label,.ci-label,.sec-cat-label{letter-spacing:.34em}.ph-title,.hero-title,.section-title,.ci-title,.cf-title,.faq-title{letter-spacing:-.025em}.ph-sub,.hero-sub{opacity:.92}
+    .booking-bar,.tarif-bar,.cta-strip{background:linear-gradient(135deg,#0e4d6e,#1a7fa0);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+    .form-card,.summary-card,.info-card,.policy-card,.room-card,.b-card,.stat,.faq-item,.contact-form-side,.success-box{box-shadow:var(--shadow-soft);border-color:rgba(208,232,239,.85)}
+    .form-card,.room-card,.b-card,.faq-item,.info-card,.policy-card,.stat{border-radius:16px}.summary-card{border-radius:18px;background:linear-gradient(160deg,#082b3d,#0e4d6e 70%,#135f7d);box-shadow:var(--shadow-deep);border:1px solid rgba(200,232,240,.16)}
+    .room-opt{border-radius:14px;background:linear-gradient(180deg,#fff,#fbfdfe)}.room-opt.selected{background:linear-gradient(135deg,#eef7fb,#fff8e5);box-shadow:0 14px 42px rgba(14,77,110,.1)}
+    .fg input,.fg select,.fg textarea,.bk-group input,.bk-group select{border-radius:10px;transition:border-color .2s,box-shadow .2s,background .2s}.fg input:focus,.fg select:focus,.fg textarea:focus{box-shadow:0 0 0 4px rgba(26,127,160,.12)}
+    .room-img,.b-img,.gi-inner,.fam-img{position:relative}.room-img::after,.b-img::after,.gi-inner::after,.fam-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 35%,rgba(232,213,163,.10));pointer-events:none}
+    .sand-line{height:3px;background:linear-gradient(90deg,var(--sand-dark),var(--sand),transparent);width:72px}.step{background:linear-gradient(135deg,var(--ocean),var(--ocean-mid));box-shadow:0 8px 18px rgba(14,77,110,.22)}
+    .policy-item::before{color:var(--gold-deep)}.sum-total-val{font-size:2rem;text-shadow:0 6px 26px rgba(232,213,163,.18)}
+    footer{background:linear-gradient(145deg,#062840,#0a3a52);box-shadow:0 -20px 60px rgba(8,43,61,.12)}
+    @media(max-width:900px){.page-header{padding-top:3.4rem}.form-card{padding:1.5rem}.room-opt{align-items:flex-start}.room-opt-price{text-align:left}.summary-card{top:auto}.mobile-menu{background:linear-gradient(145deg,#062840,#0e4d6e)}}
+
+  
+    .conversion-room-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem}
+    .conversion-room-cta a{flex:1;min-width:140px}
+    .btn-wa-mini{display:block;background:#25D366;color:#07351a;text-align:center;padding:.65rem 1rem;border-radius:4px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:900}
+    .btn-res-mini{display:block;background:var(--ocean);color:#fff;text-align:center;padding:.65rem 1rem;border-radius:4px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800}
+    /* =========================================================
+       CLEAN FINAL CSS — Paradise Valley
+       Stable desktop + mobile, sans changer le design validé
+    ========================================================= */
+
+    html{
+      font-size:16px;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-size:1rem;
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+    }
+
+    img{
+      max-width:100%;
+      height:auto;
+    }
+
+    /* Lisibilité générale */
+    p,
+    .intro-p,
+    .room-desc,
+    .b-desc,
+    .fam-desc,
+    .hl-p,
+    .hl-desc,
+    .ci-p,
+    .cf-sub,
+    .faq-a,
+    .pi-val,
+    .info-item-text,
+    .policy-item,
+    .form-note,
+    .sum-note,
+    .ft-desc,
+    .conv-sub,
+    .transfer-desc{
+      font-size:.96rem;
+      line-height:1.75;
+    }
+
+    .section-label,
+    .intro-label,
+    .faq-label,
+    .room-type,
+    .b-type,
+    .fam-type,
+    .cc-label,
+    .pi-label,
+    .form-sec-title,
+    .transfer-title{
+      opacity:1;
+    }
+
+    /* Résumé réservation : bloc opaque, lisible, sans transparence */
+    .summary-card{
+      background:#ffffff !important;
+      color:var(--text) !important;
+      border:1px solid var(--border) !important;
+      box-shadow:0 14px 38px rgba(10,58,82,.10) !important;
+      position:sticky;
+      top:100px;
+      z-index:3;
+      opacity:1 !important;
+      backdrop-filter:none !important;
+      -webkit-backdrop-filter:none !important;
+    }
+
+    .summary-card::before,
+    .summary-card::after{
+      display:none !important;
+      content:none !important;
+    }
+
+    .summary-card *{
+      text-shadow:none !important;
+    }
+
+    .sum-title{
+      color:var(--ocean) !important;
+      border-bottom:1px solid var(--border) !important;
+    }
+
+    .sum-row-label,
+    .sum-total-label{
+      color:var(--muted) !important;
+    }
+
+    .sum-row-val{
+      color:var(--text) !important;
+      font-weight:700;
+      text-align:right;
+    }
+
+    .sum-divider{
+      background:var(--border) !important;
+    }
+
+    .sum-total-val{
+      color:var(--ocean) !important;
+      font-weight:800;
+    }
+
+    .sum-note{
+      color:var(--muted) !important;
+    }
+
+    /* Options transferts : fond opaque */
+    .transfer-box,
+    .transfer-option{
+      background:#ffffff;
+    }
+
+    .transfer-box{
+      border:1px solid var(--border);
+      box-shadow:0 8px 24px rgba(10,58,82,.04);
+    }
+
+    .transfer-name{
+      color:var(--text);
+    }
+
+    .transfer-desc{
+      color:var(--muted);
+    }
+
+    /* Sections sombres : texte lisible */
+    .contact-info .ci-p,
+    .practical-info .pi-val,
+    .highlights .hl-p,
+    .highlights .hl-desc,
+    .familial-section .fam-desc,
+    .cta-strip .cta-sub{
+      color:#d6edf4;
+    }
+
+    .cc-val,
+    .cc-val a{
+      color:#e4f4f7;
+    }
+
+    footer .ft-desc,
+    footer .ft-col a,
+    footer .ft-bottom,
+    .ft-copy{
+      color:#b8d4dc;
+    }
+
+    /* Formulaires */
+    input,
+    select,
+    textarea,
+    .fg input,
+    .fg select,
+    .fg textarea,
+    .bk-group input,
+    .bk-group select{
+      font-size:.96rem;
+      min-height:44px;
+    }
+
+    button,
+    .btn-primary,
+    .btn-outline,
+    .btn-outline-light,
+    .btn-search,
+    .btn-submit,
+    .btn-reserve,
+    .btn-gold,
+    .nav-cta,
+    .btn-whatsapp,
+    .btn-res-mini,
+    .btn-wa-mini{
+      min-height:44px;
+    }
+
+    /* Galerie : texte sur photos toujours lisible */
+    .gi-overlay{
+      background:linear-gradient(180deg,transparent,rgba(6,40,64,.62)) !important;
+    }
+
+    .gi-label,
+    .gi-cap-title,
+    .gi-cap-sub,
+    .gi-caption{
+      color:#fff !important;
+      text-shadow:0 2px 12px rgba(0,0,0,.55);
+    }
+
+    /* Responsive global */
+    @media(max-width:1024px){
+      nav{
+        padding:1rem 1.5rem;
+      }
+
+      .section,
+      .gallery-preview,
+      .gallery-section,
+      .alt-bg,
+      .faq-section,
+      .tarif-table-section{
+        padding-left:1.5rem;
+        padding-right:1.5rem;
+      }
+
+      .res-layout{
+        grid-template-columns:1fr;
+        padding:2rem 1.5rem;
+      }
+
+      .summary-card{
+        position:relative !important;
+        top:auto !important;
+        width:100%;
+      }
+    }
+
+    @media(max-width:900px){
+      html{
+        font-size:17px;
+      }
+
+      body{
+        line-height:1.7;
+      }
+
+      .nav-links,
+      .nav-cta{
+        display:none;
+      }
+
+      .hamburger{
+        display:flex;
+      }
+
+      .hero{
+        min-height:86vh;
+      }
+
+      .hero-title{
+        font-size:clamp(2.35rem,10vw,3.8rem) !important;
+      }
+
+      .ph-title{
+        font-size:2.35rem !important;
+      }
+
+      .section-title,
+      .intro-title,
+      .hl-title,
+      .ci-title,
+      .faq-title{
+        font-size:clamp(1.85rem,7vw,2.35rem) !important;
+      }
+
+      .booking-bar{
+        flex-direction:column;
+        align-items:stretch;
+        padding:1.4rem 1.2rem;
+      }
+
+      .bk-group,
+      .bk-group input,
+      .bk-group select,
+      .btn-search{
+        width:100%;
+      }
+
+      .rooms-grid,
+      .bungalows-grid,
+      .testi-grid,
+      .faq-grid,
+      .contact-layout,
+      .map-section{
+        grid-template-columns:1fr !important;
+      }
+
+      .intro,
+      .highlights,
+      .familial-card{
+        grid-template-columns:1fr !important;
+      }
+
+      .stats{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .form-row,
+      .form-row.three{
+        grid-template-columns:1fr !important;
+      }
+
+      .subject-options{
+        grid-template-columns:1fr !important;
+      }
+
+      .gallery-grid,
+      .grid-hero,
+      .grid-3,
+      .grid-4,
+      .grid-mixed,
+      .premium-photo-grid,
+      .restaurant-grid{
+        grid-template-columns:1fr 1fr !important;
+      }
+
+      .gallery-grid .gi:first-child,
+      .grid-hero .gi:first-child,
+      .premium-photo-grid .gi.featured,
+      .restaurant-grid .gi.featured{
+        grid-column:1/3 !important;
+      }
+
+      .gi{
+        min-height:170px;
+      }
+
+      .contact-info,
+      .contact-form-side,
+      .practical-info,
+      .familial-section,
+      .highlights{
+        padding:3rem 1.5rem !important;
+      }
+
+      .cta-strip{
+        flex-direction:column;
+        align-items:flex-start;
+        text-align:left;
+        padding:2.5rem 1.5rem !important;
+      }
+
+      .cta-strip > div,
+      .cta-strip a,
+      .cta-strip button{
+        width:100%;
+      }
+
+      footer,
+      .ft-top,
+      .ft-bottom{
+        text-align:left;
+      }
+
+      .ft-top{
+        grid-template-columns:1fr !important;
+      }
+    }
+
+    @media(max-width:560px){
+      html{
+        font-size:17px;
+      }
+
+      nav{
+        padding:.95rem 1rem !important;
+      }
+
+      .nav-logo{
+        font-size:1.35rem !important;
+      }
+
+      .page-header{
+        padding:3rem 1rem 2.4rem !important;
+      }
+
+      .hero-content{
+        padding:2.4rem 1rem;
+      }
+
+      .hero-title{
+        font-size:2.35rem !important;
+      }
+
+      .hero-sub,
+      .ph-sub{
+        font-size:.95rem !important;
+        line-height:1.65;
+        letter-spacing:.06em;
+      }
+
+      .hero-actions,
+      .quick-contact,
+      .conversion-room-cta,
+      .fam-footer,
+      .b-footer,
+      .room-footer{
+        flex-direction:column;
+        align-items:stretch !important;
+      }
+
+      .btn-primary,
+      .btn-outline,
+      .btn-outline-light,
+      .btn-search,
+      .btn-submit,
+      .btn-reserve,
+      .btn-gold,
+      .btn-whatsapp,
+      .btn-res-mini,
+      .btn-wa-mini,
+      .room-btn{
+        width:100% !important;
+        text-align:center;
+      }
+
+      .section,
+      .gallery-preview,
+      .gallery-section,
+      .alt-bg,
+      .faq-section,
+      .tarif-table-section,
+      .res-layout{
+        padding-left:1rem !important;
+        padding-right:1rem !important;
+      }
+
+      .gallery-grid,
+      .grid-hero,
+      .grid-3,
+      .grid-4,
+      .grid-mixed,
+      .premium-photo-grid,
+      .restaurant-grid{
+        grid-template-columns:1fr !important;
+      }
+
+      .gallery-grid .gi:first-child,
+      .grid-hero .gi:first-child,
+      .premium-photo-grid .gi.featured,
+      .restaurant-grid .gi.featured{
+        grid-column:auto !important;
+      }
+
+      .gi,
+      .grid-3 .gi,
+      .grid-4 .gi,
+      .grid-mixed .gi,
+      .premium-photo-grid .gi,
+      .restaurant-grid .gi,
+      .premium-photo-grid .gi.featured,
+      .restaurant-grid .gi.featured{
+        height:220px !important;
+      }
+
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .room-opt{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .room-opt-price{
+        text-align:left;
+      }
+
+      .sum-row{
+        gap:1rem;
+        align-items:flex-start;
+      }
+
+      .sum-row-val{
+        max-width:55%;
+      }
+
+      .tarif-table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+      }
+
+      footer{
+        padding:2rem 1rem;
+      }
+
+      .ft-links{
+        flex-direction:column;
+        gap:.8rem;
+      }
+    }
+
+  
+
+/* ═══════════════ MASOALA EXPERIENCES — BARRE INTER-SITES ═══════════════ */
+.mx-sitebar{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  background:linear-gradient(90deg,#1f2f1c,#8f513a 48%,#0f5d75);
+  color:#fff;border-bottom:1px solid rgba(255,255,255,.14);
+  font-family:inherit;box-shadow:0 8px 24px rgba(0,0,0,.16);
+}
+.mx-sitebar-inner{height:38px;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 4rem;max-width:1440px;margin:0 auto}
+.mx-sitebar-brand{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:#f5e3bd;white-space:nowrap}
+.mx-sitebar-links{display:flex;align-items:center;gap:.35rem;overflow-x:auto;scrollbar-width:none}.mx-sitebar-links::-webkit-scrollbar{display:none}
+.mx-sitebar-links a{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);padding:.35rem .7rem;border:1px solid rgba(255,255,255,.12);border-radius:999px;white-space:nowrap;transition:background .2s,color .2s,transform .2s}
+.mx-sitebar-links a:hover{background:rgba(255,255,255,.14);color:#fff;transform:translateY(-1px)}
+body{padding-top:38px!important}
+nav{top:38px!important}
+.mobile-menu{top:38px!important;height:calc(100vh - 38px)!important}
+@media(max-width:900px){.mx-sitebar-inner{padding:0 .9rem}.mx-sitebar-brand{font-size:.56rem;letter-spacing:.16em}.mx-sitebar-links a{font-size:.6rem;padding:.3rem .55rem}.mx-sitebar-links{gap:.25rem}}
+@media(max-width:560px){.mx-sitebar-inner{justify-content:flex-start;gap:.65rem}.mx-sitebar-brand{display:none}.mx-sitebar-links{width:100%}.mx-sitebar-links a{font-size:.58rem;letter-spacing:.08em}}
+
+
+/* === Masoala Experiences inter-sites bar — premium clean v2 === */
+:root{--mx-sitebar-height:34px;}
+html{scroll-padding-top:calc(var(--mx-sitebar-height) + 84px);}
+body{padding-top:var(--mx-sitebar-height);}
+.mx-sitebar{
+  position:fixed;top:0;left:0;right:0;z-index:10000;
+  height:var(--mx-sitebar-height);
+  background:linear-gradient(90deg,rgba(8,20,18,.94),rgba(34,74,50,.94),rgba(13,52,70,.94));
+  border-bottom:1px solid rgba(232,213,163,.18);
+  box-shadow:0 8px 26px rgba(0,0,0,.18);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  font-family:inherit;
+}
+.mx-sitebar-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 3.5rem;max-width:1440px;margin:0 auto;}
+.mx-sitebar-brand{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:#f1d89a;white-space:nowrap;opacity:.98;}
+.mx-sitebar-links{display:flex;align-items:center;gap:.25rem;overflow-x:auto;scrollbar-width:none}.mx-sitebar-links::-webkit-scrollbar{display:none}
+.mx-sitebar-links a{font-size:.61rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.84);padding:.28rem .62rem;border:1px solid rgba(255,255,255,.13);border-radius:999px;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,transform .2s;line-height:1;}
+.mx-sitebar-links a:hover{background:rgba(232,213,163,.14);border-color:rgba(232,213,163,.42);color:#fff;transform:translateY(-1px)}
+nav{top:var(--mx-sitebar-height)!important;}
+.mobile-menu{top:var(--mx-sitebar-height)!important;height:calc(100vh - var(--mx-sitebar-height))!important;}
+@media(max-width:900px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{padding:0 .85rem}.mx-sitebar-brand{font-size:.52rem;letter-spacing:.16em}.mx-sitebar-links a{font-size:.56rem;padding:.26rem .5rem;letter-spacing:.08em}.mx-sitebar-links{gap:.22rem}}
+@media(max-width:560px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{justify-content:flex-start;gap:.55rem}.mx-sitebar-brand{display:none}.mx-sitebar-links{width:100%;justify-content:flex-start}.mx-sitebar-links a{font-size:.54rem;padding:.25rem .48rem}}
+
+
+
+/* === Paradise Valley conversion layer — WhatsApp + sections premium === */
+.pv-sticky-wa{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:999;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:.55rem;
+  background:linear-gradient(135deg,var(--ocean),var(--ocean-dark));
+  color:#fff;
+  padding:.9rem 1.35rem;
+  border-radius:999px;
+  font-size:.68rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:800;
+  box-shadow:0 14px 34px rgba(31,47,28,.24);
+  border:1px solid rgba(255,255,255,.18);
+  transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;
+}
+.pv-sticky-wa:hover{transform:translateY(-2px);filter:saturate(1.08);box-shadow:0 18px 42px rgba(31,47,28,.30)}
+.pv-conversion{background:linear-gradient(180deg,#fffaf0,#edf6e7);}
+.pv-conversion-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.pv-conversion-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.8rem;box-shadow:0 18px 52px rgba(47,100,31,.08);transition:transform .22s ease,box-shadow .22s ease}
+.pv-conversion-card:hover{transform:translateY(-5px);box-shadow:0 24px 64px rgba(47,100,31,.12)}
+.pv-conversion-icon{font-size:1.7rem;margin-bottom:.85rem}
+.pv-conversion-card h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--ocean);font-weight:400;margin-bottom:.65rem}
+.pv-conversion-card p{font-size:.9rem;color:var(--muted);line-height:1.75;font-weight:300}
+.pv-experience-band{background:linear-gradient(135deg,var(--light),#fffaf0);padding:4.6rem 4rem;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.pv-experience-actions{margin-top:2rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-outline-dark{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--ocean);padding:.85rem 2.2rem;font-family:'Nunito',sans-serif;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800;border:1px solid rgba(75,143,47,.32);border-radius:999px;cursor:pointer;transition:all .2s ease}
+.btn-outline-dark:hover{border-color:var(--sand);color:var(--sand-dark);transform:translateY(-2px)}
+@media(max-width:900px){.pv-conversion-grid{grid-template-columns:1fr}.pv-experience-band{padding:3rem 1.2rem}.pv-sticky-wa{left:16px;right:16px;bottom:16px;width:auto}.pv-experience-actions a{width:100%}}
+
+</style>
+</head>
+<body>
+<!-- MASOALA EXPERIENCES SITEBAR -->
+<div class="mx-sitebar" aria-label="Navigation Masoala Experiences">
+  <div class="mx-sitebar-inner">
+    <a class="mx-sitebar-brand" href="https://masoala-experiences.netlify.app/" target="_blank" rel="noopener">Masoala Experiences</a>
+    <div class="mx-sitebar-links">
+      <a href="https://manga-beach-hotel.netlify.app/" target="_blank" rel="noopener">🏨 Manga Beach</a>
+      <a href="https://paradise-valley-ambanizana.netlify.app/" target="_blank" rel="noopener">🌿 Paradise Valley</a>
+      <a href="https://peche-sportive-masoala.netlify.app/" target="_blank" rel="noopener">🎣 Pêche Masoala</a>
+      <a href="https://masoala-experiences.netlify.app/" target="_blank" rel="noopener">◉ Hub</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- MASOALA EXPERIENCES — BARRE INTER-SITES -->
+
+
+<nav>
+  <a class="nav-logo" href="index.html" aria-label="Paradise Valley accueil">Paradise <span>Valley</span></a>
+  <div class="nav-links" aria-label="Navigation principale">
+    <a href="index.html">Accueil</a>
+    <a href="chambres.html" class="active">Bungalows</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="reservation.html">Réservation</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="reservation.html" class="nav-cta">Réserver</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Accueil</a>
+  <a href="chambres.html">Bungalows</a>
+  <a href="galerie.html">Galerie</a>
+  <a href="reservation.html">Réservation</a>
+  <a href="contact.html">Contact</a>
+  <a href="reservation.html"><button class="mob-cta">Réserver</button></a>
+</div>
+
+<div class="page-header">
+  <svg class="ph-bg" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,200 Q360,100 720,180 Q1080,260 1440,140 L1440,300 L0,300Z" fill="#1a7fa0"/>
+    <path d="M0,250 Q360,170 720,230 Q1080,290 1440,200 L1440,300 L0,300Z" fill="#e8d5a3"/>
+  </svg>
+  <div class="ph-label">Paradise Valley — Hébergements</div>
+  <h1 class="ph-title">Nos <em>Bungalows</em></h1>
+  <p class="ph-sub">7 bungalows nichés au cœur de la nature — confort authentique &amp; pension complète</p>
+</div>
+
+<div class="tarif-bar">
+  <div class="ti"><div class="ti-name">Bungalow Simple</div><div class="ti-price">170 € <span>/ nuit</span></div><div class="ti-detail">100 € hébergement + 70 € pension complète</div></div>
+  <div class="ti-sep"></div>
+  <div class="ti"><div class="ti-name">Bungalow Familial</div><div class="ti-price">190 € <span>/ nuit</span></div><div class="ti-detail">120 € hébergement + 70 € pension complète</div></div>
+  <div class="ti-sep"></div>
+  <div class="ti"><div class="ti-name">Pension complète incluse</div><div class="ti-price" style="font-size:1.1rem;margin-top:4px">Petit-déjeuner · Déjeuner · Dîner</div><div class="ti-detail">Cuisine locale &amp; bio, tous les repas inclus</div></div>
+</div>
+
+<div class="inclus-section">
+  <div class="inclus-title">✦ &nbsp; Inclus dans chaque séjour &nbsp; ✦</div>
+  <div class="inclus-grid">
+    <div class="inclus-item"><div class="inclus-dot"></div>Petit-déjeuner</div>
+    <div class="inclus-item"><div class="inclus-dot"></div>Déjeuner</div>
+    <div class="inclus-item"><div class="inclus-dot"></div>Dîner</div>
+    <div class="inclus-item"><div class="inclus-dot"></div>Wi-Fi gratuit</div>
+        <div class="inclus-item"><div class="inclus-dot"></div>Linge de maison</div>
+    <div class="inclus-item"><div class="inclus-dot"></div>Ménage quotidien</div>
+    <div class="inclus-item"><div class="inclus-dot"></div>Accueil personnalisé</div>
+  </div>
+</div>
+
+<div class="intro">
+  <div>
+    <div class="intro-label">Notre hébergement</div>
+    <h2 class="intro-title">Une nature <em>préservée</em>,<br>un confort authentique</h2>
+    <div class="sand-line"></div>
+    <p class="intro-p">Au Paradise Valley, nous avons conçu chaque bungalow pour s'intégrer harmonieusement à son environnement naturel. Construits en matériaux locaux, ils offrent chaleur et confort tout en respectant l'écosystème environnant.</p>
+    <p class="intro-p">Chaque bungalow dispose de sa propre terrasse privée avec vue sur la forêt ou la vallée, vous permettant de vous éveiller au son des oiseaux et de la nature.</p>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">7</div><div class="stat-label">Bungalows</div></div>
+    <div class="stat"><div class="stat-num">6</div><div class="stat-label">Simples</div></div>
+    <div class="stat"><div class="stat-num">1</div><div class="stat-label">Familial</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Repas / jour</div></div>
+  </div>
+</div>
+
+<section class="section" style="padding-top:0">
+  <div class="section-label">Hébergement standard</div>
+  <h2 class="section-title">Les 6 Bungalows <em>Simples</em></h2>
+  <div class="sand-line"></div>
+  <div class="bungalows-grid">
+
+    <div class="b-card">
+      <div class="b-img bi1"><svg width="60" height="65" viewBox="0 0 60 65" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="30" width="48" height="33" rx="1" stroke="rgba(200,232,240,.3)" stroke-width="1" fill="rgba(200,232,240,.05)"/><polygon points="3,32 30,12 57,32" stroke="rgba(200,232,240,.35)" stroke-width="1" fill="none"/><rect x="24" y="45" width="12" height="18" fill="rgba(200,232,240,.1)"/></svg><span class="b-num">N° 1</span><span class="b-badge">Vue plage</span></div>
+      <div class="b-body"><div class="b-type">Bungalow simple</div><div class="b-name">Bungalow Palissandre</div><p class="b-desc">Niché entre les palissandres centenaires, ce bungalow offre une immersion totale dans la forêt malgache avec une terrasse ombragée.</p><div class="b-feats"><span class="feat">1-2 personnes</span><span class="feat">Ventilateur</span><span class="feat">Vue panoramique sur la plage</span></div><div class="b-footer"><div class="b-price">170 € <span>/ nuit · tout compris</span></div><a href="reservation.html"><button class="btn-reserve">Réserver</button></a></div></div>
+    </div>
+
+    <div class="b-card">
+      <div class="b-img bi2"><svg width="60" height="65" viewBox="0 0 60 65" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="30" width="48" height="33" rx="1" stroke="rgba(200,232,240,.3)" stroke-width="1" fill="rgba(200,232,240,.05)"/><polygon points="3,32 30,12 57,32" stroke="rgba(200,232,240,.35)" stroke-width="1" fill="none"/><rect x="24" y="45" width="12" height="18" fill="rgba(200,232,240,.1)"/></svg><span class="b-num">N° 2</span><span class="b-badge">Vue plage</span></div>
+      <div class="b-body"><div class="b-type">Bungalow simple</div><div class="b-name">Bungalow Vétiver</div><p class="b-desc">Un bungalow aux senteurs de vétiver avec une vue dégagée sur la vallée verdoyante. Le coucher de soleil y est exceptionnel.</p><div class="b-feats"><span class="feat">1-2 personnes</span><span class="feat">Ventilateur</span><span class="feat">Vue panoramique sur la plage</span></div><div class="b-footer"><div class="b-price">170 € <span>/ nuit · tout compris</span></div><a href="reservation.html"><button class="btn-reserve">Réserver</button></a></div></div>
+    </div>
+
+    <div class="b-card">
+      <div class="b-img bi3"><svg width="60" height="65" viewBox="0 0 60 65" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="30" width="48" height="33" rx="1" stroke="rgba(200,232,240,.3)" stroke-width="1" fill="rgba(200,232,240,.05)"/><polygon points="3,32 30,12 57,32" stroke="rgba(200,232,240,.35)" stroke-width="1" fill="none"/><rect x="24" y="45" width="12" height="18" fill="rgba(200,232,240,.1)"/></svg><span class="b-num">N° 3</span><span class="b-badge">Vue plage</span></div>
+      <div class="b-body"><div class="b-type">Bungalow simple</div><div class="b-name">Bungalow Ravinala</div><p class="b-desc">Sous l'ombrage des ravinala, ce bungalow borde la rivière qui serpente à travers la propriété. Son bruit apaisant vous accompagnera.</p><div class="b-feats"><span class="feat">1-2 personnes</span><span class="feat">Ventilateur</span><span class="feat">Vue panoramique sur la plage</span></div><div class="b-footer"><div class="b-price">170 € <span>/ nuit · tout compris</span></div><a href="reservation.html"><button class="btn-reserve">Réserver</button></a></div></div>
+    </div>
+
+    <div class="b-card">
+      <div class="b-img bi4"><svg width="60" height="65" viewBox="0 0 60 65" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="30" width="48" height="33" rx="1" stroke="rgba(200,232,240,.3)" stroke-width="1" fill="rgba(200,232,240,.05)"/><polygon points="3,32 30,12 57,32" stroke="rgba(200,232,240,.35)" stroke-width="1" fill="none"/><rect x="24" y="45" width="12" height="18" fill="rgba(200,232,240,.1)"/></svg><span class="b-num">N° 4</span><span class="b-badge">Vue plage</span></div>
+      <div class="b-body"><div class="b-type">Bungalow simple</div><div class="b-name">Bungalow Ylang</div><p class="b-desc">Perché légèrement en hauteur, le bungalow Ylang offre une vue panoramique sur l'ensemble du domaine et ses jardins fleuris.</p><div class="b-feats"><span class="feat">1-2 personnes</span><span class="feat">Ventilateur</span><span class="feat">Vue panoramique sur la plage</span></div><div class="b-footer"><div class="b-price">170 € <span>/ nuit · tout compris</span></div><a href="reservation.html"><button class="btn-reserve">Réserver</button></a></div></div>
+    </div>
+
+    <div class="b-card">
+      <div class="b-img bi5"><svg width="60" height="65" viewBox="0 0 60 65" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="30" width="48" height="33" rx="1" stroke="rgba(200,232,240,.3)" stroke-width="1" fill="rgba(200,232,240,.05)"/><polygon points="3,32 30,12 57,32" stroke="rgba(200,232,240,.35)" stroke-width="1" fill="none"/><rect x="24" y="45" width="12" height="18" fill="rgba(200,232,240,.1)"/></svg><span class="b-num">N° 5</span><span class="b-badge">Vue plage</span></div>
+      <div class="b-body"><div class="b-type">Bungalow simple</div><div class="b-name">Bungalow Baobab</div><p class="b-desc">Entouré d'un petit jardin privatif planté de fleurs tropicales, ce bungalow est idéal pour les amoureux de botanique et de quiétude.</p><div class="b-feats"><span class="feat">1-2 personnes</span><span class="feat">Ventilateur</span><span class="feat">Vue panoramique sur la plage</span></div><div class="b-footer"><div class="b-price">170 € <span>/ nuit · tout compris</span></div><a href="reservation.html"><button class="btn-reserve">Réserver</button></a></div></div>
+    </div>
+
+    <div class="b-card">
+      <div class="b-img bi6"><svg width="60" height="65" viewBox="0 0 60 65" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="30" width="48" height="33" rx="1" stroke="rgba(200,232,240,.3)" stroke-width="1" fill="rgba(200,232,240,.05)"/><polygon points="3,32 30,12 57,32" stroke="rgba(200,232,240,.35)" stroke-width="1" fill="none"/><rect x="24" y="45" width="12" height="18" fill="rgba(200,232,240,.1)"/></svg><span class="b-num">N° 6</span><span class="b-badge">Vue plage</span></div>
+      <div class="b-body"><div class="b-type">Bungalow simple</div><div class="b-name">Bungalow Orchidée</div><p class="b-desc">Niché près de la rivière, ce bungalow décoré d'orchidées sauvages est parfait pour les amateurs de nature et de quiétude.</p><div class="b-feats"><span class="feat">1-2 personnes</span><span class="feat">Ventilateur</span><span class="feat">Vue panoramique sur la plage</span></div><div class="b-footer"><div class="b-price">170 € <span>/ nuit · tout compris</span></div><a href="reservation.html"><button class="btn-reserve">Réserver</button></a></div></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="familial-section">
+  <div class="section-label" style="color:var(--ocean-light)">Hébergement famille</div>
+  <h2 class="section-title" style="color:#f5f0e8">Le Bungalow <em style="color:var(--sand)">Familial</em></h2>
+  <div class="sand-line"></div>
+  <div class="familial-card">
+    <div class="fam-img">
+      <svg width="110" height="120" viewBox="0 0 110 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="55" width="90" height="62" rx="2" stroke="rgba(200,232,240,.2)" stroke-width="1.2" fill="rgba(200,232,240,.04)"/>
+        <polygon points="4,58 55,18 106,58" stroke="rgba(200,232,240,.25)" stroke-width="1.2" fill="none"/>
+        <rect x="44" y="84" width="22" height="33" fill="rgba(200,232,240,.1)"/>
+        <rect x="16" y="66" width="22" height="16" fill="rgba(232,213,163,.1)" rx="1"/>
+        <rect x="72" y="66" width="22" height="16" fill="rgba(232,213,163,.1)" rx="1"/>
+        <rect x="16" y="90" width="22" height="16" fill="rgba(232,213,163,.08)" rx="1"/>
+        <rect x="72" y="90" width="22" height="16" fill="rgba(232,213,163,.08)" rx="1"/>
+      </svg>
+      <span class="fam-tag">✦ Exclusif — 1 seul bungalow</span>
+    </div>
+    <div class="fam-body">
+      <div class="fam-type">Hébergement familial — N° 7</div>
+      <div class="fam-name">Bungalow <em>Vahiné</em></div>
+      <p class="fam-desc">Notre unique bungalow familial, le Vahiné, a été conçu pour accueillir les familles dans un espace généreux et convivial. Avec ses deux chambres séparées, sa grande terrasse et son salon commun, il offre l'intimité d'une maison dans un écrin de nature.</p>
+      <div class="fam-feats">
+        <span class="fam-feat">1-4 personnes</span><span class="fam-feat">2 lits</span><span class="fam-feat">Vue panoramique vers la mer</span>
+      </div>
+      <div class="fam-footer">
+        <div>
+          <div class="fam-price">190 € <span>/ nuit · pension complète</span></div>
+          <div style="font-size:.72rem;color:#8ac8dc;margin-top:.4rem">120 € hébergement + 70 € repas (p.dej., déj., dîner)</div>
+        </div>
+        <a href="reservation.html"><button class="btn-gold">Réserver</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tarif-table-section">
+  <div class="section-label">Récapitulatif</div>
+  <h2 class="section-title">Détail des <em>tarifs</em></h2>
+  <div class="sand-line"></div>
+  <table class="tarif-table">
+    <thead><tr><th>Bungalow</th><th>Capacité</th><th>Hébergement</th><th>Pension complète</th><th>Total / nuit</th></tr></thead>
+    <tbody>
+      <tr><td class="td-name">Bungalow Simple (×6)<br><small class="td-muted">Palissandre, Vétiver, Ravinala, Ylang, Baobab, Orchidée</small></td><td>1-2 personnes</td><td>100 €</td><td>70 € <small class="td-muted">(p.dej + déj + dîner)</small></td><td class="td-gold td-price">170 €</td></tr>
+      <tr><td class="td-name">Bungalow Familial (×1)<br><small class="td-muted">Vahiné — 2 lits, vue panoramique vers la mer</small></td><td>1-4 personnes</td><td>120 €</td><td>70 € <small class="td-muted">(p.dej + déj + dîner)</small></td><td class="td-gold td-price">190 €</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.78rem;color:var(--muted);margin-top:1rem;font-weight:300">* Tarifs par bungalow et par nuit, pension complète incluse.</p>
+</div>
+
+
+<section class="section" style="padding-top:2rem">
+  <div class="section-label">Tarifs &amp; informations utiles</div>
+  <h2 class="section-title">Préparez votre <em>séjour</em></h2>
+  <div class="sand-line"></div>
+  <div class="bungalows-grid" style="grid-template-columns:repeat(3,1fr)">
+    <div class="b-card"><div class="b-body"><div class="b-type">Tarifs</div><div class="b-name">Hébergement &amp; pension</div><p class="b-desc">Bungalow simple : 100 € / nuit<br>Bungalow familial : 120 € / nuit<br>Pension complète : 70 € / personne / jour<br><small>Boissons extras non incluses.</small></p></div></div>
+    <div class="b-card"><div class="b-body"><div class="b-type">Transferts</div><div class="b-name">Maroantsetra &amp; Ambanizana</div><p class="b-desc">Aéroport ↔ Hôtel Manga Beach ↔ Aéroport : 80.000 Ar<br>Hôtel Manga Beach ↔ Paradise Valley ↔ Hôtel Manga Beach en vedette rapide : 1.000.000 Ar</p></div></div>
+    <div class="b-card"><div class="b-body"><div class="b-type">Paiement</div><div class="b-name">Après confirmation</div><p class="b-desc">MVola : +261 34 07 01 977 — Tadahy Huga<br>Orange Money : +261 32 54 79 504 — Tadahy Huga<br>Paiement sur place disponible.</p></div></div>
+  </div>
+</section>
+
+<div class="cta-strip">
+  <div><h2 class="cta-title">Prêt à vivre l'<em>expérience ?</em></h2><p class="cta-sub">Réservez votre bungalow dès maintenant — disponibilités limitées.</p></div>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+    <a href="reservation.html"><button class="btn-primary">Réserver maintenant</button></a>
+    <a href="contact.html"><button class="btn-outline-light">Nous contacter</button></a>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-logo">Paradise <span>Valley</span></div>
+  <div class="ft-links"><a href="index.html">Accueil</a><a href="chambres.html">Bungalows</a><a href="galerie.html">Galerie</a><a href="reservation.html">Réservation</a><a href="contact.html">Contact</a></div>
+  <div class="ft-copy">© 2025 Paradise Valley</div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('hamburger');
+  var menu=document.getElementById('mobile-menu');
+  if(!btn||!menu)return;
+  btn.addEventListener('click',function(){
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', menu.classList.contains('open')?'true':'false');
+    document.body.style.overflow=menu.classList.contains('open')?'hidden':'';
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      document.body.style.overflow='';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
