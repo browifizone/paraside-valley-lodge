@@ -1573,6 +1573,61 @@ nav{top:var(--mx-sitebar-height)!important;}
       if(btn){ btn.disabled=false; btn.textContent='Confirmer ma réservation'; btn.style.opacity='1'; }
     }
   }
+
+  function prefillFromURL(){
+    const params = new URLSearchParams(window.location.search);
+
+    const checkin = params.get('checkin') || params.get('arrival') || params.get('date_arrivee');
+    const checkout = params.get('checkout') || params.get('departure') || params.get('date_depart');
+    const adultsParam = params.get('adults') || params.get('adultes');
+    const childrenParam = params.get('children') || params.get('enfants');
+    const childrenSmallParam = params.get('children_small') || params.get('childrenSmall') || params.get('children_under_5');
+    const childrenBigParam = params.get('children_big') || params.get('childrenBig') || params.get('children_5_plus');
+    const roomParam = params.get('room') || params.get('bungalow');
+
+    if(checkin && $('check-in')) $('check-in').value = checkin;
+    if(checkout && $('check-out')) $('check-out').value = checkout;
+
+    if(adultsParam && $('adults')){
+      const value = String(adultsParam).match(/\d+/)?.[0] || adultsParam;
+      if([...$('adults').options].some(o => o.value === value)) $('adults').value = value;
+    }
+
+    if(childrenSmallParam && $('children-small')){
+      const value = String(childrenSmallParam).match(/\d+/)?.[0] || childrenSmallParam;
+      if([...$('children-small').options].some(o => o.value === value)) $('children-small').value = value;
+    }
+
+    if(childrenBigParam && $('children-big')){
+      const value = String(childrenBigParam).match(/\d+/)?.[0] || childrenBigParam;
+      if([...$('children-big').options].some(o => o.value === value)) $('children-big').value = value;
+    }
+
+    if(childrenParam && $('children-small') && !childrenSmallParam && !childrenBigParam){
+      const value = String(childrenParam).match(/\d+/)?.[0] || childrenParam;
+      if([...$('children-small').options].some(o => o.value === value)) $('children-small').value = value;
+    }
+
+    if(roomParam){
+      let normalized = String(roomParam).toLowerCase();
+      if(normalized.includes('famil') || normalized.includes('villa')) normalized = 'villa';
+      else if(normalized.includes('bungalow') || normalized.includes('simple')) normalized = 'bungalow';
+
+      const roomInput = document.querySelector('input[name="room"][value="' + normalized + '"]');
+      if(roomInput){
+        roomInput.checked = true;
+        document.querySelectorAll('.room-opt').forEach(o => o.classList.remove('selected'));
+        const card = roomInput.closest('.room-opt');
+        if(card) card.classList.add('selected');
+      }
+    }
+
+    syncDateLimits();
+    validateDates();
+    toggleTransferCards();
+    updateSummary();
+  }
+
   function init(){
     const hamburger=$('hamburger'), menu=$('mobile-menu');
     if(hamburger && menu){ hamburger.addEventListener('click',()=>{ hamburger.classList.toggle('open'); menu.classList.toggle('open'); hamburger.setAttribute('aria-expanded',menu.classList.contains('open')?'true':'false'); document.body.style.overflow=menu.classList.contains('open')?'hidden':''; }); menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ hamburger.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow=''; })); }
@@ -1582,6 +1637,7 @@ nav{top:var(--mx-sitebar-height)!important;}
     document.querySelectorAll('.room-opt').forEach(opt=>opt.addEventListener('click',()=>{ document.querySelectorAll('.room-opt').forEach(o=>o.classList.remove('selected')); opt.classList.add('selected'); const input=opt.querySelector('input[type="radio"]'); if(input) input.checked=true; updateSummary(); }));
     $('submit-btn')?.addEventListener('click',e=>{ e.preventDefault(); sendReservation(); });
     $('success-overlay')?.addEventListener('click',e=>{ if(e.target===$('success-overlay')) $('success-overlay').classList.remove('visible'); });
+    prefillFromURL();
     toggleTransferCards(); updateSummary();
   }
   document.addEventListener('DOMContentLoaded', init);
