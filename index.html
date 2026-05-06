@@ -871,6 +871,28 @@ nav{top:var(--mx-sitebar-height)!important;}
 .btn-outline-dark:hover{border-color:var(--sand);color:var(--sand-dark);transform:translateY(-2px)}
 @media(max-width:900px){.pv-conversion-grid{grid-template-columns:1fr}.pv-experience-band{padding:3rem 1.2rem}.pv-sticky-wa{left:16px;right:16px;bottom:16px;width:auto}.pv-experience-actions a{width:100%}}
 
+
+
+/* === Paradise Valley logo integration === */
+.nav-logo{display:flex!important;align-items:center!important;gap:.85rem!important;letter-spacing:.02em;position:relative}
+.nav-logo::before{display:none!important;content:none!important}
+.nav-logo-mark{width:54px;height:54px;object-fit:contain;display:block;flex-shrink:0;filter:drop-shadow(0 8px 20px rgba(0,0,0,.18))}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1}
+.nav-logo-text strong{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ocean-light);font-weight:700;letter-spacing:.01em}
+.nav-logo-text span{font-family:'Nunito',sans-serif;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sand)!important;font-style:normal!important}
+.ft-logo{display:flex!important;align-items:center!important;gap:.8rem!important;color:var(--ocean-light)!important}
+.ft-logo-mark{width:58px;height:58px;object-fit:contain;display:block;flex-shrink:0}
+.ft-logo-text{display:flex;flex-direction:column;line-height:1}
+.ft-logo-text strong{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--ocean-light);font-weight:700}
+.ft-logo-text span{font-family:'Nunito',sans-serif;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sand)!important;font-style:normal!important}
+@media(max-width:900px){
+  .nav-logo-mark{width:46px;height:46px}
+  .nav-logo-text strong{font-size:1.05rem}
+  .nav-logo-text span{font-size:.6rem}
+  .ft-logo-mark{width:50px;height:50px}
+  .ft-logo-text strong{font-size:1.15rem}
+}
+
 </style>
 </head>
 <body>
@@ -892,7 +914,7 @@ nav{top:var(--mx-sitebar-height)!important;}
 
 
 <nav>
-  <a class="nav-logo" href="index.html" aria-label="Paradise Valley accueil">Paradise <span>Valley</span></a>
+  <a class="nav-logo" href="index.html" aria-label="Paradise Valley accueil"><img class="nav-logo-mark" src="assets/paradise-valley-logo.png" alt="Logo Paradise Valley"/><span class="nav-logo-text"><strong>Paradise Valley</strong><span>Ambanizana</span></span></a>
   <div class="nav-links" aria-label="Navigation principale">
     <a href="index.html" class="active">Accueil</a>
     <a href="chambres.html">Bungalows</a>
@@ -913,9 +935,9 @@ nav{top:var(--mx-sitebar-height)!important;}
 </div>
 
 <section class="hero">
-  <img class="hero-bg-img" src="assets/images/hero.webp" alt="Vue aérienne de Paradise Valley entre plage, mer et bungalows" loading="eager">
+  <img class="hero-bg-img" src="assets/images/hero-ambanizana.png" alt="Vue de Paradise Valley à Ambanizana au coucher du soleil" loading="eager">
   <div class="hero-content">
-    <div class="hero-badge">Éco-lodge · Ambanizana, Maroantsetra · Madagascar</div>
+    <div class="hero-badge">Éco-lodge · Ambanizana · Madagascar</div>
     <h1 class="hero-title">Bienvenue au<br><em>Paradise Valley</em></h1>
     <p class="hero-sub">Un refuge entre mer et forêt tropicale — authenticité, sérénité & nature</p>
     <div class="hero-actions">
@@ -1096,10 +1118,10 @@ nav{top:var(--mx-sitebar-height)!important;}
 
 <footer>
   <div class="ft-top">
-    <div><div class="ft-logo">Paradise <span>Valley</span></div><p class="ft-desc">Un éco-lodge niché au cœur de la nature malgache à Ambanizana, où l'authenticité et la durabilité se rencontrent pour vous offrir un séjour inoubliable.</p></div>
+    <div><div class="ft-logo"><img class="ft-logo-mark" src="assets/paradise-valley-logo.png" alt="Logo Paradise Valley"/><span class="ft-logo-text"><strong>Paradise Valley</strong><span>Ambanizana</span></span></div><p class="ft-desc">Un éco-lodge niché au cœur de la nature malgache à Ambanizana, où l'authenticité et la durabilité se rencontrent pour vous offrir un séjour inoubliable.</p></div>
     <div class="ft-col"><div class="ft-col-title">Navigation</div><a href="index.html">Accueil</a><a href="chambres.html">Bungalows</a><a href="galerie.html">Galerie</a><a href="reservation.html">Réservation</a><a href="contact.html">Contact</a></div>
     <div class="ft-col"><div class="ft-col-title">Bungalows</div><a href="chambres.html">Bungalow Simple (×6)</a><a href="chambres.html">Bungalow Familial (×1)</a></div>
-    <div class="ft-col"><div class="ft-col-title">Contact</div><a href="mailto:contact@paradisevalley.mg">contact@paradisevalley.mg</a><a href="contact.html">Ambanizana - Maroantsetra, Madagascar</a></div>
+    <div class="ft-col"><div class="ft-col-title">Contact</div><a href="mailto:contact@paradisevalley.mg">contact@paradisevalley.mg</a><a href="contact.html">Ambanizana · Madagascar</a></div>
   </div>
   <div class="ft-bottom"><span>© 2025 Paradise Valley. Tous droits réservés.</span><span>Éco-lodge responsable — Madagascar</span></div>
 </footer>

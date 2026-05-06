@@ -1089,6 +1089,28 @@ nav{top:var(--mx-sitebar-height)!important;}
 .btn-email-direct{display:block;text-align:center;background:var(--sand);color:var(--ocean-dark);border-radius:999px;padding:.85rem 1rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:900}
 @media(max-width:700px){.boat-grid{grid-template-columns:1fr}}
 
+
+
+/* === Paradise Valley logo integration === */
+.nav-logo{display:flex!important;align-items:center!important;gap:.85rem!important;letter-spacing:.02em;position:relative}
+.nav-logo::before{display:none!important;content:none!important}
+.nav-logo-mark{width:54px;height:54px;object-fit:contain;display:block;flex-shrink:0;filter:drop-shadow(0 8px 20px rgba(0,0,0,.18))}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1}
+.nav-logo-text strong{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--ocean-light);font-weight:700;letter-spacing:.01em}
+.nav-logo-text span{font-family:'Nunito',sans-serif;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sand)!important;font-style:normal!important}
+.ft-logo{display:flex!important;align-items:center!important;gap:.8rem!important;color:var(--ocean-light)!important}
+.ft-logo-mark{width:58px;height:58px;object-fit:contain;display:block;flex-shrink:0}
+.ft-logo-text{display:flex;flex-direction:column;line-height:1}
+.ft-logo-text strong{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--ocean-light);font-weight:700}
+.ft-logo-text span{font-family:'Nunito',sans-serif;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sand)!important;font-style:normal!important}
+@media(max-width:900px){
+  .nav-logo-mark{width:46px;height:46px}
+  .nav-logo-text strong{font-size:1.05rem}
+  .nav-logo-text span{font-size:.6rem}
+  .ft-logo-mark{width:50px;height:50px}
+  .ft-logo-text strong{font-size:1.15rem}
+}
+
 </style>
 </head>
 <body>
@@ -1110,7 +1132,7 @@ nav{top:var(--mx-sitebar-height)!important;}
 
 
 <nav>
-  <a class="nav-logo" href="index.html" aria-label="Paradise Valley accueil">Paradise <span>Valley</span></a>
+  <a class="nav-logo" href="index.html" aria-label="Paradise Valley accueil"><img class="nav-logo-mark" src="assets/paradise-valley-logo.png" alt="Logo Paradise Valley"/><span class="nav-logo-text"><strong>Paradise Valley</strong><span>Ambanizana</span></span></a>
   <div class="nav-links" aria-label="Navigation principale">
     <a href="index.html">Accueil</a>
     <a href="chambres.html">Bungalows</a>
@@ -1389,7 +1411,7 @@ nav{top:var(--mx-sitebar-height)!important;}
 </div>
 
 <footer>
-  <div class="ft-logo">Paradise <span>Valley</span></div>
+  <div class="ft-logo"><img class="ft-logo-mark" src="assets/paradise-valley-logo.png" alt="Logo Paradise Valley"/><span class="ft-logo-text"><strong>Paradise Valley</strong><span>Ambanizana</span></span></div>
   <div class="ft-links"><a href="index.html">Accueil</a><a href="chambres.html">Bungalows</a><a href="galerie.html">Galerie</a><a href="contact.html">Contact</a></div>
   <div class="ft-copy">© 2025 Paradise Valley</div>
 </footer>
