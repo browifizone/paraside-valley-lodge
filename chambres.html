@@ -891,7 +891,19 @@ nav{top:var(--mx-sitebar-height)!important;}
   .ft-logo-text strong{font-size:1.15rem}
 }
 
-</style>
+
+    .premium-room-note{margin:2rem auto 0;max-width:1120px;padding:1.5rem;border-radius:24px;background:linear-gradient(135deg,rgba(26,127,160,.12),rgba(232,213,163,.18));border:1px solid rgba(26,127,160,.15);display:grid;grid-template-columns:1.2fr .8fr;gap:1.2rem;align-items:center}
+    .premium-room-note h3{margin:0 0 .4rem;color:var(--ocean);font-size:1.35rem}
+    .premium-room-note p{margin:0;color:#41616a;line-height:1.7}
+    .premium-room-note .room-note-pill{display:inline-flex;align-items:center;justify-content:center;padding:.85rem 1rem;border-radius:999px;background:#fff;color:var(--ocean);font-weight:800;box-shadow:0 12px 30px rgba(0,0,0,.08)}
+    .room-premium-highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+    .room-premium-highlights .rh{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:22px;padding:1.2rem;box-shadow:0 15px 40px rgba(0,0,0,.06)}
+    .room-premium-highlights .rh strong{display:block;color:var(--forest);margin-bottom:.35rem}
+    .room-premium-highlights .rh span{color:#5d747a;font-size:.95rem;line-height:1.5}
+    @media(max-width:800px){.premium-room-note{grid-template-columns:1fr}.room-premium-highlights{grid-template-columns:1fr 1fr}}
+    @media(max-width:520px){.room-premium-highlights{grid-template-columns:1fr}}
+
+  </style>
 </head>
 <body>
 <!-- MASOALA EXPERIENCES SITEBAR -->
@@ -917,6 +929,7 @@ nav{top:var(--mx-sitebar-height)!important;}
     <a href="index.html">Accueil</a>
     <a href="chambres.html" class="active">Bungalows</a>
     <a href="galerie.html">Galerie</a>
+    <a href="acces.html">Accès</a>
     <a href="reservation.html">Réservation</a>
     <a href="contact.html">Contact</a>
   </div>
@@ -927,6 +940,7 @@ nav{top:var(--mx-sitebar-height)!important;}
   <a href="index.html">Accueil</a>
   <a href="chambres.html">Bungalows</a>
   <a href="galerie.html">Galerie</a>
+  <a href="acces.html">Accès</a>
   <a href="reservation.html">Réservation</a>
   <a href="contact.html">Contact</a>
   <a href="reservation.html"><button class="mob-cta">Réserver</button></a>
@@ -939,7 +953,7 @@ nav{top:var(--mx-sitebar-height)!important;}
   </svg>
   <div class="ph-label">Paradise Valley — Hébergements</div>
   <h1 class="ph-title">Nos <em>Bungalows</em></h1>
-  <p class="ph-sub">7 bungalows nichés au cœur de la nature — confort authentique &amp; pension complète</p>
+  <p class="ph-sub">7 bungalows nature en pension complète — confort premium authentique, calme tropical et esprit éco-lodge premium</p>
 </div>
 
 <div class="tarif-bar">
@@ -956,17 +970,25 @@ nav{top:var(--mx-sitebar-height)!important;}
     <div class="inclus-item"><div class="inclus-dot"></div>Petit-déjeuner</div>
     <div class="inclus-item"><div class="inclus-dot"></div>Déjeuner</div>
     <div class="inclus-item"><div class="inclus-dot"></div>Dîner</div>
-    <div class="inclus-item"><div class="inclus-dot"></div>Wi-Fi gratuit</div>
+    <div class="inclus-item"><div class="inclus-dot"></div>Wi-Fi selon disponibilité</div>
         <div class="inclus-item"><div class="inclus-dot"></div>Linge de maison</div>
     <div class="inclus-item"><div class="inclus-dot"></div>Ménage quotidien</div>
     <div class="inclus-item"><div class="inclus-dot"></div>Accueil personnalisé</div>
   </div>
 </div>
 
+<section class="premium-room-note">
+  <div>
+    <h3>Un séjour simple, confortable et bien organisé</h3>
+    <p>Chaque bungalow est pensé pour profiter de Masoala sans complication : pension complète, terrasse privée, accueil personnalisé et accès aux transferts en vedette rapide du lodge selon votre programme.</p>
+  </div>
+  <div class="room-note-pill">Éco-lodge premium · Masoala</div>
+</section>
+
 <div class="intro">
   <div>
     <div class="intro-label">Notre hébergement</div>
-    <h2 class="intro-title">Une nature <em>préservée</em>,<br>un confort authentique</h2>
+    <h2 class="intro-title">Une nature <em>préservée</em>,<br>un confort premium authentique</h2>
     <div class="sand-line"></div>
     <p class="intro-p">Au Paradise Valley, nous avons conçu chaque bungalow pour s'intégrer harmonieusement à son environnement naturel. Construits en matériaux locaux, ils offrent chaleur et confort tout en respectant l'écosystème environnant.</p>
     <p class="intro-p">Chaque bungalow dispose de sa propre terrasse privée avec vue sur la forêt ou la vallée, vous permettant de vous éveiller au son des oiseaux et de la nature.</p>
@@ -978,6 +1000,19 @@ nav{top:var(--mx-sitebar-height)!important;}
     <div class="stat"><div class="stat-num">3</div><div class="stat-label">Repas / jour</div></div>
   </div>
 </div>
+
+
+<section class="section" style="padding-top:0">
+  <div class="section-label">Expérience bungalow</div>
+  <h2 class="section-title">Le confort essentiel, dans un cadre <em>exceptionnel</em></h2>
+  <div class="sand-line"></div>
+  <div class="room-premium-highlights">
+    <div class="rh"><strong>Terrasse privée</strong><span>Un espace calme pour lire, se reposer et écouter la nature.</span></div>
+    <div class="rh"><strong>Pension complète</strong><span>Petit-déjeuner, déjeuner et dîner pour un séjour fluide.</span></div>
+    <div class="rh"><strong>Nature immersive</strong><span>Bungalows intégrés dans un environnement tropical préservé.</span></div>
+    <div class="rh"><strong>Accès organisé</strong><span>Transfert aéroport et vedette rapide privée du lodge.</span></div>
+  </div>
+</section>
 
 <section class="section" style="padding-top:0">
   <div class="section-label">Hébergement standard</div>
@@ -1089,7 +1124,7 @@ nav{top:var(--mx-sitebar-height)!important;}
 
 <footer>
   <div class="ft-logo"><img class="ft-logo-mark" src="assets/paradise-valley-logo.png" alt="Logo Paradise Valley"/><span class="ft-logo-text"><strong>Paradise Valley</strong><span>Ambanizana</span></span></div>
-  <div class="ft-links"><a href="index.html">Accueil</a><a href="chambres.html">Bungalows</a><a href="galerie.html">Galerie</a><a href="reservation.html">Réservation</a><a href="contact.html">Contact</a></div>
+  <div class="ft-links"><a href="index.html">Accueil</a><a href="chambres.html">Bungalows</a><a href="galerie.html">Galerie</a><a href="acces.html">Accès</a><a href="reservation.html">Réservation</a><a href="contact.html">Contact</a></div>
   <div class="ft-copy">© 2025 Paradise Valley</div>
 </footer>
 
