@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Galerie — Paradise Valley</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-  <style>
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Galerie — Paradise Valley</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Nunito:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     :root{
       --ocean:#4b8f2f;
@@ -786,46 +787,20 @@
   
 
 /* ═══════════════ MASOALA EXPERIENCES — BARRE INTER-SITES ═══════════════ */
-.mx-sitebar{
-  position:fixed;top:0;left:0;right:0;z-index:300;
-  background:linear-gradient(90deg,#1f2f1c,#8f513a 48%,#0f5d75);
-  color:#fff;border-bottom:1px solid rgba(255,255,255,.14);
-  font-family:inherit;box-shadow:0 8px 24px rgba(0,0,0,.16);
-}
-.mx-sitebar-inner{height:38px;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 4rem;max-width:1440px;margin:0 auto}
-.mx-sitebar-brand{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:#f5e3bd;white-space:nowrap}
-.mx-sitebar-links{display:flex;align-items:center;gap:.35rem;overflow-x:auto;scrollbar-width:none}.mx-sitebar-links::-webkit-scrollbar{display:none}
-.mx-sitebar-links a{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.82);padding:.35rem .7rem;border:1px solid rgba(255,255,255,.12);border-radius:999px;white-space:nowrap;transition:background .2s,color .2s,transform .2s}
-.mx-sitebar-links a:hover{background:rgba(255,255,255,.14);color:#fff;transform:translateY(-1px)}
-body{padding-top:38px!important}
+
+
+
+
+
+
+
 nav{top:38px!important}
 .mobile-menu{top:38px!important;height:calc(100vh - 38px)!important}
-@media(max-width:900px){.mx-sitebar-inner{padding:0 .9rem}.mx-sitebar-brand{font-size:.56rem;letter-spacing:.16em}.mx-sitebar-links a{font-size:.6rem;padding:.3rem .55rem}.mx-sitebar-links{gap:.25rem}}
-@media(max-width:560px){.mx-sitebar-inner{justify-content:flex-start;gap:.65rem}.mx-sitebar-brand{display:none}.mx-sitebar-links{width:100%}.mx-sitebar-links a{font-size:.58rem;letter-spacing:.08em}}
+@media(max-width:900px){}
+@media(max-width:560px){}
 
 
-/* === Masoala Experiences inter-sites bar — premium clean v2 === */
-:root{--mx-sitebar-height:34px;}
-html{scroll-padding-top:calc(var(--mx-sitebar-height) + 84px);}
-body{padding-top:var(--mx-sitebar-height);}
-.mx-sitebar{
-  position:fixed;top:0;left:0;right:0;z-index:10000;
-  height:var(--mx-sitebar-height);
-  background:linear-gradient(90deg,rgba(8,20,18,.94),rgba(34,74,50,.94),rgba(13,52,70,.94));
-  border-bottom:1px solid rgba(232,213,163,.18);
-  box-shadow:0 8px 26px rgba(0,0,0,.18);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  font-family:inherit;
 }
-.mx-sitebar-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 3.5rem;max-width:1440px;margin:0 auto;}
-.mx-sitebar-brand{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:#f1d89a;white-space:nowrap;opacity:.98;}
-.mx-sitebar-links{display:flex;align-items:center;gap:.25rem;overflow-x:auto;scrollbar-width:none}.mx-sitebar-links::-webkit-scrollbar{display:none}
-.mx-sitebar-links a{font-size:.61rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.84);padding:.28rem .62rem;border:1px solid rgba(255,255,255,.13);border-radius:999px;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,transform .2s;line-height:1;}
-.mx-sitebar-links a:hover{background:rgba(232,213,163,.14);border-color:rgba(232,213,163,.42);color:#fff;transform:translateY(-1px)}
-nav{top:var(--mx-sitebar-height)!important;}
-.mobile-menu{top:var(--mx-sitebar-height)!important;height:calc(100vh - var(--mx-sitebar-height))!important;}
-@media(max-width:900px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{padding:0 .85rem}.mx-sitebar-brand{font-size:.52rem;letter-spacing:.16em}.mx-sitebar-links a{font-size:.56rem;padding:.26rem .5rem;letter-spacing:.08em}.mx-sitebar-links{gap:.22rem}}
-@media(max-width:560px){:root{--mx-sitebar-height:32px}.mx-sitebar-inner{justify-content:flex-start;gap:.55rem}.mx-sitebar-brand{display:none}.mx-sitebar-links{width:100%;justify-content:flex-start}.mx-sitebar-links a{font-size:.54rem;padding:.25rem .48rem}}
 
 
 
@@ -887,341 +862,368 @@ nav{top:var(--mx-sitebar-height)!important;}
   .ft-logo-text strong{font-size:1.15rem}
 }
 
+
+/* Ecosystem navigation final fixed */
+.ecosystem-nav{
+position:relative;
+z-index:9999;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:.65rem;
+flex-wrap:wrap;
+padding:.62rem 1rem;
+background:#041018;
+color:#fff;
+font-family:Arial,sans-serif;
+font-size:.88rem;
+line-height:1.2;
+border-bottom:1px solid rgba(255,255,255,.12)
+}
+.ecosystem-nav a{
+display:inline-flex;
+align-items:center;
+gap:.35rem;
+padding:.45rem .75rem;
+border-radius:999px;
+color:rgba(255,255,255,.86);
+text-decoration:none;
+font-weight:800;
+border:1px solid transparent;
+transition:.2s
+}
+.ecosystem-nav a:hover{background:rgba(255,255,255,.10);color:#fff}
+.ecosystem-nav a.active{background:#f0c36d;color:#061923;border-color:#f0c36d}
+@media(max-width:720px){
+.ecosystem-nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;padding:.58rem .8rem}
+.ecosystem-nav a{white-space:nowrap;font-size:.82rem}
+}
+
+
+/* Sticky nav top fix */
+html{scroll-padding-top:0!important}
+body{padding-top:0!important}
+nav{top:0!important}
+.mobile-menu{top:0!important}
+
 </style>
 </head>
 <body>
-<!-- MASOALA EXPERIENCES SITEBAR -->
-<div class="mx-sitebar" aria-label="Navigation Masoala Experiences">
-  <div class="mx-sitebar-inner">
-    <a class="mx-sitebar-brand" href="https://masoala-experiences.vercel.app/" target="_blank" rel="noopener">Masoala Experiences</a>
-    <div class="mx-sitebar-links">
-      <a href="https://manga-beach-hotel.vercel.app/" target="_blank" rel="noopener">🏨 Manga Beach</a>
-      <a href="https://paradise-valley-lodge.vercel.app/" target="_blank" rel="noopener">🌿 Paradise Valley</a>
-      <a href="https://peche-sportive-masoala.vercel.app/" target="_blank" rel="noopener">🎣 Pêche Masoala</a>
-      <a href="https://masoala-experiences.vercel.app/" target="_blank" rel="noopener">◉ Hub</a>
-    </div>
-  </div>
+
+<div class="ecosystem-nav" aria-label="Navigation écosystème Masoala">
+<a href="https://masoala-experiences.vercel.app/">◉ Masoala Experiences</a>
+<a href="https://manga-beach-hotel.vercel.app/">🏨 Manga Beach</a>
+<a href="https://paradise-valley-lodge.vercel.app/" class="active">🌿 Paradise Valley</a>
+<a href="https://peche-sportive-masoala.vercel.app/">🎣 Pêche Sportive</a>
 </div>
 
 
-<!-- MASOALA EXPERIENCES — BARRE INTER-SITES -->
 
 
 <nav>
-  <a class="nav-logo" href="index.html" aria-label="Paradise Valley accueil"><img class="nav-logo-mark" src="assets/paradise-valley-logo.png" alt="Logo Paradise Valley"/><span class="nav-logo-text"><strong>Paradise Valley</strong><span>Ambanizana</span></span></a>
-  <div class="nav-links" aria-label="Navigation principale">
-    <a href="index.html">Accueil</a>
-    <a href="chambres.html">Bungalows</a>
-    <a href="galerie.html" class="active">Galerie</a>
-    <a href="acces.html">Accès</a>
-    <a href="reservation.html">Réservation</a>
-    <a href="contact.html">Contact</a>
-  </div>
-  <a href="reservation.html" class="nav-cta">Réserver</a>
-  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<a aria-label="Paradise Valley accueil" class="nav-logo" href="index.html"><img alt="Logo Paradise Valley" class="nav-logo-mark" src="assets/paradise-valley-logo.png"/><span class="nav-logo-text"><strong>Paradise Valley</strong><span>Ambanizana</span></span></a>
+<div aria-label="Navigation principale" class="nav-links">
+<a href="index.html">Accueil</a>
+<a href="chambres.html">Bungalows</a>
+<a class="active" href="galerie.html">Galerie</a>
+<a href="acces.html">Accès</a>
+<a href="reservation.html">Réservation</a>
+<a href="contact.html">Contact</a>
+</div>
+<a class="nav-cta" href="reservation.html">Réserver</a>
+<button aria-expanded="false" aria-label="Menu" class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
-  <a href="index.html">Accueil</a>
-  <a href="chambres.html">Bungalows</a>
-  <a href="galerie.html">Galerie</a>
-  <a href="acces.html">Accès</a>
-  <a href="reservation.html">Réservation</a>
-  <a href="contact.html">Contact</a>
-  <a href="reservation.html"><button class="mob-cta">Réserver</button></a>
+<a href="index.html">Accueil</a>
+<a href="chambres.html">Bungalows</a>
+<a href="galerie.html">Galerie</a>
+<a href="acces.html">Accès</a>
+<a href="reservation.html">Réservation</a>
+<a href="contact.html">Contact</a>
+<a href="reservation.html"><button class="mob-cta">Réserver</button></a>
 </div>
-
 <div class="page-header">
-  <svg class="ph-bg" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0,200 Q360,100 720,180 Q1080,260 1440,140 L1440,300 L0,300Z" fill="#1a7fa0"/>
-    <path d="M0,250 Q360,170 720,230 Q1080,290 1440,200 L1440,300 L0,300Z" fill="#e8d5a3"/>
-  </svg>
-  <div class="ph-label">Paradise Valley — Galerie</div>
-  <h1 class="ph-title">L'<em>expérience</em> en images</h1>
-  <p class="ph-sub">Découvrez la beauté naturelle de notre éco-lodge à travers notre galerie</p>
+<svg class="ph-bg" preserveaspectratio="xMidYMid slice" viewbox="0 0 1440 300" xmlns="http://www.w3.org/2000/svg">
+<path d="M0,200 Q360,100 720,180 Q1080,260 1440,140 L1440,300 L0,300Z" fill="#1a7fa0"></path>
+<path d="M0,250 Q360,170 720,230 Q1080,290 1440,200 L1440,300 L0,300Z" fill="#e8d5a3"></path>
+</svg>
+<div class="ph-label">Paradise Valley — Galerie</div>
+<h1 class="ph-title">L'<em>expérience</em> en images</h1>
+<p class="ph-sub">Découvrez la beauté naturelle de notre éco-lodge à travers notre galerie</p>
 </div>
-
 <div class="filter-bar">
-  <button class="fbtn active" onclick="filterGallery('all',this)">Tout voir</button>
-  <button class="fbtn" onclick="filterGallery('nature',this)">Nature &amp; Paysages</button>
-  <button class="fbtn" onclick="filterGallery('bungalows',this)">Bungalows</button>
-  <button class="fbtn" onclick="filterGallery('restaurant',this)">Restaurant</button>
+<button class="fbtn active" onclick="filterGallery('all',this)">Tout voir</button>
+<button class="fbtn" onclick="filterGallery('nature',this)">Nature &amp; Paysages</button>
+<button class="fbtn" onclick="filterGallery('bungalows',this)">Bungalows</button>
+<button class="fbtn" onclick="filterGallery('restaurant',this)">Restaurant</button>
 </div>
-
 <!-- NATURE -->
 <section class="gallery-section" data-cat="nature">
-  <div class="sec-header"><div><div class="sec-cat-label">Catégorie</div><div class="sec-cat-title">Nature &amp; <em>Paysages</em></div></div><div class="sec-line"></div></div>
-  <div class="premium-photo-grid">
-    <div class="gi featured" onclick="openLb('Baie d’Ambanizana','Entre mer et forêt tropicale','photo','assets/images/galerie/nature/nature-01.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-01-thumb.webp" alt="Baie d’Ambanizana" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Baie d’Ambanizana</div><div class="gi-cap-sub">Entre mer et forêt tropicale</div></div></div>
-    </div>
-    <div class="gi featured" onclick="openLb('Vue panoramique du lodge','Plage, palmiers & montagnes','photo','assets/images/galerie/nature/nature-02.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-02-thumb.webp" alt="Vue panoramique du lodge" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Vue panoramique du lodge</div><div class="gi-cap-sub">Plage, palmiers & montagnes</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Lodge face à la nature','Forêt luxuriante','photo','assets/images/galerie/nature/nature-03.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-03-thumb.webp" alt="Lodge face à la nature" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Lodge face à la nature</div><div class="gi-cap-sub">Forêt luxuriante</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Rivage paisible','Vue sur la baie','photo','assets/images/galerie/nature/nature-04.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-04-thumb.webp" alt="Rivage paisible" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Rivage paisible</div><div class="gi-cap-sub">Vue sur la baie</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Côte tropicale','Mer, plage & végétation','photo','assets/images/galerie/nature/nature-05.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-05-thumb.webp" alt="Côte tropicale" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Côte tropicale</div><div class="gi-cap-sub">Mer, plage & végétation</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Palmiers et rivière','Ambiance naturelle','photo','assets/images/galerie/nature/nature-06.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-06-thumb.webp" alt="Palmiers et rivière" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Palmiers et rivière</div><div class="gi-cap-sub">Ambiance naturelle</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Vue depuis la mer','Pirogue traditionnelle','photo','assets/images/galerie/nature/nature-07.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-07-thumb.webp" alt="Vue depuis la mer" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Vue depuis la mer</div><div class="gi-cap-sub">Pirogue traditionnelle</div></div></div>
-    </div>
-    <div class="gi featured" onclick="openLb('Cascade naturelle','Eau douce & rochers','photo','assets/images/galerie/nature/nature-08.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-08-thumb.webp" alt="Cascade naturelle" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Cascade naturelle</div><div class="gi-cap-sub">Eau douce & rochers</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Coucher de soleil','Horizon marin','photo','assets/images/galerie/nature/nature-09.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-09-thumb.webp" alt="Coucher de soleil" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Coucher de soleil</div><div class="gi-cap-sub">Horizon marin</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Lumière du soir','Mer calme','photo','assets/images/galerie/nature/nature-10.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-10-thumb.webp" alt="Lumière du soir" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Lumière du soir</div><div class="gi-cap-sub">Mer calme</div></div></div>
-    </div>
-    <div class="gi featured" onclick="openLb('Ciel dramatique','Pirogue au large','photo','assets/images/galerie/nature/nature-11.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-11-thumb.webp" alt="Ciel dramatique" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Ciel dramatique</div><div class="gi-cap-sub">Pirogue au large</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Arrivée par bateau','Vue sur Paradise Valley','photo','assets/images/galerie/nature/nature-12.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-12-thumb.webp" alt="Arrivée par bateau" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Arrivée par bateau</div><div class="gi-cap-sub">Vue sur Paradise Valley</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Excursion en mer','Bateau sur la baie','photo','assets/images/galerie/nature/nature-13.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-13-thumb.webp" alt="Excursion en mer" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Excursion en mer</div><div class="gi-cap-sub">Bateau sur la baie</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Forêt et océan','Panorama côtier','photo','assets/images/galerie/nature/nature-14.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-14-thumb.webp" alt="Forêt et océan" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Forêt et océan</div><div class="gi-cap-sub">Panorama côtier</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Bateau en mouvement','Baie sauvage','photo','assets/images/galerie/nature/nature-15.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-15-thumb.webp" alt="Bateau en mouvement" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bateau en mouvement</div><div class="gi-cap-sub">Baie sauvage</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Nature préservée','Montagnes et mer','photo','assets/images/galerie/nature/nature-16.webp')">
-      <img class="photo-cover" src="assets/images/galerie/nature/nature-16-thumb.webp" alt="Nature préservée" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Nature préservée</div><div class="gi-cap-sub">Montagnes et mer</div></div></div>
-    </div>
-  </div>
+<div class="sec-header"><div><div class="sec-cat-label">Catégorie</div><div class="sec-cat-title">Nature &amp; <em>Paysages</em></div></div><div class="sec-line"></div></div>
+<div class="premium-photo-grid">
+<div class="gi featured" onclick="openLb('Baie d’Ambanizana','Entre mer et forêt tropicale','photo','assets/images/galerie/nature/nature-01.webp')">
+<img alt="Baie d’Ambanizana" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-01-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Baie d’Ambanizana</div><div class="gi-cap-sub">Entre mer et forêt tropicale</div></div></div>
+</div>
+<div class="gi featured" onclick="openLb('Vue panoramique du lodge','Plage, palmiers &amp; montagnes','photo','assets/images/galerie/nature/nature-02.webp')">
+<img alt="Vue panoramique du lodge" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-02-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Vue panoramique du lodge</div><div class="gi-cap-sub">Plage, palmiers &amp; montagnes</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Lodge face à la nature','Forêt luxuriante','photo','assets/images/galerie/nature/nature-03.webp')">
+<img alt="Lodge face à la nature" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-03-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Lodge face à la nature</div><div class="gi-cap-sub">Forêt luxuriante</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Rivage paisible','Vue sur la baie','photo','assets/images/galerie/nature/nature-04.webp')">
+<img alt="Rivage paisible" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-04-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Rivage paisible</div><div class="gi-cap-sub">Vue sur la baie</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Côte tropicale','Mer, plage &amp; végétation','photo','assets/images/galerie/nature/nature-05.webp')">
+<img alt="Côte tropicale" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-05-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Côte tropicale</div><div class="gi-cap-sub">Mer, plage &amp; végétation</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Palmiers et rivière','Ambiance naturelle','photo','assets/images/galerie/nature/nature-06.webp')">
+<img alt="Palmiers et rivière" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-06-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Palmiers et rivière</div><div class="gi-cap-sub">Ambiance naturelle</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Vue depuis la mer','Pirogue traditionnelle','photo','assets/images/galerie/nature/nature-07.webp')">
+<img alt="Vue depuis la mer" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-07-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Vue depuis la mer</div><div class="gi-cap-sub">Pirogue traditionnelle</div></div></div>
+</div>
+<div class="gi featured" onclick="openLb('Cascade naturelle','Eau douce &amp; rochers','photo','assets/images/galerie/nature/nature-08.webp')">
+<img alt="Cascade naturelle" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-08-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Cascade naturelle</div><div class="gi-cap-sub">Eau douce &amp; rochers</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Coucher de soleil','Horizon marin','photo','assets/images/galerie/nature/nature-09.webp')">
+<img alt="Coucher de soleil" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-09-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Coucher de soleil</div><div class="gi-cap-sub">Horizon marin</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Lumière du soir','Mer calme','photo','assets/images/galerie/nature/nature-10.webp')">
+<img alt="Lumière du soir" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-10-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Lumière du soir</div><div class="gi-cap-sub">Mer calme</div></div></div>
+</div>
+<div class="gi featured" onclick="openLb('Ciel dramatique','Pirogue au large','photo','assets/images/galerie/nature/nature-11.webp')">
+<img alt="Ciel dramatique" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-11-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Ciel dramatique</div><div class="gi-cap-sub">Pirogue au large</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Arrivée par bateau','Vue sur Paradise Valley','photo','assets/images/galerie/nature/nature-12.webp')">
+<img alt="Arrivée par bateau" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-12-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Arrivée par bateau</div><div class="gi-cap-sub">Vue sur Paradise Valley</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Excursion en mer','Bateau sur la baie','photo','assets/images/galerie/nature/nature-13.webp')">
+<img alt="Excursion en mer" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-13-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Excursion en mer</div><div class="gi-cap-sub">Bateau sur la baie</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Forêt et océan','Panorama côtier','photo','assets/images/galerie/nature/nature-14.webp')">
+<img alt="Forêt et océan" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-14-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Forêt et océan</div><div class="gi-cap-sub">Panorama côtier</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Bateau en mouvement','Baie sauvage','photo','assets/images/galerie/nature/nature-15.webp')">
+<img alt="Bateau en mouvement" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-15-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bateau en mouvement</div><div class="gi-cap-sub">Baie sauvage</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Nature préservée','Montagnes et mer','photo','assets/images/galerie/nature/nature-16.webp')">
+<img alt="Nature préservée" class="photo-cover" loading="lazy" src="assets/images/galerie/nature/nature-16-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Nature préservée</div><div class="gi-cap-sub">Montagnes et mer</div></div></div>
+</div>
+</div>
 </section>
-
 <!-- BUNGALOWS -->
 <section class="gallery-section" data-cat="bungalows">
-  <div class="sec-header"><div><div class="sec-cat-label">Catégorie</div><div class="sec-cat-title">Bungalows &amp; <em>Hébergements</em></div></div><div class="sec-line"></div></div>
-  <div class="premium-photo-grid">
-    <div class="gi featured" onclick="openLb('Vue générale des bungalows','Entre mer et forêt','photo','assets/images/galerie/bungalows/bungalow-01.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-01-thumb.webp" alt="Vue générale des bungalows" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Vue générale des bungalows</div><div class="gi-cap-sub">Entre mer et forêt</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Lodge principal','Architecture traditionnelle','photo','assets/images/galerie/bungalows/bungalow-02.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-02-thumb.webp" alt="Lodge principal" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Lodge principal</div><div class="gi-cap-sub">Architecture traditionnelle</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Façade du lodge','Toit végétal & nature','photo','assets/images/galerie/bungalows/bungalow-03.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-03-thumb.webp" alt="Façade du lodge" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Façade du lodge</div><div class="gi-cap-sub">Toit végétal & nature</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Rivage du lodge','Vue panoramique','photo','assets/images/galerie/bungalows/bungalow-04.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-04-thumb.webp" alt="Rivage du lodge" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Rivage du lodge</div><div class="gi-cap-sub">Vue panoramique</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Côte et bungalows','Vue aérienne','photo','assets/images/galerie/bungalows/bungalow-05.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-05-thumb.webp" alt="Côte et bungalows" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Côte et bungalows</div><div class="gi-cap-sub">Vue aérienne</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Palmiers & lodge','Ambiance tropicale','photo','assets/images/galerie/bungalows/bungalow-06.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-06-thumb.webp" alt="Palmiers & lodge" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Palmiers & lodge</div><div class="gi-cap-sub">Ambiance tropicale</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Vue large depuis la baie','Paradise Valley','photo','assets/images/galerie/bungalows/bungalow-07.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-07-thumb.webp" alt="Vue large depuis la baie" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Vue large depuis la baie</div><div class="gi-cap-sub">Paradise Valley</div></div></div>
-    </div>
-    <div class="gi featured" onclick="openLb('Coucher de soleil sur les bungalows','Mer calme','photo','assets/images/galerie/bungalows/bungalow-08.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-08-thumb.webp" alt="Coucher de soleil sur les bungalows" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Coucher de soleil sur les bungalows</div><div class="gi-cap-sub">Mer calme</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Vue aérienne au crépuscule','Séjour au bord de mer','photo','assets/images/galerie/bungalows/bungalow-09.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-09-thumb.webp" alt="Vue aérienne au crépuscule" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Vue aérienne au crépuscule</div><div class="gi-cap-sub">Séjour au bord de mer</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Vue sur la plage','Bungalows côté nature','photo','assets/images/galerie/bungalows/bungalow-10.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-10-thumb.webp" alt="Vue sur la plage" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Vue sur la plage</div><div class="gi-cap-sub">Bungalows côté nature</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Toits végétaux','Architecture locale','photo','assets/images/galerie/bungalows/bungalow-11.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-11-thumb.webp" alt="Toits végétaux" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Toits végétaux</div><div class="gi-cap-sub">Architecture locale</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Bungalows côté jardin','Vue mer','photo','assets/images/galerie/bungalows/bungalow-12.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-12-thumb.webp" alt="Bungalows côté jardin" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bungalows côté jardin</div><div class="gi-cap-sub">Vue mer</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Bungalows et végétation','Cadre naturel','photo','assets/images/galerie/bungalows/bungalow-13.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-13-thumb.webp" alt="Bungalows et végétation" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bungalows et végétation</div><div class="gi-cap-sub">Cadre naturel</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Bungalow sous les arbres','Charme tropical','photo','assets/images/galerie/bungalows/bungalow-14.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-14-thumb.webp" alt="Bungalow sous les arbres" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bungalow sous les arbres</div><div class="gi-cap-sub">Charme tropical</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Bungalow au calme','Nature & sérénité','photo','assets/images/galerie/bungalows/bungalow-15.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-15-thumb.webp" alt="Bungalow au calme" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bungalow au calme</div><div class="gi-cap-sub">Nature & sérénité</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Bungalow encadré de verdure','Séjour authentique','photo','assets/images/galerie/bungalows/bungalow-16.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-16-thumb.webp" alt="Bungalow encadré de verdure" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bungalow encadré de verdure</div><div class="gi-cap-sub">Séjour authentique</div></div></div>
-    </div>
-    <div class="gi featured" onclick="openLb('Intérieur bungalow','Lit avec moustiquaire','photo','assets/images/galerie/bungalows/bungalow-17.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-17-thumb.webp" alt="Intérieur bungalow" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Intérieur bungalow</div><div class="gi-cap-sub">Lit avec moustiquaire</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Bungalow extérieur','Façade naturelle','photo','assets/images/galerie/bungalows/bungalow-18.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-18-thumb.webp" alt="Bungalow extérieur" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bungalow extérieur</div><div class="gi-cap-sub">Façade naturelle</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Allée des bungalows','Ombre & végétation','photo','assets/images/galerie/bungalows/bungalow-19.webp')">
-      <img class="photo-cover" src="assets/images/galerie/bungalows/bungalow-19-thumb.webp" alt="Allée des bungalows" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Allée des bungalows</div><div class="gi-cap-sub">Ombre & végétation</div></div></div>
-    </div>
-  </div>
+<div class="sec-header"><div><div class="sec-cat-label">Catégorie</div><div class="sec-cat-title">Bungalows &amp; <em>Hébergements</em></div></div><div class="sec-line"></div></div>
+<div class="premium-photo-grid">
+<div class="gi featured" onclick="openLb('Vue générale des bungalows','Entre mer et forêt','photo','assets/images/galerie/bungalows/bungalow-01.webp')">
+<img alt="Vue générale des bungalows" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-01-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Vue générale des bungalows</div><div class="gi-cap-sub">Entre mer et forêt</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Lodge principal','Architecture traditionnelle','photo','assets/images/galerie/bungalows/bungalow-02.webp')">
+<img alt="Lodge principal" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-02-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Lodge principal</div><div class="gi-cap-sub">Architecture traditionnelle</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Façade du lodge','Toit végétal &amp; nature','photo','assets/images/galerie/bungalows/bungalow-03.webp')">
+<img alt="Façade du lodge" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-03-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Façade du lodge</div><div class="gi-cap-sub">Toit végétal &amp; nature</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Rivage du lodge','Vue panoramique','photo','assets/images/galerie/bungalows/bungalow-04.webp')">
+<img alt="Rivage du lodge" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-04-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Rivage du lodge</div><div class="gi-cap-sub">Vue panoramique</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Côte et bungalows','Vue aérienne','photo','assets/images/galerie/bungalows/bungalow-05.webp')">
+<img alt="Côte et bungalows" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-05-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Côte et bungalows</div><div class="gi-cap-sub">Vue aérienne</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Palmiers &amp; lodge','Ambiance tropicale','photo','assets/images/galerie/bungalows/bungalow-06.webp')">
+<img alt="Palmiers &amp; lodge" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-06-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Palmiers &amp; lodge</div><div class="gi-cap-sub">Ambiance tropicale</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Vue large depuis la baie','Paradise Valley','photo','assets/images/galerie/bungalows/bungalow-07.webp')">
+<img alt="Vue large depuis la baie" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-07-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Vue large depuis la baie</div><div class="gi-cap-sub">Paradise Valley</div></div></div>
+</div>
+<div class="gi featured" onclick="openLb('Coucher de soleil sur les bungalows','Mer calme','photo','assets/images/galerie/bungalows/bungalow-08.webp')">
+<img alt="Coucher de soleil sur les bungalows" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-08-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Coucher de soleil sur les bungalows</div><div class="gi-cap-sub">Mer calme</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Vue aérienne au crépuscule','Séjour au bord de mer','photo','assets/images/galerie/bungalows/bungalow-09.webp')">
+<img alt="Vue aérienne au crépuscule" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-09-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Vue aérienne au crépuscule</div><div class="gi-cap-sub">Séjour au bord de mer</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Vue sur la plage','Bungalows côté nature','photo','assets/images/galerie/bungalows/bungalow-10.webp')">
+<img alt="Vue sur la plage" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-10-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Vue sur la plage</div><div class="gi-cap-sub">Bungalows côté nature</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Toits végétaux','Architecture locale','photo','assets/images/galerie/bungalows/bungalow-11.webp')">
+<img alt="Toits végétaux" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-11-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Toits végétaux</div><div class="gi-cap-sub">Architecture locale</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Bungalows côté jardin','Vue mer','photo','assets/images/galerie/bungalows/bungalow-12.webp')">
+<img alt="Bungalows côté jardin" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-12-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bungalows côté jardin</div><div class="gi-cap-sub">Vue mer</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Bungalows et végétation','Cadre naturel','photo','assets/images/galerie/bungalows/bungalow-13.webp')">
+<img alt="Bungalows et végétation" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-13-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bungalows et végétation</div><div class="gi-cap-sub">Cadre naturel</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Bungalow sous les arbres','Charme tropical','photo','assets/images/galerie/bungalows/bungalow-14.webp')">
+<img alt="Bungalow sous les arbres" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-14-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bungalow sous les arbres</div><div class="gi-cap-sub">Charme tropical</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Bungalow au calme','Nature &amp; sérénité','photo','assets/images/galerie/bungalows/bungalow-15.webp')">
+<img alt="Bungalow au calme" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-15-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bungalow au calme</div><div class="gi-cap-sub">Nature &amp; sérénité</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Bungalow encadré de verdure','Séjour authentique','photo','assets/images/galerie/bungalows/bungalow-16.webp')">
+<img alt="Bungalow encadré de verdure" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-16-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bungalow encadré de verdure</div><div class="gi-cap-sub">Séjour authentique</div></div></div>
+</div>
+<div class="gi featured" onclick="openLb('Intérieur bungalow','Lit avec moustiquaire','photo','assets/images/galerie/bungalows/bungalow-17.webp')">
+<img alt="Intérieur bungalow" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-17-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Intérieur bungalow</div><div class="gi-cap-sub">Lit avec moustiquaire</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Bungalow extérieur','Façade naturelle','photo','assets/images/galerie/bungalows/bungalow-18.webp')">
+<img alt="Bungalow extérieur" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-18-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Bungalow extérieur</div><div class="gi-cap-sub">Façade naturelle</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Allée des bungalows','Ombre &amp; végétation','photo','assets/images/galerie/bungalows/bungalow-19.webp')">
+<img alt="Allée des bungalows" class="photo-cover" loading="lazy" src="assets/images/galerie/bungalows/bungalow-19-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Allée des bungalows</div><div class="gi-cap-sub">Ombre &amp; végétation</div></div></div>
+</div>
+</div>
 </section>
-
-
 <!-- RESTAURANT -->
 <section class="alt-bg" data-cat="restaurant">
-  <div class="sec-header"><div><div class="sec-cat-label">Catégorie</div><div class="sec-cat-title">Restaurant &amp; <em>Repas</em></div></div><div class="sec-line"></div></div>
-  <div class="restaurant-grid">
-    <div class="gi featured" onclick="openLb('Restaurant en bord de plage','Table dressée & fruits frais','photo','assets/images/galerie/restaurant/restaurant-01.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-01-thumb.webp" alt="Restaurant en bord de plage" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Restaurant en bord de plage</div><div class="gi-cap-sub">Table dressée & fruits frais</div></div></div>
-    </div>
-    <div class="gi featured" onclick="openLb('Petit-déjeuner complet','Pension complète','photo','assets/images/galerie/restaurant/restaurant-02.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-02-thumb.webp" alt="Petit-déjeuner complet" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Petit-déjeuner complet</div><div class="gi-cap-sub">Pension complète</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Petit-déjeuner face à la mer','Cuisine locale','photo','assets/images/galerie/restaurant/restaurant-03.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-03-thumb.webp" alt="Petit-déjeuner face à la mer" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Petit-déjeuner face à la mer</div><div class="gi-cap-sub">Cuisine locale</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Salade fraîche maison','Produits locaux','photo','assets/images/galerie/restaurant/restaurant-04.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-04-thumb.webp" alt="Salade fraîche maison" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Salade fraîche maison</div><div class="gi-cap-sub">Produits locaux</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Présentation raffinée','Cuisine du lodge','photo','assets/images/galerie/restaurant/restaurant-05.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-05-thumb.webp" alt="Présentation raffinée" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Présentation raffinée</div><div class="gi-cap-sub">Cuisine du lodge</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Plat chaud du jour','Saveurs malgaches','photo','assets/images/galerie/restaurant/restaurant-06.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-06-thumb.webp" alt="Plat chaud du jour" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Plat chaud du jour</div><div class="gi-cap-sub">Saveurs malgaches</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Brochettes & accompagnement','Repas complet','photo','assets/images/galerie/restaurant/restaurant-07.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-07-thumb.webp" alt="Brochettes & accompagnement" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Brochettes & accompagnement</div><div class="gi-cap-sub">Repas complet</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Déjeuner servi à table','Service restaurant','photo','assets/images/galerie/restaurant/restaurant-08.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-08-thumb.webp" alt="Déjeuner servi à table" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Déjeuner servi à table</div><div class="gi-cap-sub">Service restaurant</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Service à table','Restaurant Paradise Valley','photo','assets/images/galerie/restaurant/restaurant-09.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-09-thumb.webp" alt="Service à table" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Service à table</div><div class="gi-cap-sub">Restaurant Paradise Valley</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Dégustation au restaurant','Ambiance lodge','photo','assets/images/galerie/restaurant/restaurant-10.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-10-thumb.webp" alt="Dégustation au restaurant" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Dégustation au restaurant</div><div class="gi-cap-sub">Ambiance lodge</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Table conviviale','Repas en pension complète','photo','assets/images/galerie/restaurant/restaurant-11.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-11-thumb.webp" alt="Table conviviale" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Table conviviale</div><div class="gi-cap-sub">Repas en pension complète</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Spécialité locale','Cuisine traditionnelle','photo','assets/images/galerie/restaurant/restaurant-12.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-12-thumb.webp" alt="Spécialité locale" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Spécialité locale</div><div class="gi-cap-sub">Cuisine traditionnelle</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Dessert maison','Douceur du jour','photo','assets/images/galerie/restaurant/restaurant-13.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-13-thumb.webp" alt="Dessert maison" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Dessert maison</div><div class="gi-cap-sub">Douceur du jour</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Assiette de fruits tropicaux','Petit-déjeuner','photo','assets/images/galerie/restaurant/restaurant-14.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-14-thumb.webp" alt="Assiette de fruits tropicaux" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Assiette de fruits tropicaux</div><div class="gi-cap-sub">Petit-déjeuner</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Petit-déjeuner tropical','Fruits frais','photo','assets/images/galerie/restaurant/restaurant-15.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-15-thumb.webp" alt="Petit-déjeuner tropical" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Petit-déjeuner tropical</div><div class="gi-cap-sub">Fruits frais</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Crêpe maison','Petit-déjeuner','photo','assets/images/galerie/restaurant/restaurant-16.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-16-thumb.webp" alt="Crêpe maison" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Crêpe maison</div><div class="gi-cap-sub">Petit-déjeuner</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Fruits frais & jus naturel','Service du matin','photo','assets/images/galerie/restaurant/restaurant-17.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-17-thumb.webp" alt="Fruits frais & jus naturel" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Fruits frais & jus naturel</div><div class="gi-cap-sub">Service du matin</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Table du matin','Petit-déjeuner complet','photo','assets/images/galerie/restaurant/restaurant-18.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-18-thumb.webp" alt="Table du matin" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Table du matin</div><div class="gi-cap-sub">Petit-déjeuner complet</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Fruits de saison','Cuisine fraîche','photo','assets/images/galerie/restaurant/restaurant-19.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-19-thumb.webp" alt="Fruits de saison" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Fruits de saison</div><div class="gi-cap-sub">Cuisine fraîche</div></div></div>
-    </div>
-    <div class="gi" onclick="openLb('Petit-déjeuner gourmand','Produits locaux','photo','assets/images/galerie/restaurant/restaurant-20.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-20-thumb.webp" alt="Petit-déjeuner gourmand" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Petit-déjeuner gourmand</div><div class="gi-cap-sub">Produits locaux</div></div></div>
-    </div>
-    <div class="gi featured" onclick="openLb('Restaurant extérieur','Vue sur les bungalows','photo','assets/images/galerie/restaurant/restaurant-21.webp')">
-      <img class="photo-cover" src="assets/images/galerie/restaurant/restaurant-21-thumb.webp" alt="Restaurant extérieur" loading="lazy">
-      <div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Restaurant extérieur</div><div class="gi-cap-sub">Vue sur les bungalows</div></div></div>
-    </div>
-  </div>
-</section>
-
-
-<div class="cta-strip">
-  <div><h2 class="cta-title">Ces images vous font <em>rêver ?</em></h2><p class="cta-sub">Venez vivre l'expérience Paradise Valley en vrai.</p></div>
-  <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-    <a href="reservation.html"><button class="btn-primary">Réserver un séjour</button></a>
-    <a href="chambres.html"><button class="btn-outline-light">Voir les bungalows</button></a>
-  </div>
+<div class="sec-header"><div><div class="sec-cat-label">Catégorie</div><div class="sec-cat-title">Restaurant &amp; <em>Repas</em></div></div><div class="sec-line"></div></div>
+<div class="restaurant-grid">
+<div class="gi featured" onclick="openLb('Restaurant en bord de plage','Table dressée &amp; fruits frais','photo','assets/images/galerie/restaurant/restaurant-01.webp')">
+<img alt="Restaurant en bord de plage" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-01-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Restaurant en bord de plage</div><div class="gi-cap-sub">Table dressée &amp; fruits frais</div></div></div>
 </div>
-
+<div class="gi featured" onclick="openLb('Petit-déjeuner complet','Pension complète','photo','assets/images/galerie/restaurant/restaurant-02.webp')">
+<img alt="Petit-déjeuner complet" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-02-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Petit-déjeuner complet</div><div class="gi-cap-sub">Pension complète</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Petit-déjeuner face à la mer','Cuisine locale','photo','assets/images/galerie/restaurant/restaurant-03.webp')">
+<img alt="Petit-déjeuner face à la mer" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-03-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Petit-déjeuner face à la mer</div><div class="gi-cap-sub">Cuisine locale</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Salade fraîche maison','Produits locaux','photo','assets/images/galerie/restaurant/restaurant-04.webp')">
+<img alt="Salade fraîche maison" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-04-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Salade fraîche maison</div><div class="gi-cap-sub">Produits locaux</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Présentation raffinée','Cuisine du lodge','photo','assets/images/galerie/restaurant/restaurant-05.webp')">
+<img alt="Présentation raffinée" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-05-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Présentation raffinée</div><div class="gi-cap-sub">Cuisine du lodge</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Plat chaud du jour','Saveurs malgaches','photo','assets/images/galerie/restaurant/restaurant-06.webp')">
+<img alt="Plat chaud du jour" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-06-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Plat chaud du jour</div><div class="gi-cap-sub">Saveurs malgaches</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Brochettes &amp; accompagnement','Repas complet','photo','assets/images/galerie/restaurant/restaurant-07.webp')">
+<img alt="Brochettes &amp; accompagnement" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-07-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Brochettes &amp; accompagnement</div><div class="gi-cap-sub">Repas complet</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Déjeuner servi à table','Service restaurant','photo','assets/images/galerie/restaurant/restaurant-08.webp')">
+<img alt="Déjeuner servi à table" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-08-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Déjeuner servi à table</div><div class="gi-cap-sub">Service restaurant</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Service à table','Restaurant Paradise Valley','photo','assets/images/galerie/restaurant/restaurant-09.webp')">
+<img alt="Service à table" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-09-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Service à table</div><div class="gi-cap-sub">Restaurant Paradise Valley</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Dégustation au restaurant','Ambiance lodge','photo','assets/images/galerie/restaurant/restaurant-10.webp')">
+<img alt="Dégustation au restaurant" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-10-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Dégustation au restaurant</div><div class="gi-cap-sub">Ambiance lodge</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Table conviviale','Repas en pension complète','photo','assets/images/galerie/restaurant/restaurant-11.webp')">
+<img alt="Table conviviale" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-11-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Table conviviale</div><div class="gi-cap-sub">Repas en pension complète</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Spécialité locale','Cuisine traditionnelle','photo','assets/images/galerie/restaurant/restaurant-12.webp')">
+<img alt="Spécialité locale" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-12-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Spécialité locale</div><div class="gi-cap-sub">Cuisine traditionnelle</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Dessert maison','Douceur du jour','photo','assets/images/galerie/restaurant/restaurant-13.webp')">
+<img alt="Dessert maison" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-13-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Dessert maison</div><div class="gi-cap-sub">Douceur du jour</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Assiette de fruits tropicaux','Petit-déjeuner','photo','assets/images/galerie/restaurant/restaurant-14.webp')">
+<img alt="Assiette de fruits tropicaux" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-14-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Assiette de fruits tropicaux</div><div class="gi-cap-sub">Petit-déjeuner</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Petit-déjeuner tropical','Fruits frais','photo','assets/images/galerie/restaurant/restaurant-15.webp')">
+<img alt="Petit-déjeuner tropical" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-15-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Petit-déjeuner tropical</div><div class="gi-cap-sub">Fruits frais</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Crêpe maison','Petit-déjeuner','photo','assets/images/galerie/restaurant/restaurant-16.webp')">
+<img alt="Crêpe maison" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-16-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Crêpe maison</div><div class="gi-cap-sub">Petit-déjeuner</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Fruits frais &amp; jus naturel','Service du matin','photo','assets/images/galerie/restaurant/restaurant-17.webp')">
+<img alt="Fruits frais &amp; jus naturel" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-17-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Fruits frais &amp; jus naturel</div><div class="gi-cap-sub">Service du matin</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Table du matin','Petit-déjeuner complet','photo','assets/images/galerie/restaurant/restaurant-18.webp')">
+<img alt="Table du matin" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-18-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Table du matin</div><div class="gi-cap-sub">Petit-déjeuner complet</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Fruits de saison','Cuisine fraîche','photo','assets/images/galerie/restaurant/restaurant-19.webp')">
+<img alt="Fruits de saison" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-19-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Fruits de saison</div><div class="gi-cap-sub">Cuisine fraîche</div></div></div>
+</div>
+<div class="gi" onclick="openLb('Petit-déjeuner gourmand','Produits locaux','photo','assets/images/galerie/restaurant/restaurant-20.webp')">
+<img alt="Petit-déjeuner gourmand" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-20-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Petit-déjeuner gourmand</div><div class="gi-cap-sub">Produits locaux</div></div></div>
+</div>
+<div class="gi featured" onclick="openLb('Restaurant extérieur','Vue sur les bungalows','photo','assets/images/galerie/restaurant/restaurant-21.webp')">
+<img alt="Restaurant extérieur" class="photo-cover" loading="lazy" src="assets/images/galerie/restaurant/restaurant-21-thumb.webp"/>
+<div class="gi-overlay"><div class="gi-caption"><div class="gi-cap-title">Restaurant extérieur</div><div class="gi-cap-sub">Vue sur les bungalows</div></div></div>
+</div>
+</div>
+</section>
+<div class="cta-strip">
+<div><h2 class="cta-title">Ces images vous font <em>rêver ?</em></h2><p class="cta-sub">Venez vivre l'expérience Paradise Valley en vrai.</p></div>
+<div style="display:flex;gap:1rem;flex-wrap:wrap;">
+<a href="reservation.html"><button class="btn-primary">Réserver un séjour</button></a>
+<a href="chambres.html"><button class="btn-outline-light">Voir les bungalows</button></a>
+</div>
+</div>
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLbOutside(event)">
-  <button class="lb-close" onclick="closeLb()">✕</button>
-  <div class="lb-content">
-    <div class="lb-img" id="lb-img"><div id="lb-bg" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center"></div></div>
-    <div class="lb-title" id="lb-title"></div>
-    <div class="lb-sub" id="lb-sub"></div>
-    <div class="lb-nav">
-      <button onclick="closeLb()">Fermer</button>
-      <a href="reservation.html"><button style="background:var(--sand);color:var(--ocean);border-color:var(--sand)">Réserver ce séjour</button></a>
-    </div>
-  </div>
+<button class="lb-close" onclick="closeLb()">✕</button>
+<div class="lb-content">
+<div class="lb-img" id="lb-img"><div id="lb-bg" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center"></div></div>
+<div class="lb-title" id="lb-title"></div>
+<div class="lb-sub" id="lb-sub"></div>
+<div class="lb-nav">
+<button onclick="closeLb()">Fermer</button>
+<a href="reservation.html"><button style="background:var(--sand);color:var(--ocean);border-color:var(--sand)">Réserver ce séjour</button></a>
 </div>
-
+</div>
+</div>
 <footer>
-  <div class="ft-logo"><img class="ft-logo-mark" src="assets/paradise-valley-logo.png" alt="Logo Paradise Valley"/><span class="ft-logo-text"><strong>Paradise Valley</strong><span>Ambanizana</span></span></div>
-  <div class="ft-links"><a href="index.html">Accueil</a><a href="chambres.html">Bungalows</a><a href="galerie.html">Galerie</a><a href="acces.html">Accès</a><a href="reservation.html">Réservation</a><a href="contact.html">Contact</a></div>
-  <div class="ft-copy">© 2025 Paradise Valley</div>
+<div class="ft-logo"><img alt="Logo Paradise Valley" class="ft-logo-mark" src="assets/paradise-valley-logo.png"><span class="ft-logo-text"><strong>Paradise Valley</strong><span>Ambanizana</span></span></img></div>
+<div class="ft-links"><a href="index.html">Accueil</a><a href="chambres.html">Bungalows</a><a href="galerie.html">Galerie</a><a href="acces.html">Accès</a><a href="reservation.html">Réservation</a><a href="contact.html">Contact</a></div>
+<div class="ft-copy">© 2025 Paradise Valley</div>
 </footer>
-
 <script>
   const cmap={c1:'#0e4d6e',c2:'#1a7fa0',c3:'#0a3a52',c4:'#2a9fc8',c5:'#0e4d6e',c6:'#1a7fa0',c7:'#0a3a52',c8:'#062840',c9:'#0e4d6e'};
   function openLb(t,s,c,imgSrc){
@@ -1248,7 +1250,6 @@ nav{top:var(--mx-sitebar-height)!important;}
     });
   }
 </script>
-
 <script>
 (function(){
   var btn=document.getElementById('hamburger');
@@ -1269,6 +1270,5 @@ nav{top:var(--mx-sitebar-height)!important;}
   });
 })();
 </script>
-
 </body>
 </html>
