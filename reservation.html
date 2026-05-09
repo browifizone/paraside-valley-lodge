@@ -1130,6 +1130,72 @@ body{padding-top:0!important}
 nav{top:0!important}
 .mobile-menu{top:0!important}
 
+
+/* Reservation & contact unified */
+.contact-mini-section{
+  margin-top:2rem;
+  padding:2rem;
+  background:linear-gradient(135deg,#fffaf0,#fff);
+  border:1px solid var(--border);
+  border-radius:16px;
+  box-shadow:0 14px 42px rgba(10,58,82,.07);
+}
+.contact-mini-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1rem;
+  margin-top:1.2rem;
+}
+.contact-mini-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:1rem;
+  min-height:100%;
+}
+.contact-mini-card strong{
+  display:block;
+  color:var(--ocean,#4b8f2f);
+  margin-bottom:.35rem;
+}
+.contact-mini-card a,.contact-mini-card span{
+  color:var(--muted,#5f7059);
+  font-size:.88rem;
+  line-height:1.65;
+}
+.contact-mini-actions{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-top:1.4rem;
+}
+.contact-mini-actions a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:.85rem 1.15rem;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:800;
+  font-size:.76rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.contact-mini-actions .primary{
+  background:var(--sand,#d9b86c);
+  color:var(--ocean-dark,#2f641f);
+}
+.contact-mini-actions .secondary{
+  border:1px solid var(--border);
+  color:var(--ocean,#4b8f2f);
+  background:#fff;
+}
+@media(max-width:900px){
+  .contact-mini-grid{grid-template-columns:1fr}
+  .contact-mini-actions{flex-direction:column}
+  .contact-mini-actions a{width:100%}
+}
+
 </style>
 </head>
 <body>
@@ -1151,10 +1217,10 @@ nav{top:0!important}
 <a href="chambres.html">Bungalows</a>
 <a href="galerie.html">Galerie</a>
 <a href="acces.html">Accès</a>
-<a class="active" href="reservation.html">Réservation</a>
-<a href="contact.html">Contact</a>
+<a class="active" href="reservation.html">Réservation &amp; Demande</a>
+
 </div>
-<a class="nav-cta" href="reservation.html">Réserver</a>
+<a class="nav-cta" href="reservation.html">Organiser mon séjour</a>
 <button aria-expanded="false" aria-label="Menu" class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
@@ -1162,9 +1228,9 @@ nav{top:0!important}
 <a href="chambres.html">Bungalows</a>
 <a href="galerie.html">Galerie</a>
 <a href="acces.html">Accès</a>
-<a href="reservation.html">Réservation</a>
-<a href="contact.html">Contact</a>
-<a href="reservation.html"><button class="mob-cta">Réserver</button></a>
+<a href="reservation.html">Réservation &amp; Demande</a>
+
+<a href="reservation.html"><button class="mob-cta">Organiser mon séjour</button></a>
 </div>
 <div class="page-header">
 <svg class="ph-bg" preserveaspectratio="xMidYMid slice" viewbox="0 0 1440 300" xmlns="http://www.w3.org/2000/svg">
@@ -1172,8 +1238,8 @@ nav{top:0!important}
 <path d="M0,250 Q360,170 720,230 Q1080,290 1440,200 L1440,300 L0,300Z" fill="#e8d5a3"></path>
 </svg>
 <div class="ph-label">Paradise Valley</div>
-<h1 class="ph-title">Votre <em>réservation</em></h1>
-<p class="ph-sub">Réservez votre séjour en quelques étapes simples</p>
+<h1 class="ph-title">Réservation & <em>demande</em></h1>
+<p class="ph-sub">Réservez votre séjour ou envoyez une demande personnalisée</p>
 </div>
 <div class="res-layout">
 <div class="form-card">
@@ -1235,9 +1301,8 @@ nav{top:0!important}
 <div class="fg"><label>Email</label><input autocomplete="email" id="email" name="email" placeholder="jean@exemple.com" required="" type="email"/></div>
 <div class="fg"><label>Téléphone</label><input autocomplete="tel" id="phone" name="phone" placeholder="+261 XX XX XXX XX" required="" type="tel"/></div>
 </div>
-<div class="form-row">
+<div class="form-row full">
 <div class="fg"><label>Nationalité</label><input autocomplete="country-name" id="nationality" name="nationality" placeholder="Française" type="text"/></div>
-<div class="fg"><label>Mode de paiement</label><select id="payment" name="payment"><option>Mobile Money (MVola)</option><option>Mobile Money (Orange Money)</option><option>Paiement sur place</option></select></div>
 </div>
 <div class="form-row full">
 <div class="fg"><label>Demandes spéciales (optionnel)</label><textarea id="special-requests" name="special_requests" placeholder="Anniversaire, allergie alimentaire, heure d'arrivée approximative…"></textarea></div>
@@ -1310,6 +1375,12 @@ nav{top:0!important}
 <div class="boat-note"><strong>Transfert spécial :</strong> Manga Beach → Masoala Village ou Mananara : 3 500 000 Ar + attente 80 000 Ar / jour.</div>
 </div>
 </div>
+
+<div class="payment-info-note" style="margin:1.5rem 0;padding:1rem 1.2rem;background:linear-gradient(135deg,#fffaf0,#fff);border:1px solid var(--border);border-radius:14px;color:var(--muted);line-height:1.7;font-size:.92rem">
+<strong style="display:block;color:var(--ocean-dark);margin-bottom:.35rem">Confirmation & modalités</strong>
+Votre demande ne déclenche aucun paiement en ligne. L’équipe confirme d’abord les disponibilités, les transferts, les prestations souhaitées et le tarif final. Les modalités de règlement ou d’acompte sont communiquées uniquement après validation personnalisée de votre séjour.
+</div>
+
 <div class="form-submit">
 <button class="btn-submit" id="submit-btn" type="button">Confirmer ma réservation</button>
 <div class="reservation-alert" id="reservation-alert"></div>
@@ -1365,14 +1436,6 @@ nav{top:0!important}
         </p>
 </div>
 <div class="final-info-box">
-<strong>Paiement</strong>
-<p>
-          Le paiement s’effectue après confirmation de disponibilité.<br/><br/>
-          Modes acceptés : <b>MVola</b>, <b>Orange Money</b> ou <b>paiement sur place</b>.<br/><br/>
-          Les numéros de paiement sont envoyés uniquement après validation de votre demande.
-        </p>
-</div>
-<div class="final-info-box">
 <strong>Contact</strong>
 <p>
           Email : <b>lodge.paradisevalley@yahoo.com</b><br/>
@@ -1405,7 +1468,7 @@ nav{top:0!important}
 </div>
 <footer>
 <div class="ft-logo"><img alt="Logo Paradise Valley" class="ft-logo-mark" src="assets/paradise-valley-logo.png"/><span class="ft-logo-text"><strong>Paradise Valley</strong><span>Ambanizana</span></span></div>
-<div class="ft-links"><a href="index.html">Accueil</a><a href="chambres.html">Bungalows</a><a href="galerie.html">Galerie</a><a href="contact.html">Contact</a></div>
+<div class="ft-links"><a href="index.html">Accueil</a><a href="chambres.html">Bungalows</a><a href="galerie.html">Galerie</a></div>
 <div class="ft-copy">© 2025 Paradise Valley</div>
 </footer>
 <script>
@@ -1543,7 +1606,6 @@ nav{top:0!important}
       'Estimation pension complète':moneyEUR(t.pension),
       'Total indicatif hors transferts':moneyEUR(t.total),
       'Transferts optionnels':transfersText(),
-      'Mode de paiement souhaité':$('payment')?.value || 'Non précisé',
       'Demandes spéciales':$('special-requests')?.value.trim() || 'Aucune',
       'Note':'Pension enfant -5 ans : 50 €/jour. Pension enfant 5 ans et + : 70 €/jour. Tarifs de la vedette rapide affichés sur la page : Nosy Mangabe, Ambodiforaha, Paradise Valley, sortie baleine et pêche sportive. Confirmation finale selon disponibilité, météo et nombre de personnes.'
     };
