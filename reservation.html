@@ -197,8 +197,21 @@ if(childrenParam && $('children-small') && !childrenSmallParam && !childrenBigPa
 const value = String(childrenParam).match(/\d+/)?.[0] || childrenParam;
 if([...$('children-small').options].some(o => o.value === value)) $('children-small').value = value;
 }
-if(roomParam){
-let normalized = String(roomParam).toLowerCase();
+const aliasRoomParamParadise = {
+      'simple': 'bungalow',
+      'bungalow-simple': 'bungalow',
+      'bungalowsimple': 'bungalow',
+      'bungalow': 'bungalow',
+      'familial': 'villa',
+      'famille': 'villa',
+      'bungalow-familial': 'villa',
+      'bungalowfamilial': 'villa',
+      'villa': 'villa'
+    };
+
+    if(roomParam){
+let normalized = String(roomParam).toLowerCase().replace(/\s+/g,'-');
+      normalized = aliasRoomParamParadise[normalized] || normalized;
 if(normalized.includes('famil') || normalized.includes('villa')) normalized = 'villa';
 else if(normalized.includes('bungalow') || normalized.includes('simple')) normalized = 'bungalow';
 const roomInput = document.querySelector('input[name="room"][value="' + normalized + '"]');
