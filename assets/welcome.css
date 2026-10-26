@@ -1,0 +1,67 @@
+/* Welcome splash + promo card — Paradise Valley Lodge */
+:root{--wz-navy:#1c3d14;--wz-navy2:#2f641f;--wz-gold:#d9b86c;--wz-gold-l:#f0dfb2;--wz-cream:#f6f1e4}
+
+/* ---------- Écran de bienvenue ---------- */
+.wz-splash{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;flex-direction:column;
+  text-align:center;color:var(--wz-cream);overflow:hidden;
+  background:radial-gradient(ellipse at 50% 40%,var(--wz-navy2) 0%,var(--wz-navy) 70%);
+  animation:wzOut .7s ease 2.7s forwards}
+html.wz-skip .wz-splash{display:none}
+@keyframes wzOut{to{opacity:0;visibility:hidden;pointer-events:none}}
+.wz-splash.is-closing{animation:wzOut .5s ease forwards}
+.wz-inner{position:relative;z-index:2;padding:0 24px}
+.wz-logo{width:clamp(96px,22vw,150px);height:auto;margin:0 auto 18px;display:block;opacity:0;transform:scale(.85);
+  animation:wzIn .9s cubic-bezier(.2,.7,.2,1) .15s forwards}
+.wz-hello{font:500 12px/1 'Nunito',sans-serif;letter-spacing:.35em;text-transform:uppercase;color:var(--wz-gold);
+  opacity:0;animation:wzUp .7s ease .7s forwards}
+.wz-name{font:300 clamp(34px,8vw,64px)/1.05 'Playfair Display',serif;margin:12px 0 6px;opacity:0;animation:wzUp .8s ease .95s forwards}
+.wz-name em{font-style:italic;color:var(--wz-gold-l)}
+.wz-line{width:0;height:1px;background:var(--wz-gold);margin:14px auto;animation:wzLine .9s ease 1.2s forwards}
+.wz-tag{font:400 13px/1.5 'Nunito',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:rgba(246,241,228,.75);
+  opacity:0;animation:wzUp .7s ease 1.45s forwards}
+.wz-skip-btn{position:absolute;top:18px;right:18px;z-index:3;background:none;border:1px solid rgba(217,184,108,.45);color:var(--wz-gold-l);
+  font:500 11px 'Nunito',sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:8px 14px;border-radius:2px;cursor:pointer}
+.wz-skip-btn:hover{background:rgba(217,184,108,.15)}
+.wz-waves{position:absolute;left:0;right:0;bottom:0;height:90px;z-index:1;opacity:.55}
+.wz-waves svg{position:absolute;bottom:0;left:0;width:200%;height:100%;animation:wzWave 7s linear infinite}
+.wz-waves svg:nth-child(2){animation-duration:11s;animation-direction:reverse;opacity:.6}
+@keyframes wzIn{to{opacity:1;transform:none}}
+@keyframes wzUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes wzLine{to{width:88px}}
+@keyframes wzWave{to{transform:translateX(-50%)}}
+
+/* ---------- Carte promo ---------- */
+.wz-promo{position:fixed;left:16px;bottom:16px;z-index:900;width:min(340px,calc(100vw - 32px));
+  background:var(--wz-navy);color:var(--wz-cream);border:1px solid rgba(217,184,108,.4);border-radius:4px;
+  box-shadow:0 14px 40px rgba(28,61,20,.35);font-family:'Nunito',sans-serif;
+  transform:translateY(24px);opacity:0;visibility:hidden;transition:opacity .5s ease,transform .5s ease,visibility .5s}
+.wz-promo.is-open{transform:none;opacity:1;visibility:visible}
+.wz-promo-close{position:absolute;top:6px;right:8px;background:none;border:0;color:var(--wz-gold-l);font-size:22px;line-height:1;cursor:pointer;padding:4px 8px}
+.wz-slides{position:relative;min-height:128px}
+.wz-slide{position:absolute;inset:0;padding:18px 20px 12px;opacity:0;visibility:hidden;transition:opacity .45s}
+.wz-slide.is-on{opacity:1;visibility:visible;position:relative}
+.wz-kicker{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--wz-gold)}
+.wz-title{font:400 22px/1.15 'Playfair Display',serif;margin:6px 24px 6px 0}
+.wz-text{font-size:13px;line-height:1.5;color:rgba(246,241,228,.8);margin-bottom:12px}
+.wz-cta{display:inline-block;background:var(--wz-gold);color:var(--wz-navy);font-weight:600;font-size:12px;letter-spacing:.12em;
+  text-transform:uppercase;text-decoration:none;padding:9px 16px;border-radius:2px}
+.wz-cta:hover{background:var(--wz-gold-l)}
+.wz-dots{display:flex;gap:6px;padding:0 20px 14px}
+.wz-dot{width:7px;height:7px;border-radius:50%;border:0;padding:0;background:rgba(246,241,228,.3);cursor:pointer}
+.wz-dot.is-on{background:var(--wz-gold)}
+
+@media (prefers-reduced-motion:reduce){
+  .wz-splash{display:none}
+  .wz-promo{transition:none}
+  .wz-waves svg{animation:none}
+}
+
+.wz-name{font-weight:400}.wz-hello,.wz-tag,.wz-kicker,.wz-skip-btn,.wz-cta{font-family:'Nunito',sans-serif}.wz-title{font-size:20px}
+
+@media(max-width:700px){.wz-promo{bottom:84px}}
+
+/* robustesse face aux styles globaux du site */
+.wz-promo .wz-dot{width:7px;height:7px;min-width:0;min-height:0;padding:0;margin:0;border-radius:50%;flex:none;display:block}
+.wz-promo .wz-promo-close{width:auto;height:auto;min-width:0;background:none}
+.wz-splash .wz-skip-btn{width:auto;height:auto}
+.wz-logo{background:#fff;border-radius:22px;padding:10px;width:clamp(88px,20vw,120px);box-shadow:0 10px 30px rgba(0,0,0,.25)}
