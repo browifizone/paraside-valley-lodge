@@ -1,5 +1,5 @@
-/* Welcome splash + promo card — Paradise Valley Lodge
-   Pour un autre site : modifier uniquement la section CONFIG ci-dessous. */
+/* Splash de bienvenue + bannière d'offres — Paradise Valley Lodge
+   Pour modifier les offres : changer uniquement la section CONFIG ci-dessous. */
 (function(){
   /* ===== CONFIG ===== */
   var PROMOS=[
@@ -32,14 +32,14 @@
     "h": "https://mangabeachfishing-masoala.com/"
   }
 ];
-  var SHOW_AFTER=6000, ROTATE=6500, HIDE_ON=["reservation.html", "contact.html"];
+  var ROTATE=5500, HIDE_ON=["reservation.html", "contact.html"];
   /* ================== */
   var doc=document, ss=null;
   try{ss=window.sessionStorage}catch(e){}
   function get(k){try{return ss&&ss.getItem(k)}catch(e){return null}}
   function set(k){try{ss&&ss.setItem(k,'1')}catch(e){}}
 
-  /* Splash */
+  /* Écran de bienvenue */
   var sp=doc.querySelector('.wz-splash');
   if(sp){
     set('wz_splash');
@@ -48,30 +48,39 @@
     doc.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
   }
 
-  /* Promo card */
+  /* Bannière d'offres */
   var page=(location.pathname.split('/').pop()||'index.html');
-  if(HIDE_ON.indexOf(page)>-1||get('wz_promo_closed')) return;
-  if(!PROMOS.length) return;
-  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(!PROMOS.length||HIDE_ON.indexOf(page)>-1||get('wz_promo_closed')) return;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var card=doc.createElement('aside');
-  card.className='wz-promo'; card.setAttribute('role','complementary'); card.setAttribute('aria-label','Offres');
-  var html='<button class="wz-promo-close" type="button" aria-label="Fermer">&times;</button><div class="wz-slides">';
+  var bar=doc.createElement('div');
+  bar.className='wz-banner'; bar.setAttribute('role','region'); bar.setAttribute('aria-label','Offres');
+  var h='<div class="wz-b-slides">';
   PROMOS.forEach(function(p,i){
-    html+='<div class="wz-slide'+(i?'':' is-on')+'"><div class="wz-kicker">'+p.k+'</div><div class="wz-title">'+p.t+'</div><p class="wz-text">'+p.x+'</p><a class="wz-cta" href="'+p.h+'">'+p.b+'</a></div>';
+    h+='<a class="wz-b-slide'+(i?'':' is-on')+'" href="'+p.h+'"'+(i?' tabindex="-1"':'')+'><span class="wz-b-k">'+p.k+'</span><span class="wz-b-t">'+p.t+'</span><span class="wz-b-c">'+p.b+' &rarr;</span></a>';
   });
-  html+='</div><div class="wz-dots">';
-  PROMOS.forEach(function(p,i){html+='<button class="wz-dot'+(i?'':' is-on')+'" type="button" aria-label="Offre '+(i+1)+'"></button>'});
-  html+='</div>';
-  card.innerHTML=html; doc.body.appendChild(card);
-  if(getComputedStyle(card).position!=='fixed'){card.remove();return}  /* CSS absent : ne rien afficher */
+  h+='</div><button class="wz-b-close" type="button" aria-label="Fermer la bannière">&times;</button>';
+  bar.innerHTML=h;
+  var eco=doc.querySelector('.ecosystem-nav');
+  if(eco&&eco.parentNode) eco.parentNode.insertBefore(bar,eco.nextSibling); else doc.body.insertBefore(bar,doc.body.firstChild);
+  if(getComputedStyle(bar).position!=='relative'){bar.remove();return}  /* CSS absent : ne rien afficher */
 
-  var slides=card.querySelectorAll('.wz-slide'), dots=card.querySelectorAll('.wz-dot'), cur=0, timer=null;
-  function go(n){slides[cur].classList.remove('is-on');dots[cur].classList.remove('is-on');cur=(n+slides.length)%slides.length;slides[cur].classList.add('is-on');dots[cur].classList.add('is-on')}
-  function start(){stop();timer=setInterval(function(){go(cur+1)},ROTATE)}
+  /* Menu fixe (Manga Beach) : le décaler sous la bannière tant qu'elle est visible */
+  var nav=doc.querySelector('nav#navbar')||doc.querySelector('nav');
+  var fixedNav=nav&&getComputedStyle(nav).position==='fixed';
+  function offsetNav(){
+    if(!fixedNav) return;
+    if(!bar.parentNode){nav.style.top='';return}
+    nav.style.top=Math.max(0,Math.round(bar.getBoundingClientRect().bottom))+'px';
+  }
+  if(fixedNav){addEventListener('scroll',offsetNav,{passive:true});addEventListener('resize',offsetNav);offsetNav();setTimeout(offsetNav,300)}
+
+  var slides=bar.querySelectorAll('.wz-b-slide'), cur=0, timer=null;
+  function go(n){slides[cur].classList.remove('is-on');slides[cur].tabIndex=-1;cur=(n+slides.length)%slides.length;slides[cur].classList.add('is-on');slides[cur].removeAttribute('tabindex')}
   function stop(){if(timer){clearInterval(timer);timer=null}}
-  Array.prototype.forEach.call(dots,function(d,i){d.addEventListener('click',function(){go(i);start()})});
-  card.addEventListener('mouseenter',stop); card.addEventListener('mouseleave',start);
-  card.querySelector('.wz-promo-close').addEventListener('click',function(){card.classList.remove('is-open');stop();set('wz_promo_closed')});
-  setTimeout(function(){card.classList.add('is-open');start()},SHOW_AFTER);
+  function start(){stop(); if(!reduce&&slides.length>1) timer=setInterval(function(){go(cur+1)},ROTATE)}
+  bar.addEventListener('mouseenter',stop); bar.addEventListener('mouseleave',start);
+  bar.addEventListener('focusin',stop); bar.addEventListener('focusout',start);
+  bar.querySelector('.wz-b-close').addEventListener('click',function(){stop();set('wz_promo_closed');bar.remove();offsetNav()});
+  start();
 })();
